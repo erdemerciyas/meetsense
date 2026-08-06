@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# large local demo videos (keep locally, do not push)
+/public/videos/*.mp4

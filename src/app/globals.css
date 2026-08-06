@@ -1,26 +1,354 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Microsoft Teams dark theme */
+  --background: #1f1f1f;
+  --foreground: #ffffff;
+  --surface: #2b2b2b;
+  --surface-elevated: #323232;
+  --accent: #5b5fc7;
+  --accent-dim: #4f52b2;
+  --accent-warm: #8b8cc7;
+  --accent-glow: rgba(91, 95, 199, 0.35);
+  --border: #3b3a39;
+  --muted: #a19f9d;
+  --glass: rgba(43, 43, 43, 0.92);
+
+  /* Teams-specific tokens */
+  --teams-bg: #1f1f1f;
+  --teams-canvas: #292929;
+  --teams-surface: #2b2b2b;
+  --teams-surface-hover: #3d3d3d;
+  --teams-rail: #0b0b0b;
+  --teams-panel: #252423;
+  --teams-border: #3b3a39;
+  --teams-text: #ffffff;
+  --teams-text-secondary: #d1d1d1;
+  --teams-muted: #a19f9d;
+  --teams-accent: #5b5fc7;
+  --teams-accent-light: #8b8cc7;
+  --teams-success: #6bb700;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-accent-warm: var(--accent-warm);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-teams-bg: var(--teams-bg);
+  --color-teams-canvas: var(--teams-canvas);
+  --color-teams-surface: var(--teams-surface);
+  --color-teams-surface-hover: var(--teams-surface-hover);
+  --color-teams-rail: var(--teams-rail);
+  --color-teams-panel: var(--teams-panel);
+  --color-teams-border: var(--teams-border);
+  --color-teams-text: var(--teams-text);
+  --color-teams-text-secondary: var(--teams-text-secondary);
+  --color-teams-muted: var(--teams-muted);
+  --color-teams-accent: var(--teams-accent);
+  --color-teams-accent-light: var(--teams-accent-light);
+  --color-teams-success: var(--teams-success);
+  --font-sans: "Segoe UI", "Segoe UI Web (West European)", -apple-system,
+    BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  --font-display: "Segoe UI", "Segoe UI Web (West European)", -apple-system,
+    BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+section[id] {
+  scroll-margin-top: 1.5rem;
+}
+
+::selection {
+  background: rgba(91, 95, 199, 0.4);
+  color: #fff;
+}
+
+/* ── Teams shell components ── */
+
+.teams-title-bar {
+  background: var(--teams-bg);
+}
+
+.teams-rail-btn {
+  @apply relative flex h-12 w-12 items-center justify-center rounded-lg text-teams-muted transition-colors duration-150;
+}
+
+.teams-rail-btn:hover {
+  @apply bg-teams-surface-hover text-teams-text;
+}
+
+.teams-rail-btn--active {
+  @apply bg-teams-surface text-teams-accent;
+}
+
+.teams-icon-btn {
+  @apply inline-flex h-8 w-8 items-center justify-center rounded-md text-teams-text-secondary transition-colors hover:bg-teams-surface-hover hover:text-teams-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-teams-accent;
+}
+
+.teams-search {
+  background: var(--teams-surface);
+}
+
+.teams-channel-header {
+  background: var(--teams-canvas);
+}
+
+.teams-tabs {
+  scrollbar-width: none;
+}
+
+.teams-tab {
+  @apply relative flex items-center gap-2 border-b-2 border-transparent px-4 py-2.5 text-sm text-teams-muted transition-colors hover:text-teams-text-secondary;
+}
+
+.teams-tab--active {
+  @apply border-teams-accent font-semibold text-teams-text;
+}
+
+.teams-tab--section-active {
+  @apply border-teams-accent/60 text-teams-text;
+}
+
+.teams-content-area {
+  background: var(--teams-canvas);
+  scroll-padding-top: 1.5rem;
+}
+
+.teams-live-badge {
+  @apply items-center gap-1.5 rounded-full border border-teams-success/30 bg-teams-success/10 px-2.5 py-1 text-xs font-medium text-teams-success;
+}
+
+.teams-live-dot {
+  @apply inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-teams-success;
+}
+
+.teams-participant {
+  @apply flex items-center gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-teams-surface-hover;
+}
+
+.teams-participant--bot {
+  @apply border border-teams-accent/20 bg-teams-accent/5;
+}
+
+.teams-speaking-indicator {
+  @apply h-2 w-2 shrink-0 animate-pulse rounded-full bg-teams-success;
+}
+
+.teams-mobile-nav-item {
+  @apply block rounded-lg px-3 py-2.5 text-sm text-teams-text-secondary transition-colors hover:bg-teams-surface-hover hover:text-teams-text;
+}
+
+.teams-mobile-nav-item--active {
+  @apply bg-teams-accent/15 font-medium text-teams-accent-light;
+}
+
+/* ── Layout utilities ── */
+
+.section-shell {
+  @apply relative mx-auto w-full max-w-6xl px-4 md:px-6;
+}
+
+.section-padding {
+  @apply relative py-16 md:py-20;
+}
+
+.section-content {
+  @apply mt-10;
+}
+
+.glass-panel {
+  background: var(--glass);
+  border: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.surface-card {
+  background: var(--teams-surface);
+  border: 1px solid var(--teams-border);
+  border-radius: 0.5rem;
+}
+
+.surface-card-lg {
+  background: var(--teams-surface);
+  border: 1px solid var(--teams-border);
+  border-radius: 0.75rem;
+}
+
+.elevated-card {
+  background: var(--teams-surface);
+  border: 1px solid var(--teams-border);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.elevated-card-lg {
+  background: var(--teams-surface);
+  border: 1px solid var(--teams-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.gradient-border-card {
+  background: linear-gradient(
+    135deg,
+    rgba(91, 95, 199, 0.5) 0%,
+    rgba(139, 140, 199, 0.25) 50%,
+    rgba(91, 95, 199, 0.4) 100%
+  );
+  padding: 1px;
+}
+
+.animated-grid {
+  background-image:
+    linear-gradient(rgba(161, 159, 157, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(161, 159, 157, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at 30% 40%, black 20%, transparent 75%);
+}
+
+.animated-grid--active {
+  animation: grid-drift 24s linear infinite;
+}
+
+@keyframes grid-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(48px, 48px, 0);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(24);
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  animation: ripple 0.6s ease-out forwards;
+}
+
+@keyframes border-beam {
+  0% {
+    top: -50%;
+    left: -50%;
+    transform: rotate(0deg);
+  }
+  100% {
+    top: -50%;
+    left: -50%;
+    transform: rotate(360deg);
+  }
+}
+
+.animate-border-beam {
+  animation: border-beam var(--beam-duration, 8s) linear infinite;
+}
+
+.chip {
+  @apply inline-flex items-center rounded px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider;
+}
+
+.section-divider {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(91, 95, 199, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+.control-btn {
+  @apply inline-flex items-center justify-center rounded-md border px-4 py-2 text-xs font-medium transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teams-accent;
+}
+
+.control-btn-neutral {
+  @apply inline-flex items-center justify-center rounded-md border border-teams-border bg-teams-surface px-4 py-2 text-xs font-medium text-teams-text transition-all duration-200 hover:bg-teams-surface-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teams-accent;
+}
+
+.control-btn-accent {
+  @apply inline-flex items-center justify-center rounded-md border border-teams-accent/40 bg-teams-accent/15 px-4 py-2 text-xs font-medium text-teams-accent-light transition-all duration-200 hover:bg-teams-accent/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teams-accent;
+}
+
+.field-input {
+  @apply w-full rounded-md border border-teams-border bg-teams-surface px-4 py-2.5 text-teams-text outline-none transition focus:border-teams-accent focus:ring-2 focus:ring-teams-accent/25;
+}
+
+.skip-link {
+  @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-teams-accent focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #8b8cc7 50%, #5b5fc7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(161, 159, 157, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(161, 159, 157, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+}
+
+.noise-overlay {
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

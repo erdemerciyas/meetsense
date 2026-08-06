@@ -1,0 +1,42 @@
+/** Microsoft Teams-inspired design tokens */
+export const teamsColors = {
+  bg: "#1f1f1f",
+  bgCanvas: "#292929",
+  surface: "#2b2b2b",
+  surfaceRaised: "#323232",
+  surfaceHover: "#3d3d3d",
+  border: "#3b3a39",
+  borderSubtle: "#484644",
+  accent: "#5b5fc7",
+  accentHover: "#4f52b2",
+  accentMuted: "#6264a7",
+  accentLight: "#8b8cc7",
+  accentGlow: "rgba(91, 95, 199, 0.35)",
+  success: "#6bb700",
+  warning: "#fce100",
+  text: "#ffffff",
+  textSecondary: "#d1d1d1",
+  muted: "#a19f9d",
+  rail: "#0b0b0b",
+  railActive: "#5b5fc7",
+  titleBar: "#1f1f1f",
+  tabActive: "#5b5fc7",
+  panel: "#252423",
+  chatBubble: "#2d2c2c",
+  speakers: ["#5b5fc7", "#6bb700", "#00bcf2", "#ff8c00"] as const,
+};
+
+/** @deprecated Use teamsColors — kept for canvas components during migration */
+export const meetsenseColors = {
+  bg: teamsColors.bg,
+  surface: teamsColors.surface,
+  surfaceRaised: teamsColors.surfaceRaised,
+  border: teamsColors.border,
+  accent: teamsColors.accent,
+  accentDim: teamsColors.accentHover,
+  accentWarm: teamsColors.accentLight,
+  muted: teamsColors.muted,
+  text: teamsColors.text,
+  glow: teamsColors.accentGlow,
+  speakers: teamsColors.speakers,
+};
