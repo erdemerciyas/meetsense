@@ -15,8 +15,8 @@ export function BorderBeam({
   className,
   size = 200,
   duration = 8,
-  colorFrom = "rgba(91, 95, 199, 0)",
-  colorTo = "rgba(91, 95, 199, 0.75)",
+  colorFrom = "rgba(245, 158, 11, 0)",
+  colorTo = "rgba(245, 158, 11, 0.75)",
 }: BorderBeamProps) {
   const reducedMotion = useReducedMotion();
 

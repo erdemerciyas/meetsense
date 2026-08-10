@@ -1,13 +1,12 @@
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { scrollToSection } from "@/lib/teamsScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
 let lenisInstance: Lenis | null = null;
 
-const NAV_OFFSET = 0;
+const NAV_OFFSET = -80;
 
 export function getLenis() {
   return lenisInstance;
@@ -17,15 +16,9 @@ export function scrollToElement(
   target: string | HTMLElement,
   options?: { offset?: number },
 ) {
-  const offset = options?.offset ?? NAV_OFFSET;
-  const teamsScroller = document.querySelector(".teams-content-area");
-
-  if (teamsScroller) {
-    scrollToSection(target, offset);
-    return;
-  }
-
   const lenis = lenisInstance;
+  const offset = options?.offset ?? NAV_OFFSET;
+
   if (!lenis) {
     const element =
       typeof target === "string"

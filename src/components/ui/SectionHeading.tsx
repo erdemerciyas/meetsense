@@ -26,14 +26,14 @@ export function SectionHeading({
 
   const content = (
     <>
-      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-teams-accent-light">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
         {label}
       </p>
-      <h2 className="text-2xl font-semibold leading-tight tracking-tight text-teams-text md:text-3xl lg:text-4xl">
+      <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-white md:text-5xl">
         {title}
       </h2>
       {subtitle ? (
-        <p className="mt-3 text-sm leading-relaxed text-teams-text-secondary md:text-base">
+        <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
           {subtitle}
         </p>
       ) : null}
@@ -69,14 +69,14 @@ export function SectionHeading({
       <motion.p
         variants={revealItemVariants}
         transition={revealTransition}
-        className="mb-2 text-xs font-semibold uppercase tracking-wider text-teams-accent-light"
+        className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-accent"
       >
         {label}
       </motion.p>
       <motion.h2
         variants={revealItemVariants}
         transition={revealTransition}
-        className="text-2xl font-semibold leading-tight tracking-tight text-teams-text md:text-3xl lg:text-4xl"
+        className="font-display text-3xl font-semibold leading-tight tracking-tight text-white md:text-5xl"
       >
         {title}
       </motion.h2>
@@ -84,7 +84,7 @@ export function SectionHeading({
         <motion.p
           variants={revealItemVariants}
           transition={revealTransition}
-          className="mt-3 text-sm leading-relaxed text-teams-text-secondary md:text-base"
+          className="mt-4 text-base leading-relaxed text-muted md:text-lg"
         >
           {subtitle}
         </motion.p>

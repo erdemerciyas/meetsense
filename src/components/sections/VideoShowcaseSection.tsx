@@ -12,7 +12,6 @@ import { VideoSlot } from "@/components/ui/VideoSlot";
 import { getMediaSlot } from "@/content/media";
 import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/lib/i18n";
-import { getTeamsScroller } from "@/lib/teamsScroll";
 import { motionDuration, motionEase } from "@/lib/motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -34,38 +33,21 @@ export function VideoShowcaseSection({
     const videoWrap = videoWrapRef.current;
     if (reducedMotion || !section || !videoWrap) return;
 
-    const scroller = getTeamsScroller();
-    if (!scroller) return;
+    const ctx = gsap.context(() => {
+      gsap.to(videoWrap, {
+        scale: 1.06,
+        yPercent: -8,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }, section);
 
-    let cancelled = false;
-    let ctx: gsap.Context | null = null;
-
-    const frame = requestAnimationFrame(() => {
-      if (cancelled) return;
-      const liveScroller = getTeamsScroller();
-      if (!liveScroller) return;
-
-      ctx = gsap.context(() => {
-        gsap.to(videoWrap, {
-          scale: 1.06,
-          yPercent: -8,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            scroller: liveScroller,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      }, section);
-    });
-
-    return () => {
-      cancelled = true;
-      cancelAnimationFrame(frame);
-      ctx?.revert();
-    };
+    return () => ctx.revert();
   }, [reducedMotion]);
 
   return (
@@ -114,7 +96,7 @@ export function VideoShowcaseSection({
               ease: motionEase,
             }}
             whileHover={reducedMotion ? undefined : { y: -4 }}
-            className="elevated-card group px-6 py-8 text-center transition-shadow duration-500 hover:border-teams-accent/25 hover:shadow-[0_20px_56px_-24px_rgba(91,95,199,0.15)]"
+            className="elevated-card group px-6 py-8 text-center transition-shadow duration-500 hover:border-accent/25 hover:shadow-[0_20px_56px_-24px_rgba(245,158,11,0.15)]"
           >
             <p className="font-display text-3xl font-semibold text-white transition-colors duration-300 group-hover:text-accent-warm md:text-4xl">
               <CountUp value={stat.value} suffix={stat.suffix} locale={locale} />

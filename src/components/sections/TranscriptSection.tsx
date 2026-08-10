@@ -47,9 +47,9 @@ export function TranscriptSection({
                   delay: index * 0.1,
                   ease: motionEase,
                 }}
-                className="action-item group flex items-start gap-3 rounded-lg border border-teams-accent/25 bg-teams-accent/8 px-4 py-3 text-sm text-teams-text-secondary transition-all duration-200 hover:bg-teams-accent/12"
+                className="action-item group flex items-start gap-3 rounded-lg border border-accent/25 bg-accent/8 px-4 py-3 text-sm text-muted transition-all duration-200 hover:bg-accent/12"
               >
-                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-teams-accent" />
+                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-accent" />
                 {item}
               </motion.li>
             ))}
@@ -78,8 +78,8 @@ export function TranscriptSection({
                 className={cn(
                   "transcript-line group rounded-lg border px-4 py-3 transition-all duration-200",
                   line.highlight
-                    ? "border-teams-accent/40 bg-teams-accent/10"
-                    : "border-teams-border bg-teams-surface hover:bg-teams-surface-hover",
+                    ? "border-accent/40 bg-accent/10"
+                    : "border-border bg-surface hover:bg-surface-elevated",
                 )}
               >
                 <div className="mb-2 flex items-center gap-3">

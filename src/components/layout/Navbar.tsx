@@ -3,11 +3,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/cn";
-import {
-  scrollToElement,
-  startSmoothScroll,
-  stopSmoothScroll,
-} from "@/lib/scroll";
 import type { Locale } from "@/lib/i18n";
 import { getLocalePath } from "@/lib/i18n";
 import type { NavItem } from "@/content/types";
@@ -104,11 +99,10 @@ export function Navbar({
   }, [nav]);
 
   useEffect(() => {
-    if (menuOpen) {
-      stopSmoothScroll();
-      return;
-    }
-    startSmoothScroll();
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   const otherLocale = locale === "tr" ? "en" : "tr";
@@ -230,7 +224,7 @@ export function Navbar({
                 className="mt-2 w-full sm:hidden"
                 onClick={() => {
                   closeMenu();
-                  scrollToElement("#cta");
+                  document.getElementById("cta")?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
                 {ctaLabel}

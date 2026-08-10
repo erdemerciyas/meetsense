@@ -24,7 +24,7 @@ function ButtonInner({
   children,
   className,
   variant = "primary",
-  magnetic = false,
+  magnetic = true,
   onClick,
   ...props
 }: ButtonProps) {
@@ -42,8 +42,8 @@ function ButtonInner({
     const rect = ref.current.getBoundingClientRect();
     const offsetX = event.clientX - rect.left - rect.width / 2;
     const offsetY = event.clientY - rect.top - rect.height / 2;
-    x.set(offsetX * 0.12);
-    y.set(offsetY * 0.12);
+    x.set(offsetX * 0.18);
+    y.set(offsetY * 0.18);
   };
 
   const onMouseLeave = () => {
@@ -68,12 +68,12 @@ function ButtonInner({
   };
 
   const styles = cn(
-    "relative inline-flex w-full items-center justify-center overflow-hidden rounded-md px-5 py-2.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teams-accent sm:w-auto",
+    "relative inline-flex w-full items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:w-auto",
     variant === "primary" &&
-      "bg-teams-accent text-white hover:bg-teams-accent/90",
+      "bg-accent text-background hover:bg-accent-warm hover:shadow-[0_0_30px_rgba(245,158,11,0.35)]",
     variant === "secondary" &&
-      "border border-teams-border bg-teams-surface text-teams-text hover:bg-teams-surface-hover",
-    variant === "ghost" && "text-teams-muted hover:text-teams-text",
+      "border border-white/15 bg-white/5 text-white hover:border-accent/40 hover:bg-white/10",
+    variant === "ghost" && "text-muted hover:text-white",
     className,
   );
 
@@ -83,8 +83,8 @@ function ButtonInner({
       className={styles}
       type="button"
       style={reducedMotion || !magnetic ? undefined : { x: springX, y: springY }}
-      whileHover={reducedMotion ? undefined : { scale: 1.01 }}
-      whileTap={reducedMotion ? undefined : { scale: 0.99 }}
+      whileHover={reducedMotion ? undefined : { scale: 1.02 }}
+      whileTap={reducedMotion ? undefined : { scale: 0.98 }}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       onClick={handleClick}
@@ -94,7 +94,7 @@ function ButtonInner({
         ? ripples.map((ripple) => (
             <span
               key={ripple.id}
-              className="pointer-events-none absolute rounded-full bg-white/20 animate-ripple"
+              className="pointer-events-none absolute rounded-full bg-white/30 animate-ripple"
               style={{
                 left: ripple.x,
                 top: ripple.y,
@@ -108,6 +108,19 @@ function ButtonInner({
       <span className="relative z-10">{children}</span>
     </motion.button>
   );
+
+  if (variant === "primary") {
+    return (
+      <span
+        className={cn(
+          "inline-flex w-full rounded-full bg-gradient-to-r from-accent via-accent-warm to-accent p-[1px] sm:w-auto",
+          className?.includes("w-full") && "w-full",
+        )}
+      >
+        {button}
+      </span>
+    );
+  }
 
   return button;
 }

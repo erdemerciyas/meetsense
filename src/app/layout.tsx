@@ -1,10 +1,23 @@
 import type { Metadata } from "next";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://meetsense.bgts.ai"),
   title: "MeetSense",
-  description: "AI Meeting Assistant for Microsoft Teams",
+  description: "AI Meeting Assistant — turn conversations into clarity and action",
 };
 
 export default function RootLayout({
@@ -13,8 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning className="h-full">
-      <body className="h-full overflow-hidden bg-background text-foreground antialiased">
+    <html
+      suppressHydrationWarning
+      className={`${inter.variable} ${spaceGrotesk.variable}`}
+    >
+      <body className="min-h-full bg-background font-sans text-foreground antialiased">
         {children}
       </body>
     </html>

@@ -164,37 +164,6 @@ export type SiteContent = {
     openMenu: string;
     closeMenu: string;
   };
-  teamsShell: {
-    appName: string;
-    teamName: string;
-    channelName: string;
-    meetingTitle: string;
-    searchPlaceholder: string;
-    liveMeeting: string;
-    participantsTitle: string;
-    participantsCount: string;
-    botBadge: string;
-    speaking: string;
-    integrationNote: string;
-    showPanel: string;
-    hidePanel: string;
-    moreOptions: string;
-    switchLanguage: string;
-    appNavigation: string;
-    userInitials: string;
-    railLabels: Record<
-      "activity" | "chat" | "teams" | "calendar" | "calls" | "files" | "apps",
-      string
-    >;
-    participants: {
-      id: string;
-      name: string;
-      initials: string;
-      status: string;
-      isBot?: boolean;
-      isSpeaking?: boolean;
-    }[];
-  };
   cta: {
     title: string;
     subtitle: string;

@@ -1,166 +1,180 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { AnimatedGrid } from "@/components/ui/AnimatedGrid";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { Particles } from "@/components/ui/Particles";
+import { Spotlight } from "@/components/ui/Spotlight";
 import { VideoSlot } from "@/components/ui/VideoSlot";
-import { TeamsMeetSenseIcon } from "@/components/icons/TeamsIcons";
+import { WaveformCanvas } from "@/components/ui/WaveformCanvas";
 import { getMediaSlot } from "@/content/media";
 import type { SiteContent } from "@/content/types";
 import { motionDuration, motionEase, revealItemVariants } from "@/lib/motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-type HeroSectionProps = {
-  content: SiteContent["hero"];
-  teamsShell: SiteContent["teamsShell"];
-};
+gsap.registerPlugin(ScrollTrigger);
 
-export function HeroSection({ content, teamsShell }: HeroSectionProps) {
+export function HeroSection({ content }: { content: SiteContent["hero"] }) {
+  const sectionRef = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
 
-  const heroContent = (
-    <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-      <div>
-        <div className="mb-4 inline-flex items-center gap-2 rounded-md border border-teams-accent/30 bg-teams-accent/10 px-3 py-1.5">
-          <TeamsMeetSenseIcon className="h-4 w-4" />
-          <span className="text-xs font-semibold text-teams-accent-light">
-            {content.eyebrow}
-          </span>
-        </div>
+  useEffect(() => {
+    if (reducedMotion || !sectionRef.current) return;
 
-        <h1 className="max-w-xl text-3xl font-semibold leading-tight tracking-tight text-teams-text md:text-4xl lg:text-5xl">
-          <span className="text-gradient">{content.title}</span>
-        </h1>
+    const ctx = gsap.context(() => {
+      gsap.to(".hero-video", {
+        yPercent: 12,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
 
-        <p className="mt-4 max-w-lg text-sm leading-relaxed text-teams-text-secondary md:text-base">
-          {content.subtitle}
-        </p>
+      gsap.to(".hero-waveform", {
+        yPercent: -8,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }, sectionRef);
 
-        <div className="mt-6 flex flex-wrap gap-2">
-          {content.badges.map((badge) => (
-            <Badge key={badge}>{badge}</Badge>
-          ))}
-        </div>
+    return () => ctx.revert();
+  }, [reducedMotion]);
 
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Button href="#cta">{content.ctaPrimary}</Button>
-          <Button href="#intro" variant="secondary">
-            {content.ctaSecondary}
-          </Button>
-        </div>
-      </div>
-
-      {/* Teams meeting preview */}
-      <div className="teams-meeting-preview relative overflow-hidden rounded-lg border border-teams-border bg-teams-bg shadow-2xl">
-        <div className="flex items-center justify-between border-b border-teams-border bg-teams-surface px-4 py-2">
-          <div className="flex items-center gap-2">
-            <span className="teams-live-dot inline-block" />
-            <span className="text-xs font-medium text-teams-success">
-              {teamsShell.liveMeeting}
-            </span>
-          </div>
-          <span className="truncate text-xs text-teams-muted">
-            {teamsShell.meetingTitle}
-          </span>
-        </div>
-
-        <div className="hero-video relative aspect-video">
+  return (
+    <Spotlight className="relative min-h-[100svh] overflow-hidden">
+      <section
+        ref={sectionRef}
+        className="relative min-h-[100svh] pt-24 md:pt-28"
+      >
+        <div className="hero-video absolute inset-0 -z-20 h-full w-full">
           <VideoSlot
             slot={getMediaSlot("hero")}
             className="h-full w-full rounded-none border-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-teams-bg/80 via-transparent to-teams-bg/20" />
+        </div>
+        <div className="hero-waveform pointer-events-none absolute inset-y-0 right-0 -z-10 hidden w-[55%] opacity-90 md:block [mask-image:linear-gradient(to_left,black_55%,transparent)]">
+          <WaveformCanvas overlay intensity={1.2} className="h-full w-full" />
+        </div>
+        <div className="hero-waveform pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 opacity-70 md:hidden [mask-image:linear-gradient(to_top,black_40%,transparent)]">
+          <WaveformCanvas overlay intensity={1} className="h-full w-full" />
+        </div>
+        <AnimatedGrid className="-z-10 opacity-50" />
+        <Particles className="-z-10 opacity-80" count={36} />
+        <div className="noise-overlay absolute inset-0 -z-10 opacity-30" />
+        <div className="grid-bg absolute inset-0 -z-10 opacity-40" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-background/85 via-background/55 to-background/20" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/20 via-transparent to-background" />
 
-          {/* MeetSense bot overlay */}
-          <div className="absolute bottom-3 left-3 flex items-center gap-2 rounded-md border border-teams-accent/40 bg-teams-bg/90 px-3 py-2 backdrop-blur-sm">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-teams-accent text-[10px] font-bold text-white">
-              MS
-            </div>
-            <div>
-              <p className="text-xs font-semibold text-teams-text">
-                {teamsShell.participants[0]?.name}
+        <div className="section-shell relative z-10 flex min-h-[calc(100svh-6rem)] flex-col justify-center pb-20">
+          {reducedMotion ? (
+            <>
+              <p className="mb-4 text-sm font-medium uppercase tracking-[0.28em] text-accent">
+                {content.eyebrow}
               </p>
-              <p className="text-[10px] text-teams-success">
-                {teamsShell.participants[0]?.status}
+              <h1 className="font-display max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
+                <span className="text-gradient">{content.title}</span>
+              </h1>
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
+                {content.subtitle}
               </p>
-            </div>
-          </div>
-
-          {/* Participant tiles */}
-          <div className="absolute bottom-3 right-3 flex -space-x-2">
-            {teamsShell.participants.slice(1, 4).map((p) => (
-              <div
-                key={p.id}
-                className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-teams-bg bg-teams-surface-hover text-[10px] font-semibold text-teams-text"
-                title={p.name}
-              >
-                {p.initials}
+              <div className="mt-8 flex flex-wrap gap-2">
+                {content.badges.map((badge) => (
+                  <Badge key={badge}>{badge}</Badge>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex items-center justify-center gap-3 border-t border-teams-border bg-teams-surface px-4 py-3">
-          {["🎤", "📹", "🖥️", "💬", "•••", "📞"].map((icon) => (
-            <button
-              key={icon}
-              type="button"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-teams-surface-hover text-sm transition-colors hover:bg-teams-border"
-              aria-hidden
+              <div className="mt-10 flex flex-wrap gap-3">
+                <Button href="#cta">{content.ctaPrimary}</Button>
+                <Button href="#intro" variant="secondary">
+                  {content.ctaSecondary}
+                </Button>
+              </div>
+            </>
+          ) : (
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
+              }}
             >
-              {icon}
-            </button>
-          ))}
-          <button
-            type="button"
-            className="ml-2 rounded-full bg-red-600 px-4 py-1.5 text-xs font-semibold text-white"
-            aria-hidden
-          >
-            Leave
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+              <motion.p
+                variants={revealItemVariants}
+                transition={{ duration: motionDuration.normal, ease: motionEase }}
+                className="mb-4 text-sm font-medium uppercase tracking-[0.28em] text-accent"
+              >
+                {content.eyebrow}
+              </motion.p>
+              <motion.h1
+                variants={revealItemVariants}
+                transition={{ duration: motionDuration.slow, ease: motionEase }}
+                className="font-display max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl"
+              >
+                <span className="text-gradient">{content.title}</span>
+              </motion.h1>
+              <motion.p
+                variants={revealItemVariants}
+                transition={{ duration: motionDuration.normal, ease: motionEase }}
+                className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg"
+              >
+                {content.subtitle}
+              </motion.p>
+              <motion.div
+                variants={revealItemVariants}
+                transition={{ duration: motionDuration.normal, ease: motionEase }}
+                className="mt-8 flex flex-wrap gap-2"
+              >
+                {content.badges.map((badge) => (
+                  <Badge key={badge}>{badge}</Badge>
+                ))}
+              </motion.div>
+              <motion.div
+                variants={revealItemVariants}
+                transition={{ duration: motionDuration.normal, ease: motionEase }}
+                className="mt-10 flex flex-wrap gap-3"
+              >
+                <Button href="#cta">{content.ctaPrimary}</Button>
+                <Button href="#intro" variant="secondary">
+                  {content.ctaSecondary}
+                </Button>
+              </motion.div>
+            </motion.div>
+          )}
 
-  return (
-    <section className="relative border-b border-teams-border bg-teams-canvas px-4 py-10 md:px-6 md:py-14">
-      {reducedMotion ? (
-        <div className="section-shell">{heroContent}</div>
-      ) : (
-        <motion.div
-          className="section-shell"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-          }}
-        >
           <motion.div
-            variants={revealItemVariants}
-            transition={{ duration: motionDuration.normal, ease: motionEase }}
+            className="mt-16 flex items-center gap-3 text-sm text-muted"
+            initial={reducedMotion ? false : { opacity: 0 }}
+            animate={reducedMotion ? undefined : { opacity: 1 }}
+            transition={{ delay: 1.2, duration: motionDuration.slow, ease: motionEase }}
           >
-            {heroContent}
+            <span className="inline-block h-8 w-px bg-accent/60" />
+            <span className="flex items-center gap-2">
+              {content.scrollHint}
+              <motion.span
+                className="inline-block h-4 w-px bg-accent/40"
+                animate={reducedMotion ? undefined : { y: [0, 6, 0] }}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            </span>
           </motion.div>
-        </motion.div>
-      )}
-
-      <motion.div
-        className="section-shell mt-8 flex items-center gap-2 text-xs text-teams-muted"
-        initial={reducedMotion ? false : { opacity: 0 }}
-        animate={reducedMotion ? undefined : { opacity: 1 }}
-        transition={{ delay: 0.8, duration: motionDuration.slow, ease: motionEase }}
-      >
-        <span>{content.scrollHint}</span>
-        <motion.span
-          className="inline-block text-teams-accent"
-          animate={reducedMotion ? undefined : { y: [0, 4, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          ↓
-        </motion.span>
-      </motion.div>
-    </section>
+        </div>
+      </section>
+    </Spotlight>
   );
 }

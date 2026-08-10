@@ -1,17 +1,18 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { VideoSlot } from "@/components/ui/VideoSlot";
-import { IntroStepIcon } from "@/components/icons/IntroStepIcons";
 import { getMediaSlot } from "@/content/media";
 import type { SiteContent, StepItem } from "@/content/types";
+import { IntroStepIconBadge } from "@/components/icons/IntroStepIcons";
 import { cn } from "@/lib/cn";
-import { getTeamsScroller } from "@/lib/teamsScroll";
-import { motionDuration, motionEase } from "@/lib/motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const stepMedia = [
   getMediaSlot("introJoin"),
@@ -20,291 +21,330 @@ const stepMedia = [
   getMediaSlot("introAnalyze"),
 ] as const;
 
-/** Sticky offset inside Teams content scroller — aligns with card top band */
-const STICKY_TOP = "top-6";
+const PINNED_CARD_CLASS =
+  "elevated-card rounded-[2rem] border border-accent/20 p-8 xl:p-10";
 
-function scrollPanelIntoView(element: HTMLElement) {
-  const scroller = getTeamsScroller();
-  if (!scroller) {
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
-    return;
+function getStepState(
+  stepIndex: number,
+  activeIndex: number,
+  exitX: number,
+  enterX: number,
+) {
+  const diff = activeIndex - stepIndex;
+
+  if (diff === 0) {
+    return { x: 0, scale: 1, opacity: 1, zIndex: 20, filter: "blur(0px)" };
   }
 
-  const scrollerRect = scroller.getBoundingClientRect();
-  const elementRect = element.getBoundingClientRect();
-  const top =
-    scroller.scrollTop +
-    (elementRect.top - scrollerRect.top) -
-    24;
+  if (diff > 0) {
+    return {
+      x: exitX,
+      scale: 0.96,
+      opacity: 0,
+      zIndex: 1,
+      filter: "blur(0px)",
+    };
+  }
 
-  scroller.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  return {
+    x: enterX,
+    scale: 0.96,
+    opacity: 0,
+    zIndex: 1,
+    filter: "blur(0px)",
+  };
 }
 
-function StepMarker({
+function StepCardContent({
+  step,
+  className,
+}: {
+  step: StepItem;
+  className?: string;
+}) {
+  return (
+    <article className={className}>
+      <h3 className="font-display text-3xl font-semibold leading-[1.08] text-white xl:text-5xl">
+        {step.title}
+      </h3>
+      <p className="mt-4 text-base leading-relaxed text-foreground/85 xl:mt-5 xl:text-lg">
+        {step.description}
+      </p>
+      {step.highlights?.length ? (
+        <ul className="mt-5 space-y-2.5 border-t border-white/10 pt-5 xl:mt-6 xl:space-y-3 xl:pt-6">
+          {step.highlights.map((item) => (
+            <li
+              key={item}
+              className="flex items-start gap-3 text-sm leading-relaxed text-muted xl:text-base"
+            >
+              <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </article>
+  );
+}
+
+function PinnedStep({
   step,
   index,
-  isActive,
-  isPast,
-  isLast,
-  onSelect,
 }: {
   step: StepItem;
   index: number;
-  isActive: boolean;
-  isPast: boolean;
-  isLast: boolean;
-  onSelect: () => void;
 }) {
   return (
-    <div className="relative">
-      {/* Line to next marker — centered on circle (18px = half of 36px) */}
-      {!isLast ? (
-        <span
-          className="pointer-events-none absolute left-[1.125rem] top-9 bottom-[-2rem] hidden w-px -translate-x-1/2 lg:block"
-          aria-hidden
-        >
-          <span className="absolute inset-0 bg-teams-border" />
-          <span
-            className={cn(
-              "absolute inset-x-0 top-0 bg-teams-accent transition-all duration-500 ease-out",
-              isPast ? "h-full" : "h-0",
-            )}
-          />
-        </span>
-      ) : null}
-
-      <button
-        type="button"
-        onClick={onSelect}
-        aria-current={isActive ? "step" : undefined}
-        className="relative flex w-full items-start gap-3 text-left"
-      >
-        <span
-          className={cn(
-            "relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-xs font-semibold tabular-nums transition-colors duration-300",
-            isActive
-              ? "border-teams-accent bg-teams-accent text-white shadow-[0_0_0_4px_rgba(91,95,199,0.18)]"
-              : isPast
-                ? "border-teams-accent/50 bg-teams-accent/20 text-teams-accent-light"
-                : "border-teams-border bg-teams-canvas text-teams-muted",
-          )}
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
-
-        <span
-          className={cn(
-            "min-w-0 flex-1 rounded-lg px-2.5 py-1.5 transition-colors duration-300",
-            isActive && "bg-teams-accent/10",
-          )}
-        >
-          <span
-            className={cn(
-              "block text-sm font-semibold leading-snug",
-              isActive ? "text-teams-text" : "text-teams-text-secondary",
-            )}
-          >
-            {step.title}
-          </span>
-          <span className="mt-0.5 block text-[11px] leading-snug text-teams-muted">
-            {step.highlights?.[0]}
-          </span>
-        </span>
-      </button>
+    <div className="intro-step absolute flex w-full max-w-[min(100%,820px)] items-center gap-5 will-change-transform xl:gap-7">
+      <IntroStepIconBadge
+        stepId={step.id}
+        index={index}
+        size="pinned"
+        className="shrink-0"
+      />
+      <StepCardContent step={step} className={cn("min-w-0 flex-1", PINNED_CARD_CLASS)} />
     </div>
   );
 }
 
-function StepPanel({
+function InlineStep({
   step,
   index,
-  mediaIndex,
-  reducedMotion,
+  cardClassName,
 }: {
   step: StepItem;
   index: number;
-  mediaIndex: number;
-  reducedMotion: boolean;
+  cardClassName?: string;
 }) {
   return (
-    <motion.article
-      initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-      whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.25, margin: "0px 0px -6% 0px" }}
-      transition={{ duration: motionDuration.slow, ease: motionEase }}
-      className="elevated-card-lg overflow-hidden p-0"
-    >
-      <div className="grid md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-        <div className="flex flex-col p-5 md:p-7 lg:p-8">
-          <div className="flex items-start gap-3 md:gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-teams-accent/30 bg-gradient-to-br from-teams-accent/20 to-teams-surface md:h-14 md:w-14">
-              <IntroStepIcon
-                stepId={step.id}
-                className="h-8 w-8 md:h-9 md:w-9"
-              />
-            </div>
-            <div className="min-w-0 pt-0.5">
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-teams-accent-light">
-                {String(index + 1).padStart(2, "0")} / 04
-              </p>
-              <h3 className="mt-1 font-display text-xl font-semibold leading-tight text-teams-text md:text-2xl lg:text-3xl">
-                {step.title}
-              </h3>
-            </div>
-          </div>
+    <div className="group flex items-start gap-5 transition-all duration-500 hover:-translate-y-1 sm:gap-6 lg:items-center xl:gap-8">
+      <IntroStepIconBadge stepId={step.id} index={index} className="shrink-0" />
+      <StepCardContent
+        step={step}
+        className={cn("min-w-0 flex-1", cardClassName)}
+      />
+    </div>
+  );
+}
 
-          <p className="mt-4 text-sm leading-relaxed text-teams-text-secondary md:mt-5 md:text-base">
-            {step.description}
-          </p>
-
-          {step.highlights?.length ? (
-            <ul className="mt-5 space-y-2.5 border-t border-teams-border pt-5 md:mt-6 md:space-y-3 md:pt-6">
-              {step.highlights.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3 text-sm leading-relaxed text-teams-muted"
-                >
-                  <span
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teams-accent"
-                    aria-hidden
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          ) : null}
+function MobileSteps({ content }: { content: SiteContent["intro"] }) {
+  return (
+    <div className="section-shell mt-10 space-y-8 lg:hidden">
+      {content.steps.map((step, index) => (
+        <div key={step.id} className="space-y-6">
+          <InlineStep
+            step={step}
+            index={index}
+            cardClassName="glass-panel rounded-3xl p-7 transition-shadow duration-500 group-hover:border-accent/20 group-hover:shadow-[0_24px_64px_-32px_rgba(245,158,11,0.12)]"
+          />
+          <VideoSlot slot={stepMedia[index]} className="aspect-[4/3] w-full" />
         </div>
+      ))}
+    </div>
+  );
+}
 
-        <div className="border-t border-teams-border bg-teams-bg/40 p-3 md:border-l md:border-t-0 md:p-4 lg:p-5">
-          <div className="aspect-[4/3] overflow-hidden rounded-xl border border-teams-border bg-teams-bg">
-            <VideoSlot
-              slot={{ ...stepMedia[mediaIndex], fullScreen: true }}
-              className="h-full w-full"
-            />
-          </div>
-        </div>
-      </div>
-    </motion.article>
+function DesktopFallback({ content }: { content: SiteContent["intro"] }) {
+  return (
+    <div className="section-shell mt-16 hidden space-y-8 lg:block">
+      {content.steps.map((step, index) => (
+        <InlineStep
+          key={step.id}
+          step={step}
+          index={index}
+          cardClassName="glass-panel rounded-3xl p-10 transition-shadow duration-500 group-hover:border-accent/20 group-hover:shadow-[0_24px_64px_-32px_rgba(245,158,11,0.12)]"
+        />
+      ))}
+    </div>
   );
 }
 
 export function IntroSection({ content }: { content: SiteContent["intro"] }) {
-  const reducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const selectStep = useCallback(
-    (index: number) => {
-      const step = content.steps[index];
-      if (!step) return;
-      const panel = document.getElementById(`intro-step-${step.id}`);
-      if (panel) scrollPanelIntoView(panel);
-      setActiveIndex(index);
-    },
-    [content.steps],
-  );
+  const pinRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    const scroller = getTeamsScroller();
-    const panels = content.steps
-      .map((step) => document.getElementById(`intro-step-${step.id}`))
-      .filter(Boolean) as HTMLElement[];
+    if (reducedMotion || !pinRef.current || !stageRef.current) return;
 
-    if (!panels.length) return;
+    const pin = pinRef.current;
+    const mm = gsap.matchMedia();
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    mm.add("(min-width: 1024px)", () => {
+      const stage = stageRef.current;
+      if (!stage) return;
 
-        if (!visible?.target) return;
-        const id = visible.target.id.replace("intro-step-", "");
-        const index = content.steps.findIndex((step) => step.id === id);
-        if (index >= 0) setActiveIndex(index);
-      },
-      {
-        root: scroller,
-        rootMargin: "-20% 0px -45% 0px",
-        threshold: [0.15, 0.35, 0.55],
-      },
+      const ctx = gsap.context(() => {
+        const steps = gsap.utils.toArray<HTMLElement>(".intro-step", pin);
+        const mockups = gsap.utils.toArray<HTMLElement>(".intro-mockup", pin);
+        const count = steps.length;
+
+        const measure = () => {
+          const width = stage.clientWidth;
+          const cardWidth =
+            (steps[0] as HTMLElement | undefined)?.offsetWidth ?? width;
+          const travel = width / 2 + cardWidth / 2 + 48;
+          return {
+            exitX: -travel,
+            enterX: travel,
+          };
+        };
+
+        let { exitX, enterX } = measure();
+
+        gsap.set(steps, {
+          left: "50%",
+          top: "50%",
+          xPercent: -50,
+          yPercent: -50,
+        });
+
+        steps.forEach((step, index) => {
+          gsap.set(step, getStepState(index, 0, exitX, enterX));
+        });
+
+        gsap.set(mockups, { autoAlpha: 0, scale: 0.98 });
+        gsap.set(mockups[0], { autoAlpha: 1, scale: 1 });
+
+        const refreshLayout = () => {
+          ({ exitX, enterX } = measure());
+          ScrollTrigger.refresh();
+        };
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(refreshLayout);
+        });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: pin,
+            start: "top 80px",
+            end: () => `+=${Math.max(count - 1, 1) * 100}%`,
+            pin: true,
+            scrub: 0.7,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        for (let activeIndex = 1; activeIndex < count; activeIndex++) {
+          const segment = activeIndex - 1;
+
+          tl.call(
+            () => {
+              ({ exitX, enterX } = measure());
+            },
+            [],
+            segment,
+          );
+
+          steps.forEach((step, stepIndex) => {
+            tl.to(
+              step,
+              {
+                x: () => getStepState(stepIndex, activeIndex, exitX, enterX).x,
+                scale: () =>
+                  getStepState(stepIndex, activeIndex, exitX, enterX).scale,
+                opacity: () =>
+                  getStepState(stepIndex, activeIndex, exitX, enterX).opacity,
+                zIndex: () =>
+                  getStepState(stepIndex, activeIndex, exitX, enterX).zIndex,
+                filter: () =>
+                  getStepState(stepIndex, activeIndex, exitX, enterX).filter,
+                duration: 1,
+                ease: "power3.inOut",
+              },
+              segment,
+            );
+          });
+
+          tl.to(
+            mockups[activeIndex - 1],
+            { autoAlpha: 0, scale: 0.98, duration: 0.35 },
+            segment,
+          ).to(
+            mockups[activeIndex],
+            { autoAlpha: 1, scale: 1, duration: 0.55, ease: "power2.out" },
+            segment,
+          );
+        }
+
+        const onResize = () => ScrollTrigger.refresh();
+        window.addEventListener("resize", onResize);
+
+        return () => {
+          window.removeEventListener("resize", onResize);
+        };
+      }, pin);
+
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
+  }, [reducedMotion, content.steps.length]);
+
+  if (reducedMotion) {
+    return (
+      <section id="intro" ref={sectionRef} className="relative py-24 md:py-32">
+        <SectionDivider />
+        <div className="section-shell">
+          <SectionHeading
+            label={content.label}
+            title={content.title}
+            subtitle={content.subtitle}
+          />
+        </div>
+        <DesktopFallback content={content} />
+        <MobileSteps content={content} />
+      </section>
     );
-
-    panels.forEach((panel) => observer.observe(panel));
-    return () => observer.disconnect();
-  }, [content.steps]);
+  }
 
   return (
-    <section id="intro" ref={sectionRef} className="section-padding relative">
+    <section id="intro" ref={sectionRef} className="relative py-24 md:py-32">
       <SectionDivider />
-      <div
-        className="pointer-events-none absolute -left-24 top-20 h-56 w-56 rounded-full bg-teams-accent/5 blur-3xl"
-        aria-hidden
-      />
-
-      <div className="section-shell relative">
+      <div className="section-shell">
         <SectionHeading
           label={content.label}
           title={content.title}
           subtitle={content.subtitle}
         />
+      </div>
 
-        {/* Each step = [sticky marker | card] so marker stays aligned with its card */}
-        <div className="mt-8 flex flex-col gap-5 md:gap-6 lg:mt-10 lg:gap-8">
-          {content.steps.map((step, index) => {
-            const isActive = index === activeIndex;
-            const isPast = index < activeIndex;
-            const isLast = index === content.steps.length - 1;
+      <div ref={pinRef} className="intro-pin-area relative mt-16 hidden lg:block">
+        <div className="relative mx-auto grid min-h-[min(88vh,820px)] w-full max-w-[min(100%,92rem)] grid-cols-[minmax(0,42.5rem)_minmax(0,1fr)] items-center gap-10 px-6 md:px-10 xl:gap-14">
+          <div
+            ref={stageRef}
+            className="intro-stage relative isolate z-10 h-[min(64vh,560px)] w-full overflow-hidden"
+          >
+            {content.steps.map((step, index) => (
+              <PinnedStep key={step.id} step={step} index={index} />
+            ))}
+          </div>
 
-            return (
-              <div
-                key={step.id}
-                id={`intro-step-${step.id}`}
-                data-intro-panel={index}
-                className="grid scroll-mt-6 items-start gap-4 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-8 xl:grid-cols-[16.5rem_minmax(0,1fr)]"
-              >
-                {/* Mobile marker */}
-                <div className="lg:hidden">
-                  <StepMarker
-                    step={step}
-                    index={index}
-                    isActive={isActive}
-                    isPast={isPast}
-                    isLast={isLast}
-                    onSelect={() => selectStep(index)}
+          <div className="relative z-0 flex h-[min(64vh,560px)] min-w-0 items-center">
+            <div className="intro-mockup-frame relative aspect-[16/10] w-full">
+              {content.steps.map((step, index) => (
+                <div
+                  key={step.id}
+                  className={cn(
+                    "intro-mockup absolute inset-0",
+                    index > 0 && "invisible opacity-0",
+                  )}
+                >
+                  <VideoSlot
+                    slot={stepMedia[index]}
+                    className="h-full w-full rounded-2xl"
                   />
                 </div>
-
-                {/* Desktop sticky marker — sticks for the height of this card row */}
-                <div className="relative hidden min-h-0 lg:block">
-                  <div
-                    className={cn(
-                      "sticky z-20",
-                      STICKY_TOP,
-                    )}
-                  >
-                    <StepMarker
-                      step={step}
-                      index={index}
-                      isActive={isActive}
-                      isPast={isPast}
-                      isLast={isLast}
-                      onSelect={() => selectStep(index)}
-                    />
-                  </div>
-                </div>
-
-                <StepPanel
-                  step={step}
-                  index={index}
-                  mediaIndex={index}
-                  reducedMotion={reducedMotion}
-                />
-              </div>
-            );
-          })}
+              ))}
+            </div>
+          </div>
         </div>
       </div>
+
+      <MobileSteps content={content} />
     </section>
   );
 }

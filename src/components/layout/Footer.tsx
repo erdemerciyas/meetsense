@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import type { SiteContent } from "@/content/types";
 import { motionDuration, motionEase, revealItemVariants, revealStagger } from "@/lib/motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { TeamsMeetSenseIcon } from "@/components/icons/TeamsIcons";
 
 export function Footer({ content }: { content: SiteContent["footer"] }) {
   const reducedMotion = useReducedMotion();
@@ -12,18 +11,16 @@ export function Footer({ content }: { content: SiteContent["footer"] }) {
 
   if (reducedMotion) {
     return (
-      <footer className="border-t border-teams-border bg-teams-bg py-8">
+      <footer className="relative border-t border-border bg-background py-10">
+        <div className="section-divider absolute inset-x-0 top-0" aria-hidden />
         <div className="section-shell flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-2">
-            <TeamsMeetSenseIcon className="h-5 w-5" />
-            <div>
-              <p className="text-sm font-semibold text-teams-text">
-                {content.brand}
-              </p>
-              <p className="text-xs text-teams-muted">{content.tagline}</p>
-            </div>
+          <div>
+            <p className="font-display text-xl font-semibold text-white">
+              {content.brand}
+            </p>
+            <p className="mt-1 text-sm text-muted">{content.tagline}</p>
           </div>
-          <p className="text-xs text-teams-muted">
+          <p className="text-sm text-muted/70">
             © {year} {content.brand}. {content.rights}
           </p>
         </div>
@@ -32,32 +29,34 @@ export function Footer({ content }: { content: SiteContent["footer"] }) {
   }
 
   return (
-    <footer className="border-t border-teams-border bg-teams-bg py-10">
+    <footer className="relative border-t border-border bg-background py-12 md:py-14">
+      <div className="section-divider absolute inset-x-0 top-0" aria-hidden />
+      <div
+        className="pointer-events-none absolute bottom-0 left-1/2 h-48 w-[min(100%,480px)] -translate-x-1/2 rounded-full bg-accent/5 blur-3xl"
+        aria-hidden
+      />
+
       <motion.div
-        className="section-shell flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+        className="section-shell relative flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-40px" }}
         variants={revealStagger}
       >
-        <motion.div
-          variants={revealItemVariants}
-          transition={{ duration: motionDuration.normal, ease: motionEase }}
-          className="flex items-center gap-3"
-        >
-          <TeamsMeetSenseIcon className="h-6 w-6" />
-          <div>
-            <p className="text-lg font-semibold text-teams-text">
-              {content.brand}
-            </p>
-            <p className="mt-0.5 text-sm text-teams-muted">{content.tagline}</p>
-          </div>
+        <motion.div variants={revealItemVariants} transition={{ duration: motionDuration.normal, ease: motionEase }}>
+          <p className="font-display text-2xl font-semibold tracking-tight text-white md:text-3xl">
+            {content.brand.replace("Sense", "")}
+            <span className="text-gradient">Sense</span>
+          </p>
+          <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted">
+            {content.tagline}
+          </p>
         </motion.div>
 
         <motion.p
           variants={revealItemVariants}
           transition={{ duration: motionDuration.normal, ease: motionEase, delay: 0.1 }}
-          className="text-xs text-teams-muted"
+          className="text-sm text-muted/70"
         >
           © {year} {content.brand}. {content.rights}
         </motion.p>
