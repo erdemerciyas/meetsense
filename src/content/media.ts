@@ -1,5 +1,8 @@
-export const MEETSENSE_DEMO_VIDEO = "/videos/vid1.mp4";
-export const MEETSENSE_HERO_VIDEO = "/videos/vid2.mp4";
+export const GITHUB_VIDEOS_BASE =
+  "https://media.githubusercontent.com/media/erdemerciyas/meetsense/feature/meetsense-ui/public/videos";
+
+export const MEETSENSE_DEMO_VIDEO = `${GITHUB_VIDEOS_BASE}/vid1.mp4`;
+export const MEETSENSE_HERO_VIDEO = `${GITHUB_VIDEOS_BASE}/vid2.mp4`;
 
 export type MediaSlot = {
   id: string;
