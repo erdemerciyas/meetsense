@@ -52,7 +52,7 @@ function FeatureNavItem({
         "relative w-full rounded-xl border px-4 py-3.5 text-left transition-colors duration-300",
         isActive
           ? cn(accent.border, accent.bg, accent.glow)
-          : "border-transparent hover:border-white/10 hover:bg-white/5",
+          : "border-transparent hover:border-foreground/10 hover:bg-foreground/5",
       )}
       aria-pressed={isActive}
     >
@@ -65,7 +65,7 @@ function FeatureNavItem({
       ) : null}
 
       <div className="flex items-start gap-3 pl-2">
-        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-sm">
+        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-border bg-foreground/5 text-sm">
           {FEATURE_ICONS[feature.id] ?? "•"}
         </span>
         <div className="min-w-0 flex-1">
@@ -82,7 +82,7 @@ function FeatureNavItem({
               {categoryLabel}
             </span>
           </div>
-          <h3 className="mt-1 font-display text-sm font-semibold text-white md:text-base">
+          <h3 className="mt-1 font-display text-sm font-semibold text-foreground md:text-base">
             {feature.title}
           </h3>
           <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-muted">
@@ -129,7 +129,7 @@ function FeatureDetailStage({
           >
             {content.categoryLabels[feature.category]}
           </span>
-          <h3 className="mt-3 font-display text-2xl font-semibold text-white md:text-3xl">
+          <h3 className="mt-3 font-display text-2xl font-semibold text-foreground md:text-3xl">
             {feature.title}
           </h3>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted md:text-base">
@@ -160,7 +160,7 @@ function FeatureDetailStage({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 + index * 0.08, duration: 0.35, ease }}
-              className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-muted"
+              className="flex items-start gap-2 rounded-xl border border-border bg-foreground/5 px-3 py-2.5 text-sm text-muted"
             >
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
               {highlight}
@@ -169,7 +169,7 @@ function FeatureDetailStage({
         </ul>
       </div>
 
-      <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-5">
+      <div className="mt-6 flex items-center justify-between border-t border-border pt-5">
         <button type="button" onClick={onPrev} className="control-btn-neutral">
           {content.prevLabel}
         </button>
@@ -255,7 +255,7 @@ export function FeaturesExplorer({
           <p className="text-sm text-muted">{content.selectHint}</p>
 
           <div
-            className="h-1.5 overflow-hidden rounded-full bg-white/8"
+            className="h-1.5 overflow-hidden rounded-full bg-foreground/[0.08]"
             role="progressbar"
             aria-valuemin={0}
             aria-valuemax={100}
@@ -291,12 +291,12 @@ export function FeaturesExplorer({
                   "control-btn inline-flex items-center gap-2",
                   isActive
                     ? cn(accent.border, accent.bg, accent.text, accent.glow)
-                    : "border-white/10 bg-white/5 text-muted hover:border-white/20",
+                    : "border-border bg-foreground/5 text-muted hover:border-foreground/20",
                 )}
                 aria-pressed={isActive}
               >
                 {content.categoryLabels[category]}
-                <span className="rounded-full bg-white/10 px-1.5 py-0.5 text-[10px] tabular-nums">
+                <span className="rounded-full bg-foreground/10 px-1.5 py-0.5 text-[10px] tabular-nums">
                   {count}
                 </span>
               </motion.button>

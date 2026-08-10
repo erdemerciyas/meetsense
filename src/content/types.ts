@@ -163,6 +163,8 @@ export type SiteContent = {
     skipToContent: string;
     openMenu: string;
     closeMenu: string;
+    themeToLight: string;
+    themeToDark: string;
   };
   cta: {
     title: string;

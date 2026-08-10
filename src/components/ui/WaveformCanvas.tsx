@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/cn";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useTheme } from "@/components/theme/ThemeProvider";
 
 type WaveformCanvasProps = {
   className?: string;
@@ -11,6 +12,14 @@ type WaveformCanvasProps = {
   overlay?: boolean;
 };
 
+function readCssColor(name: string, fallback: string) {
+  if (typeof window === "undefined") return fallback;
+  const value = getComputedStyle(document.documentElement)
+    .getPropertyValue(name)
+    .trim();
+  return value || fallback;
+}
+
 export function WaveformCanvas({
   className,
   intensity = 1,
@@ -18,6 +27,7 @@ export function WaveformCanvas({
 }: WaveformCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reducedMotion = useReducedMotion();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -41,16 +51,20 @@ export function WaveformCanvas({
       ctx.clearRect(0, 0, width, height);
 
       if (!overlay) {
+        const background = readCssColor("--background", "#0c0a08");
+        const surface = readCssColor("--surface", "#16120e");
+        const elevated = readCssColor("--surface-elevated", "#221c16");
         const gradient = ctx.createLinearGradient(0, 0, width, height);
-        gradient.addColorStop(0, "rgba(12, 10, 8, 1)");
-        gradient.addColorStop(0.5, "rgba(22, 18, 14, 1)");
-        gradient.addColorStop(1, "rgba(34, 28, 22, 1)");
+        gradient.addColorStop(0, background);
+        gradient.addColorStop(0.5, surface);
+        gradient.addColorStop(1, elevated);
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, width, height);
       }
 
       const bars = Math.floor(width / 8);
       const centerY = height / 2;
+      const accent = readCssColor("--accent", "#f59e0b");
 
       for (let i = 0; i < bars; i++) {
         const progress = i / bars;
@@ -60,8 +74,10 @@ export function WaveformCanvas({
         const barHeight = (wave + 0.55) * height * 0.28 * intensity;
         const alpha = 0.25 + progress * 0.55;
 
-        ctx.fillStyle = `rgba(245, 158, 11, ${alpha})`;
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = accent;
         ctx.fillRect(i * 8 + 2, centerY - barHeight / 2, 4, barHeight);
+        ctx.globalAlpha = 1;
       }
 
       tick += reducedMotion ? 0 : 1;
@@ -76,7 +92,7 @@ export function WaveformCanvas({
       cancelAnimationFrame(animationId);
       window.removeEventListener("resize", resize);
     };
-  }, [intensity, overlay, reducedMotion]);
+  }, [intensity, overlay, reducedMotion, theme]);
 
   return (
     <canvas

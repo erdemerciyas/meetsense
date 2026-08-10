@@ -70,10 +70,10 @@ function ButtonInner({
   const styles = cn(
     "relative inline-flex w-full items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:w-auto",
     variant === "primary" &&
-      "bg-accent text-background hover:bg-accent-warm hover:shadow-[0_0_30px_rgba(245,158,11,0.35)]",
+      "bg-accent text-on-accent hover:bg-accent-warm hover:shadow-[0_0_30px_var(--accent-glow)]",
     variant === "secondary" &&
-      "border border-white/15 bg-white/5 text-white hover:border-accent/40 hover:bg-white/10",
-    variant === "ghost" && "text-muted hover:text-white",
+      "border border-foreground/15 bg-foreground/5 text-foreground hover:border-accent/40 hover:bg-foreground/10",
+    variant === "ghost" && "text-muted hover:text-foreground",
     className,
   );
 
@@ -94,7 +94,7 @@ function ButtonInner({
         ? ripples.map((ripple) => (
             <span
               key={ripple.id}
-              className="pointer-events-none absolute rounded-full bg-white/30 animate-ripple"
+              className="pointer-events-none absolute rounded-full bg-foreground/30 animate-ripple"
               style={{
                 left: ripple.x,
                 top: ripple.y,

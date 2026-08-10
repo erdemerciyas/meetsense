@@ -50,7 +50,7 @@ export function UseCasesSection({
               size={240}
               duration={10}
             />
-            <div className="elevated-card-lg relative p-8 transition-shadow duration-500 group-hover:shadow-[0_32px_80px_-32px_rgba(245,158,11,0.15)] md:p-10">
+            <div className="elevated-card-lg relative p-8 transition-shadow duration-500 group-hover:shadow-[0_32px_80px_-32px_var(--accent-glow)] md:p-10">
               <div
                 className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-accent/8 opacity-60 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
                 aria-hidden
@@ -59,7 +59,7 @@ export function UseCasesSection({
               <p className="chip border-accent/30 bg-accent/10 text-accent">
                 0{index + 1}
               </p>
-              <h3 className="mt-3 font-display text-2xl font-semibold text-white transition-colors duration-300 group-hover:text-accent-warm md:text-3xl">
+              <h3 className="mt-3 font-display text-2xl font-semibold text-foreground transition-colors duration-300 group-hover:text-accent-warm md:text-3xl">
                 {item.title}
               </h3>
               <div className="mt-6 grid gap-4 md:grid-cols-3">

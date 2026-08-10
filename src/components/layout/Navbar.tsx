@@ -7,6 +7,7 @@ import type { Locale } from "@/lib/i18n";
 import { getLocalePath } from "@/lib/i18n";
 import type { NavItem } from "@/content/types";
 import { Button } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { springConfig } from "@/lib/motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -17,6 +18,8 @@ type NavbarProps = {
   ctaLabel: string;
   openMenuLabel: string;
   closeMenuLabel: string;
+  themeToLightLabel: string;
+  themeToDarkLabel: string;
 };
 
 function NavItemLink({
@@ -41,16 +44,16 @@ function NavItemLink({
       {active && layoutId && !reducedMotion ? (
         <motion.span
           layoutId={layoutId}
-          className="absolute inset-0 rounded-full border border-white/10 bg-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+          className="absolute inset-0 rounded-full border border-border bg-foreground/10 shadow-[inset_0_1px_0_var(--card-inset)]"
           transition={springConfig.snappy}
         />
       ) : active ? (
-        <span className="absolute inset-0 rounded-full border border-white/10 bg-white/10" />
+        <span className="absolute inset-0 rounded-full border border-border bg-foreground/10" />
       ) : null}
       <span
         className={cn(
           "relative z-10 transition-colors duration-300",
-          active ? "text-white" : "text-muted group-hover:text-white",
+          active ? "text-foreground" : "text-muted group-hover:text-foreground",
         )}
       >
         {item.label}
@@ -66,6 +69,8 @@ export function Navbar({
   ctaLabel,
   openMenuLabel,
   closeMenuLabel,
+  themeToLightLabel,
+  themeToDarkLabel,
 }: NavbarProps) {
   const [active, setActive] = useState(nav[0]?.id ?? "");
   const [scrolled, setScrolled] = useState(false);
@@ -113,22 +118,22 @@ export function Navbar({
       className={cn(
         "fixed inset-x-0 top-0 z-50",
         scrolled || menuOpen
-          ? "border-b border-white/10 bg-background/75 backdrop-blur-2xl backdrop-saturate-150"
+          ? "border-b border-border bg-background/75 backdrop-blur-2xl backdrop-saturate-150"
           : "bg-transparent",
       )}
       initial={false}
       animate={{
         y: 0,
         boxShadow: scrolled
-          ? "0 12px 40px -20px rgba(0, 0, 0, 0.45)"
-          : "0 0 0 rgba(0, 0, 0, 0)",
+          ? "0 12px 40px -20px var(--nav-shadow)"
+          : "0 0 0 transparent",
       }}
       transition={{ duration: reducedMotion ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="section-shell flex h-16 items-center justify-between md:h-20">
         <motion.a
           href={`/${locale}/`}
-          className="font-display text-lg font-semibold tracking-tight text-white"
+          className="font-display text-lg font-semibold tracking-tight text-foreground"
           aria-label={brand}
           whileHover={reducedMotion ? undefined : { scale: 1.02 }}
           whileTap={reducedMotion ? undefined : { scale: 0.98 }}
@@ -150,9 +155,14 @@ export function Navbar({
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle
+            lightLabel={themeToLightLabel}
+            darkLabel={themeToDarkLabel}
+          />
+
           <motion.a
             href={getLocalePath(otherLocale)}
-            className="rounded-full border border-white/10 px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-muted transition-colors hover:border-accent/40 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="rounded-full border border-border px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-muted transition-colors hover:border-accent/40 hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             whileHover={reducedMotion ? undefined : { scale: 1.04 }}
             whileTap={reducedMotion ? undefined : { scale: 0.96 }}
             transition={springConfig.gentle}
@@ -198,7 +208,7 @@ export function Navbar({
       <AnimatePresence>
         {menuOpen ? (
           <motion.div
-            className="border-t border-white/10 bg-background/95 backdrop-blur-2xl lg:hidden"
+            className="border-t border-border bg-background/95 backdrop-blur-2xl lg:hidden"
             initial={reducedMotion ? false : { height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={reducedMotion ? undefined : { height: 0, opacity: 0 }}

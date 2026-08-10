@@ -36,10 +36,10 @@ const groupStyles = {
 };
 
 const groupGlow = {
-  trigger: "shadow-[0_0_28px_rgba(252,211,77,0.22)]",
-  core: "shadow-[0_0_32px_rgba(245,158,11,0.28)]",
-  output: "shadow-[0_0_28px_rgba(217,119,6,0.22)]",
-  integration: "shadow-[0_0_24px_rgba(160,139,114,0.18)]",
+  trigger: "shadow-[0_0_28px_var(--accent-glow)]",
+  core: "shadow-[0_0_32px_var(--accent-glow)]",
+  output: "shadow-[0_0_28px_var(--accent-glow)]",
+  integration: "shadow-[0_0_24px_color-mix(in_srgb,var(--muted)_35%,transparent)]",
 };
 
 type EdgePath = {
@@ -143,9 +143,9 @@ function FlowEdges({
     >
       <defs>
         <linearGradient id="lifecycle-active-edge" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="rgba(252,211,77,0.55)" />
-          <stop offset="50%" stopColor="rgba(245,158,11,1)" />
-          <stop offset="100%" stopColor="rgba(217,119,6,0.55)" />
+          <stop offset="0%" stopColor="var(--accent-warm)" stopOpacity="0.55" />
+          <stop offset="50%" stopColor="var(--accent)" />
+          <stop offset="100%" stopColor="var(--accent-dim)" stopOpacity="0.55" />
         </linearGradient>
         <filter id="lifecycle-edge-glow" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="2" result="blur" />
@@ -165,14 +165,14 @@ function FlowEdges({
             <path
               d={edge.d}
               fill="none"
-              stroke="rgba(61,50,40,0.75)"
+              stroke="var(--border)"
               strokeWidth={2}
               strokeLinecap="round"
             />
             <motion.path
               d={edge.d}
               fill="none"
-              stroke={isActive ? "url(#lifecycle-active-edge)" : "rgba(245,158,11,0.1)"}
+              stroke={isActive ? "url(#lifecycle-active-edge)" : "color-mix(in srgb, var(--accent) 18%, transparent)"}
               strokeWidth={isActive ? 2.5 : 1.5}
               strokeLinecap="round"
               filter={isActive ? "url(#lifecycle-edge-glow)" : undefined}
@@ -254,7 +254,7 @@ function FlowNode({
           isActive && "border-accent/40",
           isSelected && cn("border-accent", groupGlow[node.group]),
           isPlayhead && !isSelected && "border-accent-warm/50",
-          !isActive && !isSelected && !isPlayhead && "border-white/10",
+          !isActive && !isSelected && !isPlayhead && "border-border",
         )}
         aria-pressed={isSelected}
       >
@@ -274,7 +274,7 @@ function FlowNode({
         >
           {groupLabel}
         </span>
-        <h3 className="mt-2 font-display text-sm font-semibold text-white md:text-base">
+        <h3 className="mt-2 font-display text-sm font-semibold text-foreground md:text-base">
           {node.title}
         </h3>
         <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-muted md:text-sm">
@@ -331,10 +331,10 @@ function PhaseColumn({
         className={cn(
           "mb-4 rounded-full border px-3 py-1.5 text-center text-[11px] font-medium uppercase tracking-wider",
           isCurrentPhase
-            ? "border-accent/50 bg-accent/15 text-accent-warm shadow-[0_0_24px_rgba(245,158,11,0.12)]"
+            ? "border-accent/50 bg-accent/15 text-accent-warm shadow-[0_0_24px_var(--accent-glow)]"
             : isPhaseActive
               ? "border-accent/25 bg-accent/5 text-foreground/80"
-              : "border-white/10 bg-white/5 text-muted",
+              : "border-border bg-foreground/5 text-muted",
         )}
       >
         {phaseLabel}
@@ -499,7 +499,7 @@ function MobileFlow({
                   ? "border-accent/50 bg-accent/15 text-accent-warm"
                   : isPhaseActive
                     ? "border-accent/25 bg-accent/5 text-foreground/80"
-                    : "border-white/10 bg-white/5 text-muted",
+                    : "border-border bg-foreground/5 text-muted",
               )}
             >
               {phaseIndex + 1}. {content.phases[phaseIndex]}
@@ -524,7 +524,7 @@ function MobileFlow({
                       "lifecycle-node glass-panel relative w-full rounded-2xl border p-4 text-left",
                       isSelected
                         ? cn("border-accent", groupGlow[node.group])
-                        : "border-white/10",
+                        : "border-border",
                     )}
                   >
                     <span
@@ -535,7 +535,7 @@ function MobileFlow({
                     >
                       {content.groupLabels[node.group]}
                     </span>
-                    <h3 className="mt-2 font-display text-base font-semibold text-white">
+                    <h3 className="mt-2 font-display text-base font-semibold text-foreground">
                       {node.title}
                     </h3>
                     <p className="mt-1 text-sm text-muted">{node.description}</p>
@@ -560,7 +560,7 @@ function ProgressRail({
   activePhase: number;
 }) {
   return (
-    <div className="relative mt-6 h-1.5 overflow-hidden rounded-full bg-white/8">
+    <div className="relative mt-6 h-1.5 overflow-hidden rounded-full bg-foreground/[0.08]">
       <motion.div
         className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-accent-dim via-accent to-accent-warm"
         initial={false}
@@ -575,7 +575,7 @@ function ProgressRail({
               "mt-[-3px] h-3 w-3 rounded-full border-2 transition-colors duration-300",
               index <= activePhase
                 ? "border-accent bg-accent"
-                : "border-white/20 bg-background",
+                : "border-foreground/20 bg-background",
             )}
           />
         ))}
@@ -617,7 +617,7 @@ function NodeDetailPanel({
           {stepIndex + 1} / {totalSteps}
         </span>
       </div>
-      <h3 className="mt-4 font-display text-2xl font-semibold text-white md:text-3xl">
+      <h3 className="mt-4 font-display text-2xl font-semibold text-foreground md:text-3xl">
         {node.title}
       </h3>
       <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">
@@ -730,7 +730,7 @@ export function LifecycleFlow({
               "inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-xs font-medium transition-all duration-300",
               isPlaying
                 ? "border-accent/50 bg-accent/15 text-accent-warm"
-                : "border-white/10 bg-white/5 text-foreground hover:border-accent/30",
+                : "border-border bg-foreground/5 text-foreground hover:border-accent/30",
             )}
             aria-pressed={isPlaying}
           >
@@ -745,7 +745,7 @@ export function LifecycleFlow({
           <button
             type="button"
             onClick={handleStep}
-            className="rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-xs font-medium text-foreground transition-colors hover:border-accent/30"
+            className="rounded-full border border-border bg-foreground/5 px-4 py-2.5 text-xs font-medium text-foreground transition-colors hover:border-accent/30"
           >
             {content.stepLabel}
           </button>
@@ -761,10 +761,10 @@ export function LifecycleFlow({
             className={cn(
               "rounded-full border px-4 py-2 text-xs font-medium transition-all duration-300",
               index === activePhase
-                ? "border-accent bg-accent/15 text-accent-warm shadow-[0_0_20px_rgba(245,158,11,0.12)]"
+                ? "border-accent bg-accent/15 text-accent-warm shadow-[0_0_20px_var(--accent-glow)]"
                 : index < activePhase
                   ? "border-accent/25 bg-accent/5 text-foreground/80"
-                  : "border-white/10 bg-white/5 text-muted hover:border-white/20",
+                  : "border-border bg-foreground/5 text-muted hover:border-foreground/20",
             )}
             aria-pressed={index === activePhase}
           >
@@ -773,7 +773,7 @@ export function LifecycleFlow({
         ))}
       </div>
 
-      <div className="relative mt-10 overflow-hidden rounded-3xl border border-white/10 elevated-card-lg p-4 md:p-8">
+      <div className="relative mt-10 overflow-hidden rounded-3xl border border-border elevated-card-lg p-4 md:p-8">
         <div
           className="pointer-events-none absolute inset-0 grid-bg opacity-30"
           aria-hidden="true"

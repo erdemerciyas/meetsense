@@ -551,6 +551,8 @@ export const enContent: SiteContent = {
     skipToContent: "Skip to content",
     openMenu: "Open menu",
     closeMenu: "Close menu",
+    themeToLight: "Switch to light theme",
+    themeToDark: "Switch to dark theme",
   },
   footer: {
     brand: "MeetSense",

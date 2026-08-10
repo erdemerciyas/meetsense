@@ -29,7 +29,7 @@ export function SectionHeading({
       <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
         {label}
       </p>
-      <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-white md:text-5xl">
+      <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-5xl">
         {title}
       </h2>
       {subtitle ? (
@@ -76,7 +76,7 @@ export function SectionHeading({
       <motion.h2
         variants={revealItemVariants}
         transition={revealTransition}
-        className="font-display text-3xl font-semibold leading-tight tracking-tight text-white md:text-5xl"
+        className="font-display text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-5xl"
       >
         {title}
       </motion.h2>

@@ -551,6 +551,8 @@ export const trContent: SiteContent = {
     skipToContent: "İçeriğe geç",
     openMenu: "Menüyü aç",
     closeMenu: "Menüyü kapat",
+    themeToLight: "Açık temaya geç",
+    themeToDark: "Koyu temaya geç",
   },
   footer: {
     brand: "MeetSense",

@@ -64,14 +64,14 @@ function StepCardContent({
 }) {
   return (
     <article className={className}>
-      <h3 className="font-display text-3xl font-semibold leading-[1.08] text-white xl:text-5xl">
+      <h3 className="font-display text-3xl font-semibold leading-[1.08] text-foreground xl:text-5xl">
         {step.title}
       </h3>
       <p className="mt-4 text-base leading-relaxed text-foreground/85 xl:mt-5 xl:text-lg">
         {step.description}
       </p>
       {step.highlights?.length ? (
-        <ul className="mt-5 space-y-2.5 border-t border-white/10 pt-5 xl:mt-6 xl:space-y-3 xl:pt-6">
+        <ul className="mt-5 space-y-2.5 border-t border-border pt-5 xl:mt-6 xl:space-y-3 xl:pt-6">
           {step.highlights.map((item) => (
             <li
               key={item}
@@ -135,7 +135,7 @@ function MobileSteps({ content }: { content: SiteContent["intro"] }) {
           <InlineStep
             step={step}
             index={index}
-            cardClassName="glass-panel rounded-3xl p-7 transition-shadow duration-500 group-hover:border-accent/20 group-hover:shadow-[0_24px_64px_-32px_rgba(245,158,11,0.12)]"
+            cardClassName="glass-panel rounded-3xl p-7 transition-shadow duration-500 group-hover:border-accent/20 group-hover:shadow-[0_24px_64px_-32px_var(--accent-glow)]"
           />
           <VideoSlot slot={stepMedia[index]} className="aspect-[4/3] w-full" />
         </div>
@@ -152,7 +152,7 @@ function DesktopFallback({ content }: { content: SiteContent["intro"] }) {
           key={step.id}
           step={step}
           index={index}
-          cardClassName="glass-panel rounded-3xl p-10 transition-shadow duration-500 group-hover:border-accent/20 group-hover:shadow-[0_24px_64px_-32px_rgba(245,158,11,0.12)]"
+          cardClassName="glass-panel rounded-3xl p-10 transition-shadow duration-500 group-hover:border-accent/20 group-hover:shadow-[0_24px_64px_-32px_var(--accent-glow)]"
         />
       ))}
     </div>

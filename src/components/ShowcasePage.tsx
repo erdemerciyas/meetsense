@@ -35,6 +35,8 @@ export function ShowcasePage({ locale, content }: ShowcasePageProps) {
         ctaLabel={content.hero.ctaPrimary}
         openMenuLabel={content.ui.openMenu}
         closeMenuLabel={content.ui.closeMenu}
+        themeToLightLabel={content.ui.themeToLight}
+        themeToDarkLabel={content.ui.themeToDark}
       />
       <main id="main-content">
         <HeroSection content={content.hero} />

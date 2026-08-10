@@ -15,7 +15,7 @@ export function Spotlight({
   children,
   className,
   size = 560,
-  color = "rgba(91, 95, 199, 0.12)",
+  color = "var(--accent-glow)",
 }: SpotlightProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();

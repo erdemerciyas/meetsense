@@ -83,7 +83,7 @@ export function HeroSection({ content }: { content: SiteContent["hero"] }) {
               <p className="mb-4 text-sm font-medium uppercase tracking-[0.28em] text-accent">
                 {content.eyebrow}
               </p>
-              <h1 className="font-display max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
+              <h1 className="font-display max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
                 <span className="text-gradient">{content.title}</span>
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
@@ -120,7 +120,7 @@ export function HeroSection({ content }: { content: SiteContent["hero"] }) {
               <motion.h1
                 variants={revealItemVariants}
                 transition={{ duration: motionDuration.slow, ease: motionEase }}
-                className="font-display max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl"
+                className="font-display max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl"
               >
                 <span className="text-gradient">{content.title}</span>
               </motion.h1>

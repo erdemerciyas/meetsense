@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/cn";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useTheme } from "@/components/theme/ThemeProvider";
 
 type Particle = {
   x: number;
@@ -13,6 +14,14 @@ type Particle = {
   opacity: number;
 };
 
+function readCssColor(name: string, fallback: string) {
+  if (typeof window === "undefined") return fallback;
+  const value = getComputedStyle(document.documentElement)
+    .getPropertyValue(name)
+    .trim();
+  return value || fallback;
+}
+
 export function Particles({
   className,
   count = 40,
@@ -22,6 +31,7 @@ export function Particles({
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reducedMotion = useReducedMotion();
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (reducedMotion) return;
@@ -34,6 +44,7 @@ export function Particles({
 
     let animationId = 0;
     let particles: Particle[] = [];
+    const accent = readCssColor("--accent", "#f59e0b");
 
     const resize = () => {
       const parent = canvas.parentElement;
@@ -74,8 +85,10 @@ export function Particles({
 
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(91, 95, 199, ${particle.opacity})`;
+        ctx.globalAlpha = particle.opacity;
+        ctx.fillStyle = accent;
         ctx.fill();
+        ctx.globalAlpha = 1;
       }
 
       animationId = requestAnimationFrame(draw);
@@ -93,7 +106,7 @@ export function Particles({
       observer.disconnect();
       window.removeEventListener("resize", resize);
     };
-  }, [count, reducedMotion]);
+  }, [count, reducedMotion, theme]);
 
   if (reducedMotion) return null;
 

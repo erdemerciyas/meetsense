@@ -51,16 +51,16 @@ function SmartMeetingDemo({ demo, labels }: DemoProps) {
               "flex items-center gap-3 rounded-xl border p-3 transition-all duration-300 hover:-translate-y-0.5",
               event.hasBot
                 ? "border-accent/40 bg-accent/10 hover:border-accent/55"
-                : "border-white/10 bg-white/5 hover:border-white/20",
+                : "border-border bg-foreground/5 hover:border-foreground/20",
             )}
           >
             <span className="text-xs tabular-nums text-muted">{event.time}</span>
-            <span className="flex-1 text-sm text-white">{event.title}</span>
+            <span className="flex-1 text-sm text-foreground">{event.title}</span>
             {event.hasBot ? (
               <motion.span
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 1.6, repeat: Infinity }}
-                className="chip border-accent/30 bg-accent text-background"
+                className="chip border-accent/30 bg-accent text-on-accent"
               >
                 {labels.bot}
               </motion.span>
@@ -91,7 +91,7 @@ function AutoJoinDemo({ demo }: DemoProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.5, ease: motionEase }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-muted"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 rounded-full border border-border bg-foreground/5 px-4 py-2 text-xs text-muted"
       >
         {demo.statusLabel}
       </motion.div>
@@ -159,14 +159,14 @@ function SegmentAudioDemo({ demo }: DemoProps) {
             className={cn(
               "flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
               activeLine === index
-                ? "border-accent/40 bg-accent/10 text-white"
+                ? "border-accent/40 bg-accent/10 text-foreground"
                 : "border-transparent text-muted",
             )}
           >
             <span
               className={cn(
                 "flex h-6 w-6 items-center justify-center rounded-full text-[10px]",
-                activeLine === index ? "bg-accent text-background" : "bg-white/10",
+                activeLine === index ? "bg-accent text-on-accent" : "bg-foreground/10",
               )}
             >
               ▶
@@ -226,9 +226,9 @@ function AccuracyDemo({ demo }: DemoProps) {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + i * 0.15, ease: motionEase }}
-              className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs"
+              className="rounded-xl border border-border bg-foreground/5 px-3 py-2 text-xs"
             >
-              <span className="text-white">{log.user}</span>
+              <span className="text-foreground">{log.user}</span>
               <span className="text-muted"> · {log.action}</span>
               <span className="float-right text-muted">{log.time}</span>
             </motion.div>
@@ -257,7 +257,7 @@ function VoiceAssistantDemo({ demo, labels }: DemoProps) {
         className="rounded-xl border border-accent/20 bg-accent/5 p-4"
       >
         <p className="text-xs text-muted">{labels.question}</p>
-        <p className="mt-1 text-sm text-white">{demo.question}</p>
+        <p className="mt-1 text-sm text-foreground">{demo.question}</p>
         <p className="mt-3 text-xs text-muted">{labels.answer}</p>
         <p className="mt-1 text-sm text-accent-warm">{demo.answer}</p>
       </motion.div>
@@ -278,7 +278,7 @@ function ChatbotDemo({ demo }: DemoProps) {
             className={cn(
               "max-w-[90%] rounded-2xl px-4 py-3 text-sm",
               msg.role === "user"
-                ? "ml-auto border border-white/10 bg-white/5 text-foreground"
+                ? "ml-auto border border-border bg-foreground/5 text-foreground"
                 : "border border-accent/20 bg-accent/5 text-accent-warm",
             )}
           >
@@ -327,10 +327,10 @@ function TemplatesDemo({ demo }: DemoProps) {
               "rounded-xl border p-4 text-center",
               active === index
                 ? "border-accent/40 bg-accent/10"
-                : "border-white/10 bg-white/5",
+                : "border-border bg-foreground/5",
             )}
           >
-            <span className="font-display text-sm font-semibold text-white">
+            <span className="font-display text-sm font-semibold text-foreground">
               {template}
             </span>
           </motion.div>
@@ -346,7 +346,7 @@ function TemplatesDemo({ demo }: DemoProps) {
         {demo.templateSections?.map((section, i) => (
           <div
             key={section}
-            className="h-2 rounded-full bg-white/10"
+            className="h-2 rounded-full bg-foreground/10"
             style={{ width: `${70 + i * 10}%` }}
           />
         ))}

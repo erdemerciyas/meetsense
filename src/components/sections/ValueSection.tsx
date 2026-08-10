@@ -37,13 +37,13 @@ export function ValueSection({ content }: { content: SiteContent["value"] }) {
                   ? undefined
                   : { y: -4, transition: { duration: motionDuration.fast } }
               }
-              className="elevated-card group p-6 transition-colors duration-500 hover:border-accent/25 hover:shadow-[0_24px_64px_-24px_rgba(245,158,11,0.18)]"
+              className="elevated-card group p-6 transition-colors duration-500 hover:border-accent/25 hover:shadow-[0_24px_64px_-24px_var(--accent-glow)]"
             >
               <div
                 className="mb-4 h-px w-8 bg-accent/40 transition-all duration-500 group-hover:w-12 group-hover:bg-accent"
                 aria-hidden
               />
-              <h3 className="font-display text-xl font-semibold text-white transition-colors duration-300 group-hover:text-accent-warm">
+              <h3 className="font-display text-xl font-semibold text-foreground transition-colors duration-300 group-hover:text-accent-warm">
                 {item.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-muted">

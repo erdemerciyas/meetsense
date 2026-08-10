@@ -15,8 +15,8 @@ export function BorderBeam({
   className,
   size = 200,
   duration = 8,
-  colorFrom = "rgba(245, 158, 11, 0)",
-  colorTo = "rgba(245, 158, 11, 0.75)",
+  colorFrom = "transparent",
+  colorTo = "var(--accent)",
 }: BorderBeamProps) {
   const reducedMotion = useReducedMotion();
 

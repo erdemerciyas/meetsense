@@ -15,25 +15,25 @@ export const CATEGORY_ACCENTS: Record<
     border: "border-accent-warm/40",
     bg: "bg-accent-warm/10",
     text: "text-accent-warm",
-    glow: "shadow-[0_0_32px_rgba(252,211,77,0.18)]",
+    glow: "shadow-[0_0_32px_var(--accent-glow)]",
   },
   transcription: {
     border: "border-accent/40",
     bg: "bg-accent/10",
     text: "text-accent",
-    glow: "shadow-[0_0_32px_rgba(245,158,11,0.2)]",
+    glow: "shadow-[0_0_32px_var(--accent-glow)]",
   },
   assistant: {
     border: "border-accent-dim/40",
     bg: "bg-accent-dim/10",
     text: "text-accent-warm",
-    glow: "shadow-[0_0_32px_rgba(217,119,6,0.18)]",
+    glow: "shadow-[0_0_32px_var(--accent-glow)]",
   },
   analytics: {
     border: "border-muted/50",
     bg: "bg-muted/10",
     text: "text-foreground/85",
-    glow: "shadow-[0_0_28px_rgba(160,139,114,0.15)]",
+    glow: "shadow-[0_0_28px_color-mix(in_srgb,var(--muted)_30%,transparent)]",
   },
 };
 

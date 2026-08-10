@@ -56,7 +56,7 @@ function JoinIcon({ className, uid }: IconProps) {
       />
       <path
         d="M30 30h36M30 40h24M30 50h28"
-        stroke="#f5efe6"
+        stroke="var(--icon-line)"
         strokeOpacity="0.22"
         strokeWidth="2"
         strokeLinecap="round"
@@ -90,13 +90,13 @@ function JoinIcon({ className, uid }: IconProps) {
           width="28"
           height="20"
           rx="6"
-          fill="#2b2b2b"
+          fill="var(--icon-chrome)"
           stroke={`url(#${uid}-join-accent)`}
           strokeWidth="1.5"
         />
         <path
           d="M14 4.5L18.5 8H9.5L14 4.5Z"
-          fill="#2b2b2b"
+          fill="var(--icon-chrome)"
           stroke={`url(#${uid}-join-accent)`}
           strokeWidth="1.5"
           strokeLinejoin="round"
@@ -105,7 +105,7 @@ function JoinIcon({ className, uid }: IconProps) {
         <circle cx="18" cy="16" r="2.5" fill="#5b5fc7" />
         <path
           d="M8 22h12"
-          stroke="#f5efe6"
+          stroke="var(--icon-line)"
           strokeOpacity="0.35"
           strokeWidth="1.5"
           strokeLinecap="round"
@@ -190,7 +190,7 @@ function RecordIcon({ className, uid }: IconProps) {
         strokeWidth="1"
       />
 
-      <rect x="42" y="24" width="12" height="22" rx="6" fill="#2b2b2b" stroke="#5b5fc7" strokeWidth="1.5" />
+      <rect x="42" y="24" width="12" height="22" rx="6" fill="var(--icon-chrome)" stroke="#5b5fc7" strokeWidth="1.5" />
       <path
         d="M36 46c0 6.627 5.373 12 12 12s12-5.373 12-12"
         stroke="#8b8cc7"
@@ -270,7 +270,7 @@ function TranscribeIcon({ className, uid }: IconProps) {
       />
       <path
         d="M34 32h28M34 42h22M34 52h26M34 62h18"
-        stroke="#f5efe6"
+        stroke="var(--icon-line)"
         strokeOpacity="0.28"
         strokeWidth="2"
         strokeLinecap="round"
@@ -290,7 +290,7 @@ function TranscribeIcon({ className, uid }: IconProps) {
       />
 
       <g>
-        <circle cx="28" cy="26" r="10" fill="#2b2b2b" stroke={`url(#${uid}-tx-a)`} strokeWidth="1.5" />
+        <circle cx="28" cy="26" r="10" fill="var(--icon-chrome)" stroke={`url(#${uid}-tx-a)`} strokeWidth="1.5" />
         <text
           x="28"
           y="30"
@@ -312,7 +312,7 @@ function TranscribeIcon({ className, uid }: IconProps) {
       </g>
 
       <g>
-        <circle cx="68" cy="70" r="10" fill="#2b2b2b" stroke={`url(#${uid}-tx-b)`} strokeWidth="1.5" />
+        <circle cx="68" cy="70" r="10" fill="var(--icon-chrome)" stroke={`url(#${uid}-tx-b)`} strokeWidth="1.5" />
         <text
           x="68"
           y="74"
@@ -376,7 +376,7 @@ function AnalyzeIcon({ className, uid }: IconProps) {
         fill={`url(#${uid}-an-core)`}
         fillOpacity="0.9"
       />
-      <circle cx="48" cy="34" r="10" fill="#2b2b2b" stroke="#8b8cc7" strokeOpacity="0.45" strokeWidth="1" />
+      <circle cx="48" cy="34" r="10" fill="var(--icon-chrome)" stroke="#8b8cc7" strokeOpacity="0.45" strokeWidth="1" />
       <path
         d="M48 28v6M45 31h6"
         stroke="#8b8cc7"
@@ -397,7 +397,7 @@ function AnalyzeIcon({ className, uid }: IconProps) {
       />
       <path
         d="M22 64h18M22 70h12"
-        stroke="#f5efe6"
+        stroke="var(--icon-line)"
         strokeOpacity="0.3"
         strokeWidth="1.75"
         strokeLinecap="round"
@@ -416,7 +416,7 @@ function AnalyzeIcon({ className, uid }: IconProps) {
         width="30"
         height="32"
         rx="8"
-        fill="#2b2b2b"
+        fill="var(--icon-chrome)"
         stroke="#5b5fc7"
         strokeOpacity="0.4"
         strokeWidth="1.5"
@@ -490,7 +490,7 @@ export function IntroStepIconBadge({
       />
       <div
         className={cn(
-          "relative flex items-center justify-center border border-accent/25 bg-gradient-to-br from-accent/15 via-surface-elevated to-surface-elevated shadow-[0_0_40px_rgba(245,158,11,0.12)] transition-all duration-500 group-hover/icon:border-accent/45 group-hover/icon:shadow-[0_0_48px_rgba(245,158,11,0.22)]",
+          "relative flex items-center justify-center border border-accent/25 bg-gradient-to-br from-accent/15 via-surface-elevated to-surface-elevated shadow-[0_0_40px_var(--accent-glow)] transition-all duration-500 group-hover/icon:border-accent/45 group-hover/icon:shadow-[0_0_48px_var(--accent-glow)]",
           isLarge
             ? "h-[15rem] w-[15rem] rounded-[4rem] xl:h-[18rem] xl:w-[18rem] xl:rounded-[4.5rem]"
             : isPinned

@@ -15,7 +15,7 @@ export function Footer({ content }: { content: SiteContent["footer"] }) {
         <div className="section-divider absolute inset-x-0 top-0" aria-hidden />
         <div className="section-shell flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="font-display text-xl font-semibold text-white">
+            <p className="font-display text-xl font-semibold text-foreground">
               {content.brand}
             </p>
             <p className="mt-1 text-sm text-muted">{content.tagline}</p>
@@ -44,7 +44,7 @@ export function Footer({ content }: { content: SiteContent["footer"] }) {
         variants={revealStagger}
       >
         <motion.div variants={revealItemVariants} transition={{ duration: motionDuration.normal, ease: motionEase }}>
-          <p className="font-display text-2xl font-semibold tracking-tight text-white md:text-3xl">
+          <p className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
             {content.brand.replace("Sense", "")}
             <span className="text-gradient">Sense</span>
           </p>

@@ -96,9 +96,9 @@ export function VideoShowcaseSection({
               ease: motionEase,
             }}
             whileHover={reducedMotion ? undefined : { y: -4 }}
-            className="elevated-card group px-6 py-8 text-center transition-shadow duration-500 hover:border-accent/25 hover:shadow-[0_20px_56px_-24px_rgba(245,158,11,0.15)]"
+            className="elevated-card group px-6 py-8 text-center transition-shadow duration-500 hover:border-accent/25 hover:shadow-[0_20px_56px_-24px_var(--accent-glow)]"
           >
-            <p className="font-display text-3xl font-semibold text-white transition-colors duration-300 group-hover:text-accent-warm md:text-4xl">
+            <p className="font-display text-3xl font-semibold text-foreground transition-colors duration-300 group-hover:text-accent-warm md:text-4xl">
               <CountUp value={stat.value} suffix={stat.suffix} locale={locale} />
             </p>
             <p className="mt-2 text-sm text-muted">{stat.label}</p>

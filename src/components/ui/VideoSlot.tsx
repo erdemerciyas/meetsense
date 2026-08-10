@@ -14,9 +14,9 @@ type VideoSlotProps = {
 function AnimatedMockup() {
   return (
     <div className="relative h-full w-full overflow-hidden rounded-2xl bg-surface">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(245,158,11,0.18),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(252,211,77,0.12),transparent_35%)]" />
-      <div className="absolute inset-x-6 top-6 h-8 rounded-lg border border-white/10 bg-white/5" />
-      <div className="absolute inset-x-6 top-20 bottom-6 rounded-xl border border-white/10 bg-background/70 p-4">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,var(--accent-glow),transparent_40%),radial-gradient(circle_at_80%_0%,color-mix(in_srgb,var(--accent-warm)_18%,transparent),transparent_35%)]" />
+      <div className="absolute inset-x-6 top-6 h-8 rounded-lg border border-border bg-foreground/5" />
+      <div className="absolute inset-x-6 top-20 bottom-6 rounded-xl border border-border bg-background/70 p-4">
         <div className="mb-3 flex gap-2">
           <span className="h-2 w-2 rounded-full bg-red-400/80" />
           <span className="h-2 w-2 rounded-full bg-amber-300/80" />
@@ -26,7 +26,7 @@ function AnimatedMockup() {
           {[88, 72, 94, 64, 80].map((width, i) => (
             <div
               key={i}
-              className="h-3 rounded-full bg-white/10"
+              className="h-3 rounded-full bg-foreground/10"
               style={{ width: `${width}%` }}
             />
           ))}
@@ -47,7 +47,7 @@ function AnimatedMockup() {
 function GradientFallback() {
   return (
     <div className="relative h-full w-full overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(120deg,#0c0a08_0%,#16120e_35%,#221c16_70%,#0c0a08_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(120deg,var(--background)_0%,var(--surface)_35%,var(--surface-elevated)_70%,var(--background)_100%)]" />
       <div className="absolute inset-0 opacity-40">
         <WaveformCanvas className="h-full w-full" intensity={1.4} />
       </div>
@@ -91,7 +91,7 @@ export function VideoSlot({ slot, className, parallax = false }: VideoSlotProps)
         "relative overflow-hidden",
         isFullScreen
           ? "h-full w-full"
-          : "rounded-2xl border border-white/10",
+          : "rounded-2xl border border-border",
         parallax && "will-change-transform",
         className,
       )}

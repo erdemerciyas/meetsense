@@ -32,7 +32,7 @@ export function TranscriptSection({
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: motionDuration.slow, ease: motionEase }}
         >
-          <h3 className="font-display text-lg font-semibold text-white">
+          <h3 className="font-display text-lg font-semibold text-foreground">
             {content.actionTitle}
           </h3>
           <ul className="mt-4 space-y-3">
@@ -94,7 +94,7 @@ export function TranscriptSection({
                     {line.speaker}
                   </span>
                   {line.highlightLabel ? (
-                    <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-muted">
+                    <span className="rounded-full bg-foreground/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-muted">
                       {line.highlightLabel}
                     </span>
                   ) : null}

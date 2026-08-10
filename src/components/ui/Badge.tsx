@@ -16,7 +16,7 @@ export function Badge({
   return (
     <motion.span
       className={cn(
-        "inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-foreground/80 transition-colors duration-200 hover:border-accent/40 hover:bg-accent/10",
+        "inline-flex items-center rounded-full border border-border bg-foreground/5 px-3 py-1 text-xs font-medium text-foreground/80 transition-colors duration-200 hover:border-accent/40 hover:bg-accent/10",
         className,
       )}
       whileHover={reducedMotion ? undefined : { scale: 1.02 }}
