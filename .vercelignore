@@ -1,0 +1,7 @@
+# Local demo videos exceed Vercel file size limits (100 MB)
+public/videos/**
+
+# Build artifacts
+.next
+out
+node_modules
