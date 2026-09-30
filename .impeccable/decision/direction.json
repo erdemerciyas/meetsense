@@ -1,0 +1,126 @@
+{
+  "title": "MeetSense: görsel dünyayı seçin",
+  "question": "Zar 'Teknik Pafta' yönünü atadı. Bunu tutun, bir alternatif seçin ya da yeniden atın.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Teknik Pafta",
+      "kicker": "THE ROLL",
+      "lineage": "Mimari/mühendislik çizim paftası: antet, revizyon tablosu, kırmızı düzeltme",
+      "thesis": "Her toplantı tek bir onaylı pafta olarak çıkar: antet, işaretlenmiş kayıt, revizyon listesi.",
+      "palette": ["#FBFBFA", "#1D1F22", "#8A8F96", "#C2410C"],
+      "materials": ["parlak çizim kâğıdı beyazı", "grafit ince çizgi", "tek renk kırmızı-turuncu düzeltme (logo közü)"],
+      "viewport": "Solda büyük başlık ve 'Demo talep et'; sağda toplantı paftası: antette toplantı/tarih/katılımcılar, konuşulan cümle kırmızı düzeltmeyle karara dönüşür.",
+      "risk": "Çizgiler çoğalırsa soğuk ve teknik görünür; her çizgi yapısal olmak zorunda.",
+      "raised": [
+        {"from": "challenger-film", "raise": "Her karar, aksiyon ve risk pafta üzerinde transkript zaman koduyla konumlanır (04:12 gibi); zaman kodu koordinattır."},
+        {"from": "challenger-neon", "raise": "Sayfa tek kesintisiz kayıttır: söylenen cümleden karara, rapora giden hat hiç kopmaz."},
+        {"from": "challenger-cassette", "raise": "Her şablon kendi adlı pafta tipidir (Standart, Müşteri Yönetimi, Mülakat, Günlük Takip); işlev etiketi hiç saklanmaz."},
+        {"from": "challenger-teletext", "raise": "Katı hücre ızgarası: tüm metin ve paftalar tek kolon/baz çizgi ızgarasına oturur."},
+        {"from": "challenger-darkroom", "raise": "Karar, aksiyon, risk, sahipsiz iş renk olmadan da ayrılır (işaret + etiket); renk yalnızca düzeltme içindir."},
+        {"from": "challenger-cockpit", "raise": "Haftalık rakamlar her zaman önceki haftaya göre değişimiyle birlikte gösterilir."}
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Resmî Toplantı Tutanağı",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Türk kurumlarının karar tutanağı: Karar No., madde, sorumlu, imza",
+      "thesis": "MeetSense tutanağı sizin yerinize tutar; site bir tutanak defteri gibi okunur.",
+      "palette": ["#FFFFFF", "#1A1A1A", "#6B6B6B", "#B3261E"],
+      "materials": ["resmî form kâğıdı", "numaralı madde", "kaşe kırmızısı"],
+      "viewport": "Tek bir tutanak sayfası: üstte toplantı künyesi, altında numaralı kararlar ve sorumlular, yanında başlık ve CTA.",
+      "risk": "En tanıdık yön; kurumsal ama bürokratik ve eski görünme riski taşır."
+    },
+    {
+      "id": "challenger-film",
+      "label": "16mm Film Şeridi",
+      "verdict": "declined",
+      "lineage": "elle banyo edilmiş film",
+      "thesis": "Toplantı kare kare bir film şeridi olarak.",
+      "palette": ["#1A1A1A", "#9A9A9A", "#E8762B"],
+      "materials": ["emülsiyon", "ışık sızıntısı"],
+      "viewport": "Perforasyonlu şerit içinde toplantı anları.",
+      "case": "Kurumsal karar verici kendini film laboratuvarında görmez; netlik kaybolur.",
+      "kept": "Kare numarası disiplini: her öğe zaman koduyla konumlanır.",
+      "risk": "Sanatsal ve ürünün sade mesajıyla çelişir."
+    },
+    {
+      "id": "challenger-neon",
+      "label": "El Bükümü Neon",
+      "verdict": "declined",
+      "lineage": "neon tabela atölyesi",
+      "thesis": "Tek kesintisiz ışık hattı.",
+      "palette": ["#0B0B0F", "#2F5BFF", "#D2452B"],
+      "materials": ["cam tüp", "gaz ışığı"],
+      "viewport": "Karanlık oda, yanan tek kelime.",
+      "case": "Karanlık ve parıltılı; kullanıcının istediği sade tek temaya ters.",
+      "kept": "Kesintisiz hat: kayıttan rapora kopmayan akış.",
+      "risk": "Glow ve karanlık zemin tam da kaçındığımız şey."
+    },
+    {
+      "id": "challenger-cassette",
+      "label": "Kaset Çalar Paneli",
+      "verdict": "declined",
+      "lineage": "cassette futurism",
+      "thesis": "Her işlevin etiketli kendi düğmesi.",
+      "palette": ["#C9C6BF", "#1A1A1A", "#F29A1A"],
+      "materials": ["fırçalanmış alüminyum", "LED merdiven"],
+      "viewport": "Tek panel, düğmeler ve VU iğneleri.",
+      "case": "Nostaljik oyuncak hissi; zarafet ve kurumsal ciddiyeti kaybeder.",
+      "kept": "Her işlev etiketli: şablonlar adlı pafta tipleri.",
+      "risk": "Kostüm gibi okunur."
+    },
+    {
+      "id": "challenger-teletext",
+      "label": "Teletekst Sayfası",
+      "verdict": "declined",
+      "lineage": "yayın teleteksti",
+      "thesis": "Sayfa numarasıyla adreslenen bilgi.",
+      "palette": ["#000000", "#FFFF00", "#00C000", "#FFFFFF"],
+      "materials": ["blok mozaik"],
+      "viewport": "P100 dizin sayfası.",
+      "case": "Yedi doygun renk, 'çok renkli' eleştirisini tekrarlar.",
+      "kept": "Katı hücre ızgarası disiplini.",
+      "risk": "Retro yenilik."
+    },
+    {
+      "id": "challenger-darkroom",
+      "label": "Karanlık Oda Pozlama Kaydı",
+      "verdict": "declined",
+      "lineage": "baskı pozlama kartı",
+      "thesis": "Çakışmayı renksiz tarama ile gösteren kayıt.",
+      "palette": ["#EDEDEA", "#3A3A3A", "#C0306A"],
+      "materials": ["aydınger", "tarama"],
+      "viewport": "Üst üste yarı saydam sayfalar.",
+      "case": "Metafor fazla dolaylı; ürün netliğini zorlar.",
+      "kept": "Durumlar renksiz ayrılır.",
+      "risk": "Anlaşılması emek ister."
+    },
+    {
+      "id": "challenger-cockpit",
+      "label": "Gece Uçuşu Göstergeleri",
+      "verdict": "declined",
+      "lineage": "uçak altılı gösterge paneli",
+      "thesis": "Altı sakin gösterge güven verir.",
+      "palette": ["#0A0A0A", "#F2F2F2", "#5BE37D"],
+      "materials": ["mat siyah panel"],
+      "viewport": "İki sıra üç gösterge.",
+      "case": "Dashboard hissi; toplantı sayfası mekanizmasını gölgeler.",
+      "kept": "Değer her zaman eğilimiyle.",
+      "risk": "Karanlık ve teknik."
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": true,
+  "canonCard": {
+    "label": "Kategori standardı",
+    "thesis": "B2B SaaS'ın beklenen düzeni, kusursuz işçilikle.",
+    "palette": ["#FFFFFF", "#111418", "#C2410C"],
+    "materials": ["temiz ızgara", "ürün ekranı"],
+    "viewport": "Solda başlık ve CTA, sağda ürün ekranı; altında özellik blokları.",
+    "risk": "Tasarım gereği rakiplerden ayırt edilemez."
+  },
+  "steer": true
+}

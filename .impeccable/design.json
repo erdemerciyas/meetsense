@@ -1,0 +1,420 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-30T12:03:11.263Z",
+  "title": "Design System: MeetSense",
+  "extensions": {
+    "colorMeta": {
+      "ember": {
+        "role": "primary",
+        "displayName": "Ember",
+        "canonical": "oklch(58% 0.19 40)",
+        "tonalRamp": [
+          "oklch(15% 0.19 40)",
+          "oklch(26% 0.19 40)",
+          "oklch(38% 0.19 40)",
+          "oklch(50% 0.19 40)",
+          "oklch(62% 0.19 40)",
+          "oklch(74% 0.19 40)",
+          "oklch(85% 0.05 40)",
+          "oklch(95% 0.05 40)"
+        ]
+      },
+      "ember-ink": {
+        "role": "primary",
+        "displayName": "Ember Ink",
+        "canonical": "oklch(49% 0.17 37)",
+        "tonalRamp": [
+          "oklch(15% 0.17 37)",
+          "oklch(26% 0.17 37)",
+          "oklch(38% 0.17 37)",
+          "oklch(50% 0.17 37)",
+          "oklch(62% 0.17 37)",
+          "oklch(74% 0.17 37)",
+          "oklch(85% 0.05 37)",
+          "oklch(95% 0.05 37)"
+        ]
+      },
+      "ember-wash": {
+        "role": "primary",
+        "displayName": "Ember Wash",
+        "canonical": "oklch(94% 0.035 50)",
+        "tonalRamp": [
+          "oklch(15% 0.035 50)",
+          "oklch(26% 0.035 50)",
+          "oklch(38% 0.035 50)",
+          "oklch(50% 0.035 50)",
+          "oklch(62% 0.035 50)",
+          "oklch(74% 0.035 50)",
+          "oklch(85% 0.035 50)",
+          "oklch(95% 0.035 50)"
+        ]
+      },
+      "pass": {
+        "role": "neutral",
+        "displayName": "Pass",
+        "canonical": "oklch(93.6% 0.005 75)",
+        "tonalRamp": [
+          "oklch(15% 0.005 75)",
+          "oklch(26% 0.005 75)",
+          "oklch(38% 0.005 75)",
+          "oklch(50% 0.005 75)",
+          "oklch(62% 0.005 75)",
+          "oklch(74% 0.005 75)",
+          "oklch(85% 0.005 75)",
+          "oklch(95% 0.005 75)"
+        ]
+      },
+      "pass-2": {
+        "role": "neutral",
+        "displayName": "Pass Shade",
+        "canonical": "oklch(90.5% 0.006 75)",
+        "tonalRamp": [
+          "oklch(15% 0.006 75)",
+          "oklch(26% 0.006 75)",
+          "oklch(38% 0.006 75)",
+          "oklch(50% 0.006 75)",
+          "oklch(62% 0.006 75)",
+          "oklch(74% 0.006 75)",
+          "oklch(85% 0.006 75)",
+          "oklch(95% 0.006 75)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Thermal Paper",
+        "canonical": "oklch(98.8% 0.004 90)",
+        "tonalRamp": [
+          "oklch(15% 0.004 90)",
+          "oklch(26% 0.004 90)",
+          "oklch(38% 0.004 90)",
+          "oklch(50% 0.004 90)",
+          "oklch(62% 0.004 90)",
+          "oklch(74% 0.004 90)",
+          "oklch(85% 0.004 90)",
+          "oklch(95% 0.004 90)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Print Ink",
+        "canonical": "oklch(21% 0.006 60)",
+        "tonalRamp": [
+          "oklch(15% 0.006 60)",
+          "oklch(26% 0.006 60)",
+          "oklch(38% 0.006 60)",
+          "oklch(50% 0.006 60)",
+          "oklch(62% 0.006 60)",
+          "oklch(74% 0.006 60)",
+          "oklch(85% 0.006 60)",
+          "oklch(95% 0.006 60)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Two",
+        "canonical": "oklch(36% 0.006 60)",
+        "tonalRamp": [
+          "oklch(15% 0.006 60)",
+          "oklch(26% 0.006 60)",
+          "oklch(38% 0.006 60)",
+          "oklch(50% 0.006 60)",
+          "oklch(62% 0.006 60)",
+          "oklch(74% 0.006 60)",
+          "oklch(85% 0.006 60)",
+          "oklch(95% 0.006 60)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink Three",
+        "canonical": "oklch(43% 0.006 60)",
+        "tonalRamp": [
+          "oklch(15% 0.006 60)",
+          "oklch(26% 0.006 60)",
+          "oklch(38% 0.006 60)",
+          "oklch(50% 0.006 60)",
+          "oklch(62% 0.006 60)",
+          "oklch(74% 0.006 60)",
+          "oklch(85% 0.006 60)",
+          "oklch(95% 0.006 60)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "oklch(83% 0.006 70)",
+        "tonalRamp": [
+          "oklch(15% 0.006 70)",
+          "oklch(26% 0.006 70)",
+          "oklch(38% 0.006 70)",
+          "oklch(50% 0.006 70)",
+          "oklch(62% 0.006 70)",
+          "oklch(74% 0.006 70)",
+          "oklch(85% 0.006 70)",
+          "oklch(95% 0.006 70)"
+        ]
+      },
+      "steel": {
+        "role": "neutral",
+        "displayName": "Rail Steel",
+        "canonical": "oklch(72% 0.007 250)",
+        "tonalRamp": [
+          "oklch(15% 0.007 250)",
+          "oklch(26% 0.007 250)",
+          "oklch(38% 0.007 250)",
+          "oklch(50% 0.007 250)",
+          "oklch(62% 0.007 250)",
+          "oklch(74% 0.007 250)",
+          "oklch(85% 0.007 250)",
+          "oklch(95% 0.007 250)"
+        ]
+      },
+      "steel-hi": {
+        "role": "neutral",
+        "displayName": "Steel Highlight",
+        "canonical": "oklch(84% 0.005 250)",
+        "tonalRamp": [
+          "oklch(15% 0.005 250)",
+          "oklch(26% 0.005 250)",
+          "oklch(38% 0.005 250)",
+          "oklch(50% 0.005 250)",
+          "oklch(62% 0.005 250)",
+          "oklch(74% 0.005 250)",
+          "oklch(85% 0.005 250)",
+          "oklch(95% 0.005 250)"
+        ]
+      },
+      "steel-lo": {
+        "role": "neutral",
+        "displayName": "Steel Shadow",
+        "canonical": "oklch(56% 0.009 250)",
+        "tonalRamp": [
+          "oklch(15% 0.009 250)",
+          "oklch(26% 0.009 250)",
+          "oklch(38% 0.009 250)",
+          "oklch(50% 0.009 250)",
+          "oklch(62% 0.009 250)",
+          "oklch(74% 0.009 250)",
+          "oklch(85% 0.009 250)",
+          "oklch(95% 0.009 250)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The single hero h1."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section h2s."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Chapter h3s in the meeting-life story, max 22ch."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "The one sentence under a heading, Ink Two, max 36rem."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose in Ink Two, max 60ch."
+      },
+      "ticket-text": {
+        "displayName": "Ticket text",
+        "purpose": "The work printed on a ticket."
+      },
+      "data": {
+        "displayName": "Printed data",
+        "purpose": "Numbers, timecodes, owners, dates and tallies in Martian Mono at 87.5% width."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field names inside records and example marks."
+      },
+      "stamp": {
+        "displayName": "Stamp",
+        "purpose": "The only uppercase: the stamp on an unowned ticket."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hanging-paper",
+        "value": "0 1px 0 oklch(21% 0.006 60 / 0.06), 0 14px 22px -16px oklch(21% 0.006 60 / 0.35)",
+        "purpose": "Every ticket, and nothing else."
+      },
+      {
+        "name": "input-halo",
+        "value": "0 0 0 3px var(--color-ember-wash)",
+        "purpose": "Field focus only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "All transitions and animations."
+      },
+      {
+        "name": "print",
+        "value": "520ms; clip-path inset(-1.5rem -1.5rem 100% -1.5rem) + translateY(-10px) to rest; fill backwards",
+        "purpose": "A ticket prints top-down; staggered about 0.65s in timecode order."
+      },
+      {
+        "name": "span",
+        "value": "640ms; scaleX(0) to 1, origin left",
+        "purpose": "The ember due-date span draws along the rail before the action prints."
+      },
+      {
+        "name": "swap",
+        "value": "220ms; opacity 0 + translateY(4px) to rest",
+        "purpose": "Answer swap in the later-questions chapter."
+      },
+      {
+        "name": "state",
+        "value": "160ms (active scale 0.97 at 120ms)",
+        "purpose": "Button, link and field state transitions."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation and transition durations 0.01ms, delays 0",
+        "purpose": "Honours prefers-reduced-motion. Content is visible by default."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single ember-filled control: request a demo.",
+      "html": "<button class=\"ds-btn-primary\">Demo talep et</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;min-height:3rem;padding:0 1.375rem;border:0;border-radius:2px;background:var(--color-ember-ink,oklch(49% 0.17 37));color:var(--color-paper,oklch(98.8% 0.004 90));font-family:\"Schibsted Grotesk\",ui-sans-serif,sans-serif;font-size:1rem;font-weight:650;cursor:pointer;transition:background-color 160ms cubic-bezier(0.23,1,0.32,1),transform 120ms cubic-bezier(0.23,1,0.32,1)}.ds-btn-primary:hover{background:oklch(43% 0.155 36)}.ds-btn-primary:focus-visible{outline:2px solid var(--color-ember-ink,oklch(49% 0.17 37));outline-offset:3px;}.ds-btn-primary:active{transform:scale(0.97)}"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "text-link",
+      "description": "Secondary action: steel underline, ember ink on hover.",
+      "html": "<a class=\"ds-text-link\" href=\"#\">Bir toplantıyı izle</a>",
+      "css": ".ds-text-link{color:var(--color-ink,oklch(21% 0.006 60));font-family:\"Schibsted Grotesk\",ui-sans-serif,sans-serif;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:0.2em;text-decoration-color:var(--color-steel,oklch(72% 0.007 250));transition:color 160ms cubic-bezier(0.23,1,0.32,1),text-decoration-color 160ms cubic-bezier(0.23,1,0.32,1)}.ds-text-link:hover{color:var(--color-ember-ink,oklch(49% 0.17 37));text-decoration-color:currentColor}.ds-text-link:focus-visible{outline:2px solid var(--color-ember-ink,oklch(49% 0.17 37));outline-offset:3px;}"
+    },
+    {
+      "name": "Field Input",
+      "kind": "input",
+      "refersTo": "field-input",
+      "description": "Demo form field on paper.",
+      "html": "<label class=\"ds-field\"><span>E-posta</span><input class=\"ds-field-input\" placeholder=\"ad@sirket.com\"></label>",
+      "css": ".ds-field{display:block;font-family:\"Schibsted Grotesk\",ui-sans-serif,sans-serif;font-size:0.9375rem;font-weight:600;color:var(--color-ink,oklch(21% 0.006 60))}.ds-field-input{display:block;width:100%;margin-top:0.375rem;min-height:3rem;padding:0.625rem 0.75rem;border:1px solid var(--color-rule,oklch(83% 0.006 70));border-radius:2px;background:var(--color-paper,oklch(98.8% 0.004 90));color:inherit;font:inherit;font-weight:400;transition:border-color 160ms cubic-bezier(0.23,1,0.32,1),box-shadow 160ms cubic-bezier(0.23,1,0.32,1)}.ds-field-input::placeholder{color:var(--color-ink-3,oklch(43% 0.006 60))}.ds-field-input:hover{border-color:var(--color-steel-lo,oklch(56% 0.009 250))}.ds-field-input:focus-visible{outline:none;border-color:var(--color-ink,oklch(21% 0.006 60));box-shadow:0 0 0 3px var(--color-ember-wash,oklch(94% 0.035 50))}.ds-field-input[aria-invalid=\"true\"]{border-color:var(--color-ember-ink,oklch(49% 0.17 37))}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Top bar: logo, grotesk links, locale switch and the primary button.",
+      "html": "<nav class=\"ds-nav\"><strong>MeetSense</strong><span class=\"ds-nav-links\"><a href=\"#\">Akış</a><a href=\"#\">Şablonlar</a><a href=\"#\">Kurumsal</a></span><a class=\"ds-nav-cta\" href=\"#\">Demo talep et</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:4.5rem;padding:0 1.25rem;background:var(--color-pass,oklch(93.6% 0.005 75));font-family:\"Schibsted Grotesk\",ui-sans-serif,sans-serif;}.ds-nav strong{font-size:1.3125rem;font-weight:600;letter-spacing:-0.01em;color:var(--color-ink,oklch(21% 0.006 60))}.ds-nav-links{display:flex;gap:0.25rem}.ds-nav-links a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 0.75rem;font-size:0.9375rem;font-weight:500;color:var(--color-ink-2,oklch(36% 0.006 60));text-decoration:none;transition:color 150ms}.ds-nav-links a:hover{color:var(--color-ink,oklch(21% 0.006 60))}.ds-nav a:focus-visible{outline:2px solid var(--color-ember-ink,oklch(49% 0.17 37));outline-offset:3px;}.ds-nav-cta{display:inline-flex;align-items:center;min-height:3rem;padding:0 1.375rem;border-radius:2px;background:var(--color-ember-ink,oklch(49% 0.17 37));color:var(--color-paper,oklch(98.8% 0.004 90));font-weight:650;text-decoration:none}.ds-nav-cta:hover{background:oklch(43% 0.155 36)}"
+    },
+    {
+      "name": "Ticket on the Rail",
+      "kind": "card",
+      "refersTo": "ticket",
+      "description": "Signature: a printed ticket hanging by its clip from the steel rail, with the active notch and a due-date span.",
+      "html": "<div class=\"ds-rail\"><ol class=\"ds-days\"><li>Pzt</li><li class=\"on\">Sal</li><li>Çar</li></ol><div class=\"ds-bar\"><span class=\"ds-span\"></span></div></div><article class=\"ds-ticket\"><span class=\"ds-clip\"></span><header><b>#02</b><span>Aksiyon</span></header><hr class=\"ds-tear\"><p>Fiyat teklifini güncelle</p><dl><dt>Sahibi</dt><dd>MK</dd><dt>Tarih</dt><dd>Cum 9 Eki</dd><dt>Kaynak</dt><dd>00:14:32</dd></dl></article>",
+      "css": ".ds-rail{max-width:22rem}.ds-days{display:grid;grid-template-columns:repeat(3,1fr);margin:0;padding:0;list-style:none}.ds-days li{position:relative;padding-bottom:0.5rem;font-family:\"Martian Mono\",ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums;font-size:0.75rem;font-weight:500;color:var(--color-ink-3,oklch(43% 0.006 60))}.ds-days li::after{content:\"\";position:absolute;left:0;bottom:0;width:1px;height:0.5rem;background:var(--color-steel-lo,oklch(56% 0.009 250))}.ds-days li.on{font-weight:600;color:var(--color-ember-ink,oklch(49% 0.17 37))}.ds-days li.on::after{background:var(--color-ember,oklch(58% 0.19 40))}.ds-bar{position:relative;height:0.625rem;background:var(--color-steel,oklch(72% 0.007 250));border-top:1px solid var(--color-steel-hi,oklch(84% 0.005 250));border-bottom:1px solid var(--color-steel-lo,oklch(56% 0.009 250));border-radius:1px}.ds-span{position:absolute;top:50%;left:33.3%;width:66.7%;height:3px;translate:0 -50%;background:var(--color-ember,oklch(58% 0.19 40))}.ds-ticket{position:relative;max-width:14rem;margin:1rem 0 0;padding:0.875rem 1rem 1rem;background:var(--color-paper,oklch(98.8% 0.004 90));color:var(--color-ink,oklch(21% 0.006 60));border-radius:1px;box-shadow:0 1px 0 oklch(21% 0.006 60 / 0.06),0 14px 22px -16px oklch(21% 0.006 60 / 0.35);font-family:\"Schibsted Grotesk\",ui-sans-serif,sans-serif;}.ds-clip{position:absolute;top:-0.8rem;left:50%;width:2.25rem;height:1.1rem;translate:-50% 0;background:var(--color-steel-lo,oklch(56% 0.009 250));border-top:1px solid var(--color-steel,oklch(72% 0.007 250));border-radius:1px}.ds-ticket header{display:flex;justify-content:space-between;font-family:\"Martian Mono\",ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums;font-size:0.75rem;font-weight:600}.ds-tear{border:0;border-top:1px dashed var(--color-rule,oklch(83% 0.006 70));margin:0.625rem 0}.ds-ticket p{margin:0;font-size:1rem;font-weight:600;line-height:1.375}.ds-ticket dl{display:grid;grid-template-columns:auto 1fr;gap:0.125rem 0.75rem;margin:0.75rem 0 0;font-family:\"Martian Mono\",ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums;font-size:0.75rem;color:var(--color-ink-3,oklch(43% 0.006 60))}.ds-ticket dd{margin:0;color:var(--color-ink-2,oklch(36% 0.006 60))}"
+    },
+    {
+      "name": "Torn Record",
+      "kind": "card",
+      "description": "A long record torn off the printer with a zigzag bottom edge.",
+      "html": "<div class=\"ds-torn-wrap\"><div class=\"ds-torn\"><b>Kapanış kaydı</b><p class=\"ds-meta\">Sal 6 Eki · 45 dk</p><hr><p class=\"ds-lbl\">Özet</p><p>Üç karar, iki aksiyon, bir risk.</p></div></div>",
+      "css": ".ds-torn-wrap{filter:drop-shadow(0 8px 10px oklch(21% 0.006 60 / 0.18));max-width:20rem}.ds-torn{--tooth:0.625rem;padding:1.25rem 1.25rem 2.25rem;background:var(--color-paper,oklch(98.8% 0.004 90));color:var(--color-ink,oklch(21% 0.006 60));font-family:\"Schibsted Grotesk\",ui-sans-serif,sans-serif;-webkit-mask:conic-gradient(from -45deg at bottom,transparent,#000 1deg 89deg,transparent 90deg) 50%/var(--tooth) 100%,linear-gradient(#000 0 0) top/100% calc(100% - var(--tooth)/2) no-repeat;mask:conic-gradient(from -45deg at bottom,transparent,#000 1deg 89deg,transparent 90deg) 50%/var(--tooth) 100%,linear-gradient(#000 0 0) top/100% calc(100% - var(--tooth)/2) no-repeat}.ds-torn b{font-size:1.125rem}.ds-torn hr{border:0;border-top:1px dashed var(--color-rule,oklch(83% 0.006 70));margin:1rem 0}.ds-torn .ds-meta,.ds-torn .ds-lbl{margin:0.25rem 0 0;font-family:\"Martian Mono\",ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums;font-size:0.75rem;color:var(--color-ink-3,oklch(43% 0.006 60))}.ds-torn p{font-size:0.9375rem}"
+    },
+    {
+      "name": "Stamp on an Unowned Ticket",
+      "kind": "chip",
+      "refersTo": "stamp",
+      "description": "An action with no owner never reaches the rail; the stamp names the state in words.",
+      "html": "<div class=\"ds-unowned\"><article><b>#05</b><p>Sözleşme taslağını gönder</p><span class=\"ds-stamp\">Sahipsiz</span></article></div>",
+      "css": ".ds-unowned{padding:1rem 1.5rem 2rem}.ds-unowned article{position:relative;max-width:13rem;padding:0.875rem 1rem 1.25rem;background:var(--color-paper,oklch(98.8% 0.004 90));color:var(--color-ink,oklch(21% 0.006 60));border-radius:1px;box-shadow:0 1px 0 oklch(21% 0.006 60 / 0.06),0 14px 22px -16px oklch(21% 0.006 60 / 0.35);rotate:-4deg;font-family:\"Schibsted Grotesk\",ui-sans-serif,sans-serif;}.ds-unowned b{font-family:\"Martian Mono\",ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums;font-size:0.8125rem}.ds-unowned p{margin:0.5rem 0 0;font-weight:600}.ds-stamp{position:absolute;right:0.75rem;bottom:-0.75rem;rotate:-5deg;display:inline-block;padding:0.2rem 0.5rem;border:1.5px solid var(--color-ember,oklch(58% 0.19 40));border-radius:2px;background:var(--color-paper,oklch(98.8% 0.004 90));color:var(--color-ember-ink,oklch(49% 0.17 37));font-family:\"Martian Mono\",ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums;font-size:0.75rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase}"
+    },
+    {
+      "name": "Spoken Phrase",
+      "kind": "custom",
+      "description": "The words a ticket was printed from, underlined in ember.",
+      "html": "<p class=\"ds-quote\">“Teklifi <span class=\"ds-spoken\">cumaya kadar MK güncellesin</span>.”</p>",
+      "css": ".ds-quote{font-family:\"Schibsted Grotesk\",ui-sans-serif,sans-serif;font-size:1.75rem;line-height:1.18;font-weight:600;letter-spacing:-0.015em;color:var(--color-ink,oklch(21% 0.006 60))}.ds-spoken{text-decoration:underline;text-decoration-color:var(--color-ember,oklch(58% 0.19 40));text-decoration-thickness:2px;text-underline-offset:0.18em}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Sipariş Rayı (The Ticket Rail)",
+    "overview": "MeetSense is shown the way a kitchen pass runs orders. Each piece of work said in a meeting becomes a printed ticket of thermal paper. The ticket carries a number, a kind, an owner and the timecode it came from, and it hangs from one steel rail with a notch for each weekday. The page follows a single meeting through its whole life, from the invite to a question asked a month later. Each chapter's output is a physical object hanging on that rail. The page is not built from feature sections, screenshot rows or tabbed product cards.\n\nThe mood is calm, exact and physical. The ground is a warm, pale pass. Tickets are near-white paper printed in near-black ink. The only metal is the rail, and the only heat is the logo's ember, which appears where something needs attention: a flag, a stamp, the active day, a due-date span and the one primary action. Density is moderate. Prose stays in a grotesk and anything that looks printed (numbers, times, owners, labels) is set in a narrowed mono. The site has one light theme.",
+    "keyCharacteristics": [
+      "A warm pale pass for the ground, thermal-paper tickets and one steel rail with day notches.",
+      "Ember appears rarely and always carries a meaning.",
+      "Every chapter output hangs from a length of rail and carries a clip.",
+      "Long records tear off with a zigzag edge.",
+      "Grotesk for speech and prose. Narrowed mono for printed data.",
+      "Tickets print in timecode order and are visible by default.",
+      "One light theme only."
+    ],
+    "rules": [
+      {
+        "name": "The Ember Means Something Rule",
+        "body": "Ember appears only on flags, stamps, the active notch, the due-date span and the primary action. When ember must be text or a button fill, use Ember Ink. If ember appears somewhere and you cannot say which of those five it is, remove it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stamp Not Colour Rule",
+        "body": "A missing owner, or any other failure state, is named in words (a stamp, a \"no owner\" value) and shown with a glyph. Colour alone never carries it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Printed Data Rule",
+        "body": "Martian Mono is used only for printed data: numbers, times, owners, dates, tallies and labels. Headings, prose and what was said are always Schibsted Grotesk. Mono is always narrowed to 87.5% width and uses tabular figures.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only Paper Hangs Rule",
+        "body": "Only tickets have the hanging shadow. Bands, sections and chapter containers stay flat and are divided by rules or a shift in pass tone.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Torn Record Rule",
+        "body": "A record long enough to have been torn off the printer ends in a zigzag edge. Short tickets keep a straight edge.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do hang every chapter output from a length of rail and give it a clip.",
+      "Do tear long records off with the zigzag edge and keep short tickets straight.",
+      "Do keep an unowned ticket off the rail and mark it with a stamp, never with colour alone.",
+      "Do use Ember only for flags, stamps, the active notch, the due-date span and the primary action. Use Ember Ink for text and button fills.",
+      "Do set numbers, times, owners and labels in Martian Mono at 87.5% width with tabular figures, and set headings and prose in Schibsted Grotesk.",
+      "Do print tickets in timecode order, draw the due-date span before the action prints, keep content visible by default and honour reduced motion.",
+      "Do mark every piece of demo data as an example."
+    ],
+    "donts": [
+      "Don't add a dark theme or a second accent. The system has one light theme.",
+      "Don't use Ember as a text colour or for decoration. Use Ember Ink when ember must carry text.",
+      "Don't set prose or headings in the mono, or printed data in the grotesk.",
+      "Don't give shadows to anything but tickets, or round corners beyond 2px.",
+      "Don't build feature sections, left-copy/right-screenshot rows or tabbed product cards. Show the work as tickets on the rail.",
+      "Don't hide content until an animation runs."
+    ]
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "title": "MeetSense: yeni görsel dünya (tur 2)",
+  "question": "Zar 'Sipariş Rayı' yönünü atadı. Bunu tutun, bir alternatif seçin ya da yeniden atın.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Sipariş Rayı (Pass)",
+      "kicker": "THE ROLL",
+      "lineage": "Profesyonel mutfak pass'ı: termal fişler, çelik ray, ısı lambası",
+      "thesis": "Toplantıda söylenen her iş bir fiş olarak basılır, raya asılır, sahibiyle ilerler ve bitince raydan iner.",
+      "palette": ["#ECEAE6", "#FBFAF7", "#1A1918", "#8C8C88", "#D24A12"],
+      "materials": ["termal fiş kâğıdı", "fırçalanmış çelik ray", "ısı lambası közü (logo)"],
+      "viewport": "Üstte büyük başlık ve 'Demo talep et'; altında sayfa genişliğinde çelik ray: canlı toplantıdan üç fiş basılıp raya asılır (Karar, Aksiyon: BŞ 2 Ekim, Risk).",
+      "risk": "Kurumsal kitleye restoran gibi görünebilir; malzeme çok sade ve ölçülü işlenmeli.",
+      "raised": [
+        {"from": "challenger-laban", "raise": "Fişlerin raydaki konumu gerçek zamanı gösterir: gün çizgileri boyunca ilerler, bekleme süresi uzunluktan okunur."},
+        {"from": "challenger-blind", "raise": "Sahipsiz aksiyon raya asılamaz, yarı yolda takılı kalır; tek hata durumu budur."},
+        {"from": "challenger-scope", "raise": "Rayın üzerinde Pzt–Paz gün çentikleri: her fiş konumu bir tarih demektir."},
+        {"from": "challenger-jacquard", "raise": "Her fiş, geldiği transkript satırına zaman koduyla bağlanır; tıklayınca o cümle görünür."},
+        {"from": "challenger-ikebana", "raise": "Her ekranda tek an ve bol boşluk: rayda aynı anda az fiş."},
+        {"from": "challenger-movida", "raise": "Tipografide cesur ölçek: başlık ve fiş numaraları kararlı, büyük."}
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Kayıt Omurgası",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Ses kaydı dalga formu ve kurgu zaman çizelgesi",
+      "thesis": "Sayfa tek bir toplantının kaydıdır: 00:00'dan 45:00'e, sonra günlere uzayan dalga formu omurgası; kararlar üzerine iğnelenir.",
+      "palette": ["#F4F2EE", "#1B1C1E", "#6E6C69", "#C8430F"],
+      "materials": ["dalga formu", "zaman kodu cetveli", "kor işaretleri"],
+      "viewport": "Başlık ve CTA; altında sayfa boyu yatay dalga formu, 04:12'de karar işareti.",
+      "risk": "Bu kategoride en çok görülen yön; 'toplantı = ses dalgası' tahmin edilebilir."
+    },
+    {
+      "id": "challenger-laban",
+      "label": "Dans Notasyonu",
+      "verdict": "declined",
+      "lineage": "labanotation",
+      "thesis": "Zaman yukarı akan, konuşmacı başına sütunlu partitür.",
+      "palette": ["#FFFFFF", "#111111", "#BDBDBD"],
+      "materials": ["partitür kâğıdı", "taralı bloklar"],
+      "viewport": "Ortada dikey çizgi, iki yanda konuşmacı sütunları.",
+      "case": "Kitle bu notasyonu tanımaz; netlik düşer.",
+      "kept": "Uzunluk = gerçek süre.",
+      "risk": "Okuması emek ister."
+    },
+    {
+      "id": "challenger-blind",
+      "label": "Depo Yön Tabelası",
+      "verdict": "declined",
+      "lineage": "kumaş hat tabelası",
+      "thesis": "Hata, yarı yolda duran şerittir.",
+      "palette": ["#1F4D3A", "#F2C21B", "#EFE9DA"],
+      "materials": ["boyalı kumaş"],
+      "viewport": "Tek pencere altında kayan şeritler.",
+      "case": "Operasyon ekranı dili; tanıtım sitesine ağır.",
+      "kept": "Takılı kalan tek hata durumu.",
+      "risk": "Doygun yeşil-sarı, sade tek tema isteğine ters."
+    },
+    {
+      "id": "challenger-scope",
+      "label": "Osiloskop Tezgâhı",
+      "verdict": "declined",
+      "lineage": "CRT osiloskop",
+      "thesis": "Her şey ızgaraya göre ölçülür.",
+      "palette": ["#0B0F0C", "#5CFF8A", "#F2A33A"],
+      "materials": ["fosfor", "kazınmış ızgara"],
+      "viewport": "Karanlık ekranda yeşil iz.",
+      "case": "Karanlık ve teknik; açık tek tema kararına ters.",
+      "kept": "Ölçekli ızgara: her konum bir anlam taşır.",
+      "risk": "Glow ve karanlık zemin."
+    },
+    {
+      "id": "challenger-jacquard",
+      "label": "Jakar Dokuma",
+      "verdict": "declined",
+      "lineage": "delikli kartla dokuma",
+      "thesis": "Binlerce ikili seçim tek bir desene dönüşür.",
+      "palette": ["#141B3A", "#C9A24A", "#F1EAD8"],
+      "materials": ["ipek", "altın atkı"],
+      "viewport": "Gece mavisi üzerinde altın desen.",
+      "case": "Lüks ve dekoratif; ürün netliğini gölgeler.",
+      "kept": "Her sonuç kaynağına kadar izlenebilir.",
+      "risk": "Süs gibi okunur."
+    },
+    {
+      "id": "challenger-ikebana",
+      "label": "İkebana ve Ma",
+      "verdict": "declined",
+      "lineage": "tokonoma nişi",
+      "thesis": "Boşluk aktif bir öğedir.",
+      "palette": ["#EDE8DF", "#6B5E50", "#3F5FA8"],
+      "materials": ["sıva", "bronz"],
+      "viewport": "Asimetrik tek dal, geniş boşluk.",
+      "case": "Zarif ama ürünü anlatmaz.",
+      "kept": "Her ekranda tek an ve bol boşluk.",
+      "risk": "Fazla şiirsel."
+    },
+    {
+      "id": "challenger-movida",
+      "label": "Movida Dergi Kapağı",
+      "verdict": "declined",
+      "lineage": "80'ler Madrid dergisi",
+      "thesis": "Dağınık kapak satırları.",
+      "palette": ["#FF3EA5", "#B6FF3B", "#000000"],
+      "materials": ["floresan mürekkep"],
+      "viewport": "Sert kırpılmış portre.",
+      "case": "Çok renkli ve kaotik: eleştirinin tam tersi yönü.",
+      "kept": "Cesur ölçek.",
+      "risk": "Kurumsal güveni yok eder."
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": true,
+  "canonCard": {
+    "label": "Kategori standardı",
+    "thesis": "B2B SaaS'ın beklenen düzeni; referans site zaten burada duruyor.",
+    "palette": ["#FFFFFF", "#111418", "#C2410C"],
+    "materials": ["temiz ızgara", "ürün ekranı"],
+    "viewport": "Solda başlık, sağda ürün kartı.",
+    "risk": "Referans siteyle ayırt edilemez."
+  },
+  "steer": true
+}

@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# design workflow scratch (screenshots, decision server logs, reference captures)
+.impeccable/review/
+.impeccable/questions/
+.impeccable/reference/
+.impeccable/decision/*.log
+.impeccable/config.local.json

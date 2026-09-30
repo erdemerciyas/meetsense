@@ -1,26 +1,312 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  MeetSense: the ticket rail. One light theme.
+  A warm pale pass, thermal-paper tickets, one steel rail.
+  Ember (the logo's heat) is the only accent: flags, stamps, the active notch, the primary action.
+*/
+@theme {
+  --color-pass: oklch(93.6% 0.005 75);
+  --color-pass-2: oklch(90.5% 0.006 75);
+  --color-paper: oklch(98.8% 0.004 90);
+  --color-ink: oklch(21% 0.006 60);
+  --color-ink-2: oklch(36% 0.006 60);
+  --color-ink-3: oklch(43% 0.006 60);
+  --color-rule: oklch(83% 0.006 70);
+  --color-steel: oklch(72% 0.007 250);
+  --color-steel-hi: oklch(84% 0.005 250);
+  --color-steel-lo: oklch(56% 0.009 250);
+  --color-ember: oklch(58% 0.19 40);
+  --color-ember-ink: oklch(49% 0.17 37);
+  --color-ember-wash: oklch(94% 0.035 50);
+
+  --font-sans: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    background: var(--color-pass);
+    color: var(--color-ink);
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+    scrollbar-color: var(--color-steel) var(--color-pass);
+    -webkit-text-size-adjust: 100%;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    caret-color: var(--color-ember);
+  }
+
+  ::selection {
+    background: var(--color-ember-wash);
+    color: var(--color-ember-ink);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ember-ink);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+    font-stretch: 87.5%;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  .h-display {
+    font-weight: 700;
+    font-size: clamp(2.75rem, 1.4rem + 5vw, 6rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+  .h-section {
+    font-weight: 700;
+    font-size: clamp(2rem, 1.3rem + 2.6vw, 3.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+  }
+  .h-chapter {
+    font-weight: 700;
+    font-size: clamp(1.625rem, 1.2rem + 1.4vw, 2.375rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .lead {
+    font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--color-ink-2);
+    max-width: 36rem;
+  }
+  .label {
+    font-family: var(--font-mono);
+    font-stretch: 87.5%;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--color-ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0 1.375rem;
+    border-radius: 2px;
+    font-size: 1rem;
+    font-weight: 650;
+    white-space: nowrap;
+    transition:
+      background-color 160ms var(--ease-out),
+      border-color 160ms var(--ease-out),
+      transform 120ms var(--ease-out);
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+    transform: none;
+  }
+  .btn-primary {
+    background: var(--color-ember-ink);
+    color: var(--color-paper);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: oklch(43% 0.155 36);
+  }
+
+  .text-link {
+    color: var(--color-ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-steel);
+    transition: text-decoration-color 160ms var(--ease-out), color 160ms var(--ease-out);
+  }
+  .text-link:hover {
+    color: var(--color-ember-ink);
+    text-decoration-color: currentColor;
+  }
+
+  /* The rail: one steel bar with day notches */
+  .rail-bar {
+    height: 0.625rem;
+    background: var(--color-steel);
+    border-top: 1px solid var(--color-steel-hi);
+    border-bottom: 1px solid var(--color-steel-lo);
+    border-radius: 1px;
+  }
+
+  /* A ticket: thermal paper hanging from the rail */
+  .ticket {
+    position: relative;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    border-radius: 1px;
+    box-shadow:
+      0 1px 0 oklch(21% 0.006 60 / 0.06),
+      0 14px 22px -16px oklch(21% 0.006 60 / 0.35);
+  }
+  .ticket-clip {
+    position: absolute;
+    top: -0.8rem;
+    left: 50%;
+    width: 2.25rem;
+    height: 1.1rem;
+    translate: -50% 0;
+    background: var(--color-steel-lo);
+    border-top: 1px solid var(--color-steel);
+    border-radius: 1px;
+  }
+  /* A receipt torn off the printer: a zigzag bottom edge */
+  .torn {
+    --tooth: 0.625rem;
+    mask:
+      conic-gradient(from -45deg at bottom, transparent, var(--color-ink) 1deg 89deg, transparent 90deg) 50% / var(--tooth) 100%,
+      linear-gradient(var(--color-ink) 0 0) top / 100% calc(100% - var(--tooth) / 2) no-repeat;
+    mask-composite: add;
+  }
+  .tear {
+    border: 0;
+    border-top: 1px dashed var(--color-rule);
+  }
+
+  .stamp {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border: 1.5px solid var(--color-ember);
+    color: var(--color-ember-ink);
+    font-family: var(--font-mono);
+    font-stretch: 87.5%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+
+  .spoken {
+    text-decoration: underline;
+    text-decoration-color: var(--color-ember);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.18em;
+  }
+
+  /* Form fields */
+  .field-input {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.625rem 0.75rem;
+    border: 1px solid var(--color-rule);
+    border-radius: 2px;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+  }
+  .field-input::placeholder {
+    color: var(--color-ink-3);
+  }
+  .field-input:hover {
+    border-color: var(--color-steel-lo);
+  }
+  .field-input:focus-visible {
+    outline: none;
+    border-color: var(--color-ink);
+    box-shadow: 0 0 0 3px var(--color-ember-wash);
+  }
+  .field-input[aria-invalid="true"] {
+    border-color: var(--color-ember-ink);
+  }
+}
+
+/*
+  Signature moment: tickets print in timecode order.
+  Content is visible by default; the animation only runs from a hidden start.
+*/
+.print-in {
+  animation: print 520ms var(--ease-out) backwards;
+}
+.span-in {
+  transform-origin: left center;
+  animation: span 640ms var(--ease-out) backwards;
+}
+.swap-in {
+  animation: swap 220ms var(--ease-out);
+}
+
+@keyframes print {
+  from {
+    clip-path: inset(-1.5rem -1.5rem 100% -1.5rem);
+    transform: translateY(-10px);
+  }
+  to {
+    clip-path: inset(-1.5rem -1.5rem -2.5rem -1.5rem);
+    transform: none;
+  }
+}
+@keyframes span {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes swap {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
 }

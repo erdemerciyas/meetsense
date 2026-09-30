@@ -1,0 +1,12 @@
+# MeetSense landing (/tr/, /en/)
+
+Scope: marketing landing, visitor mode Persuade. Audience: decision makers at Microsoft 365/Teams companies; IT reviewers secondary. Action: request a demo (mailto form). Proof: one meeting followed through its whole life, every output labelled as example data. Constraints: single light theme, logo ember as only accent, TR+EN, Teams only, no invented customers/metrics/compliance claims, must share no headline, section order or demo data with the reference page (vast-criterion-cells-hayes.trycloudflare.com).
+Design read: Persuade landing for enterprise decision makers; calm, exact, physical. Dials variance 7 / motion 5 / density 4.
+
+## Direction contract
+THESIS: A meeting's work is printed as tickets and hung on one rail; the page follows a single meeting from invite to a question asked a month later. Refuses feature sections, left-copy/right-screenshot rows and tabbed product cards.
+OWN-WORLD: Warm pale pass (#ECEAE6) as ground, thermal-paper tickets (#FBFAF7) in near-black print, one steel rail with day notches, ember (#D24A12) only for flags, stamps, the active notch and the primary action. Schibsted Grotesk for headings and prose, Martian Mono for everything printed on tickets (numbers, times, owners). Tickets carry a clip and a tear line; long records (log, closing record, weekly tally, answer) tear off with a zigzag edge; every chapter output hangs from a length of rail; an unowned ticket never reaches the rail.
+STORY: The visitor watches spoken sentences become owned tickets, follows them through the week to the Sunday close report and a month-later answer, sees each template prints a different ticket, and requests a demo.
+FIRST VIEWPORT: Top: h1 "Söylenen iş, sahibini bulur." with one sentence and "Demo talep et" plus a text link. Below, full width: the steel rail with Mon–Fri notches (kept on phones); three tickets hang from it (Karar #01 and Risk #03 on Tuesday, Aksiyon #02 MK on Friday 9 Oct), all complete above the fold at 1440x900. Signature interaction: tickets print in timecode order; before the action prints, an ember due-date span draws along the rail from the meeting day to its due day.
+FORM: Sipariş Rayı (kitchen pass ticket rail), position 5 of 7 grounded list, seed key 784e8c03 reroll 1.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
