@@ -46,3 +46,5 @@ next-env.d.ts
 .impeccable/reference/
 .impeccable/decision/*.log
 .impeccable/config.local.json
+
+.vercel

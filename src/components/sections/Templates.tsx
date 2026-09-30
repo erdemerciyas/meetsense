@@ -8,8 +8,9 @@ const SPECIMEN_ICONS: IconName[] = ["standard", "client", "interview", "daily"];
 export function Templates({ c }: { c: SiteContent }) {
   const s = c.templates;
   return (
-    <section id={s.id} aria-labelledby={`${s.id}-h`} className="shell relative isolate py-24 lg:py-32 xl:py-40">
+    <section id={s.id} aria-labelledby={`${s.id}-h`} className="tone-tint relative isolate border-t border-rule">
       <Ornament kind="templates" side="right" className="top-[-10rem]" />
+      <div className="shell py-24 lg:py-32 xl:py-40">
       <div className="reveal grid gap-6 lg:grid-cols-12 lg:gap-10">
         <h2 id={`${s.id}-h`} className="h-section lg:col-span-7">
           {s.title}
@@ -57,6 +58,7 @@ export function Templates({ c }: { c: SiteContent }) {
         </ul>
       </div>
       <p className="mt-10 max-w-[62ch] text-ink-2">{s.custom}</p>
+      </div>
     </section>
   );
 }

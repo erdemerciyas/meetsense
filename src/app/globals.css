@@ -19,6 +19,7 @@
   --color-ember: oklch(58% 0.19 40);
   --color-ember-ink: oklch(49% 0.17 37);
   --color-ember-wash: oklch(94% 0.035 50);
+  --color-tint: oklch(95.2% 0.016 60);
 
   --font-sans: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, monospace;
@@ -309,6 +310,40 @@
     opacity: 0;
     transform: translateY(4px);
   }
+}
+
+/*
+  Section tones. The page moves pass → pass-2 → tint → ink → paper so no two
+  neighbours share a ground. The ink band is the one dark moment; inside it the
+  ink/rule tokens are re-pointed so every utility keeps working unchanged.
+*/
+.tone-tint {
+  background: var(--color-tint);
+}
+.on-ink {
+  --color-ink: oklch(96.5% 0.004 80);
+  --color-ink-2: oklch(84% 0.006 70);
+  --color-ink-3: oklch(72% 0.006 70);
+  --color-rule: oklch(34% 0.007 60);
+  --color-steel-lo: oklch(62% 0.008 250);
+  --color-ember-ink: oklch(74% 0.14 45);
+  background: oklch(21% 0.006 60);
+  color: var(--color-ink);
+}
+.on-ink ::selection {
+  background: oklch(40% 0.1 40);
+  color: var(--color-ink);
+}
+/* A receipt edge: the section's top is torn, its teeth biting into the one above */
+.edge-torn::before {
+  --tooth: 0.75rem;
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 100%;
+  height: calc(var(--tooth) / 2);
+  background: inherit;
+  mask: conic-gradient(from 135deg at top, transparent, var(--color-ink) 1deg 89deg, transparent 90deg) 50% / var(--tooth) 100%;
 }
 
 /* A square chip that heads a block of copy with its icon */

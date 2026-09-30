@@ -259,7 +259,7 @@ Tickets print in timecode order. Each one is revealed top-down with a clip-path 
 - **Do** mark every piece of demo data as an example.
 
 ### Don't:
-- **Don't** add a dark theme or a second accent. The system has one light theme.
+- **Don't** add a dark theme or a second accent. The system has one light theme; a single dark (ink) section as a contrast band is the only exception.
 - **Don't** use Ember as a text colour or for decoration. Use Ember Ink when ember must carry text.
 - **Don't** set prose or headings in the mono, or printed data in the grotesk.
 - **Don't** give shadows to anything but tickets, or round corners beyond 2px.

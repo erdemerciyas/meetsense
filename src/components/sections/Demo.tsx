@@ -6,7 +6,8 @@ import { DemoForm } from "./DemoForm";
 export function Demo({ c }: { c: SiteContent }) {
   const s = c.demo;
   return (
-    <section id={s.id} aria-labelledby={`${s.id}-h`} className="shell relative isolate grid gap-12 pt-24 pb-28 lg:grid-cols-12 lg:gap-10 lg:pt-32 lg:pb-40 xl:pt-40">
+    <section id={s.id} aria-labelledby={`${s.id}-h`} className="edge-torn relative isolate bg-paper">
+      <div className="shell grid gap-12 pt-24 pb-28 lg:grid-cols-12 lg:gap-10 lg:pt-32 lg:pb-40 xl:pt-40">
       <Ornament kind="demo" side="right" className="top-[-10rem]" />
       <div className="reveal lg:col-span-5">
         <h2 id={`${s.id}-h`} className="h-section">
@@ -32,6 +33,7 @@ export function Demo({ c }: { c: SiteContent }) {
           <hr className="tear mx-5 mt-4 md:mx-7" />
           <DemoForm c={c} />
         </div>
+      </div>
       </div>
     </section>
   );

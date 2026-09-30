@@ -11,6 +11,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 # MeetSense design workflow
 
 Project-level design skills live in `.claude/skills/`: `impeccable`, `design-taste`, `ui-ux-pro-max` (and its sub-skills), `creative-web-intelligence`.
-- Single theme only: light, warm neutral, one accent. No dark mode, no gradients, glows or decorative motion.
+- One light theme, warm neutral, one accent (Ember). No site-wide dark mode, no gradients or glows.
+- Project override (2026-09-30): decorative motion is allowed — animated margin ornaments, scroll reveals, the live recording strip, hover lift. Keep it within the palette and always honour reduced motion.
+- Project override (2026-09-30): sections may alternate background tones from the palette (pass, pass-2, ember-wash, paper) and one section may be dark (ink ground, paper text) to break monotony.
 - Windows: run ui-ux-pro-max with `py .claude/skills/ui-ux-pro-max/scripts/search.py ...`, impeccable with `.claude\skills\impeccable\scripts\impeccable.cmd`.
 - Redesign plan: `C:\Users\erdem\.claude\plans\ok-renkli-kafa-kar-t-r-c-eager-grove.md`.
