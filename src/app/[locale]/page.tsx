@@ -8,6 +8,7 @@ import { Life } from "@/components/sections/Life";
 import { Templates } from "@/components/sections/Templates";
 import { Enterprise } from "@/components/sections/Enterprise";
 import { Demo } from "@/components/sections/Demo";
+import { PointerLean } from "@/components/ui/PointerLean";
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -23,8 +24,9 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         {c.ui.skip}
       </a>
       <div id="scroll-sentinel" aria-hidden="true" className="pointer-events-none absolute top-0 left-0 h-2 w-px" />
+      <PointerLean />
       <Navbar c={c} />
-      <main id="main">
+      <main id="main" className="overflow-x-clip">
         <Hero c={c} />
         <Life c={c} />
         <Templates c={c} />

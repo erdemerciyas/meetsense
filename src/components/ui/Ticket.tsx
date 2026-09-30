@@ -25,7 +25,7 @@ export function Ticket({
   const owner = personName(t.owner, c.people);
   const unowned = t.kind === "action" && !t.owner;
   return (
-    <article className={cn("ticket px-4 pt-3.5 pb-4", className)} style={style}>
+    <article className={cn("ticket lift px-4 pt-3.5 pb-4", className)} style={style}>
       {clip && <span className="ticket-clip" aria-hidden="true" />}
       <header className="flex items-center justify-between gap-3">
         <span className="mono text-[0.8125rem] font-semibold">#{t.no}</span>

@@ -102,6 +102,7 @@ export function Navbar({ c }: { c: SiteContent }) {
           </li>
         </ul>
       </nav>
+      <span aria-hidden="true" className="scroll-progress absolute inset-x-0 -bottom-px h-0.5 bg-ember" />
     </header>
   );
 }

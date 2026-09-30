@@ -14,6 +14,7 @@ export function RailBoard({
   span,
   delay,
   aside,
+  hot,
 }: {
   c: SiteContent;
   tickets: TicketData[];
@@ -23,6 +24,8 @@ export function RailBoard({
   delay?: (t: TicketData) => number;
   /** Extra content under a given day column (e.g. a ticket that never reached the rail). */
   aside?: { day: number; node: React.ReactNode };
+  /** Light up the active day's column. */
+  hot?: boolean;
 }) {
   const days = c.meeting.days;
   const hang = (list: TicketData[], onRail = true) =>
@@ -43,7 +46,7 @@ export function RailBoard({
         <Rail days={days} active={active} span={span} />
         <div className="grid gap-x-4" style={{ gridTemplateColumns: `repeat(${days.length}, minmax(0, 1fr))` }}>
           {days.map((d, i) => (
-            <div key={d} className="flex flex-col gap-4 pt-4">
+            <div key={d} className={cn("flex flex-col gap-4 pt-4", hot && i === active && "day-hot")}>
               {hang(tickets.filter((t) => t.day === i))}
               {aside?.day === i && aside.node}
             </div>

@@ -2,21 +2,36 @@ import type { Chapter as ChapterData, SiteContent } from "@/content/types";
 import { KindGlyph } from "@/components/ui/KindGlyph";
 import { RailBoard } from "@/components/ui/RailBoard";
 import { Ticket } from "@/components/ui/Ticket";
+import { Ornament, type OrnamentKind } from "@/components/ui/Ornament";
+import { Icon, IconChip, type IconName } from "@/components/ui/Icon";
 import { personName } from "@/lib/people";
 import { cn } from "@/lib/cn";
 import { LaterQA } from "./LaterQA";
 
+// Each chapter's drawing (kept on the right: the left margin holds the time spine) and its heading icon.
+const CHAPTER_ART: Record<string, OrnamentKind & IconName> = {
+  davet: "invite",
+  kayit: "record",
+  an: "moment",
+  kapanis: "close",
+  takip: "followup",
+  haftalik: "weekly",
+  sonra: "later",
+};
+
 /** One stop in the meeting's life: the time on the spine, then its own composition. */
 function Chapter({ ch, children }: { ch: ChapterData; children: React.ReactNode }) {
+  const art = CHAPTER_ART[ch.id];
   return (
-    <article id={ch.id} aria-labelledby={`${ch.id}-h`} className="grid gap-6 py-16 md:py-20 lg:grid-cols-12 lg:gap-10">
+    <article id={ch.id} aria-labelledby={`${ch.id}-h`} className="relative isolate grid gap-6 py-16 md:py-20 lg:grid-cols-12 lg:gap-10 xl:py-32">
+      {art && <Ornament kind={art} side="right" className="top-[-9rem] w-72" />}
       <div className="lg:col-span-2 lg:border-l lg:border-rule lg:pl-5">
         <p className="mono sticky top-28 flex items-center gap-2 text-[1rem] font-semibold">
           <span aria-hidden="true" className="size-2 bg-ink lg:-ml-[1.5625rem]" />
           {ch.time}
         </p>
       </div>
-      <div className="min-w-0 lg:col-span-10">{children}</div>
+      <div className="reveal min-w-0 lg:col-span-10">{children}</div>
     </article>
   );
 }
@@ -24,6 +39,7 @@ function Chapter({ ch, children }: { ch: ChapterData; children: React.ReactNode 
 function Intro({ ch, points, className }: { ch: ChapterData; points?: string[]; className?: string }) {
   return (
     <div className={className}>
+      {CHAPTER_ART[ch.id] && <IconChip name={CHAPTER_ART[ch.id]} className="mb-5" />}
       <h3 id={`${ch.id}-h`} className="h-chapter max-w-[22ch]">
         {ch.title}
       </h3>
@@ -31,8 +47,8 @@ function Intro({ ch, points, className }: { ch: ChapterData; points?: string[]; 
       {points && (
         <ul className="mt-5 max-w-[60ch] space-y-2">
           {points.map((p) => (
-            <li key={p} className="grid grid-cols-[1.25rem_1fr] text-ink-2">
-              <span aria-hidden="true" className="mt-[0.72em] h-px w-2.5 bg-ink-3" />
+            <li key={p} className="grid grid-cols-[1.5rem_1fr] text-ink-2">
+              <Icon name="chevron" className="mt-[0.3em] size-4 text-ember" />
               {p}
             </li>
           ))}
@@ -53,9 +69,11 @@ export function Life({ c }: { c: SiteContent }) {
   const doc = L.close.doc;
 
   return (
-    <section id={L.id} aria-labelledby={`${L.id}-h`} className="border-t border-rule bg-pass-2/50">
-      <div className="shell pt-24 lg:pt-32">
-        <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
+    <section id={L.id} aria-labelledby={`${L.id}-h`} className="relative isolate border-t border-rule bg-pass-2/50">
+      <div aria-hidden="true" className="pad-grid absolute inset-0 -z-20" />
+      <Ornament kind="waves" side="left" className="top-[-10rem]" />
+      <div className="shell pt-24 lg:pt-32 xl:pt-40">
+        <div className="reveal grid gap-6 lg:grid-cols-12 lg:gap-10 xl:mb-24">
           <h2 id={`${L.id}-h`} className="h-section lg:col-span-6 lg:col-start-3">
             {L.title}
           </h2>

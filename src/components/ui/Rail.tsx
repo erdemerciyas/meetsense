@@ -21,7 +21,7 @@ export function Rail({
         {days.map((d, i) => (
           <li key={d} className="relative pb-2">
             <span className={cn("mono text-[0.75rem] font-medium", i === active ? "font-semibold text-ember-ink" : "text-ink-3")}>{d}</span>
-            <span className={cn("absolute bottom-0 left-0 h-2 w-px", i === active ? "bg-ember" : "bg-steel-lo")} />
+            <span className={cn("absolute bottom-0 left-0 h-2 w-px", i === active ? "notch-live bg-ember" : "bg-steel-lo")} />
           </li>
         ))}
       </ol>
