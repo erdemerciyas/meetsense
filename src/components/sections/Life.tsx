@@ -3,21 +3,27 @@ import { KindGlyph } from "@/components/ui/KindGlyph";
 import { RailBoard } from "@/components/ui/RailBoard";
 import { Ticket } from "@/components/ui/Ticket";
 import { Ornament } from "@/components/ui/Ornament";
-import { Flight, type FlightKind } from "@/components/ui/Flight";
+import { Flight } from "@/components/ui/Flight";
+import { Doodle, type DoodleKind } from "@/components/ui/Doodle";
 import { Icon, IconChip, type IconName } from "@/components/ui/Icon";
 import { personName } from "@/lib/people";
 import { cn } from "@/lib/cn";
 import { LaterQA } from "./LaterQA";
+import { ProcessStage } from "@/components/ui/ProcessStage";
+import type { ProcessData } from "@/components/ui/process3d";
+import { railTickets } from "@/lib/rail-data";
 
-// Each chapter's travelling doodle: its heading icon, set loose across the page in its own way.
-const CHAPTER_FLIGHT: Record<string, FlightKind> = {
+// The meeting day in the example week (same as the hero's rail)
+const MEETING_DAY = 1;
+
+// Each chapter's margin machine, each with its own mechanic. Follow-up gets the paper plane's flight instead.
+const CHAPTER_DOODLE: Record<string, DoodleKind> = {
   davet: "invite",
   kayit: "record",
   an: "moment",
   kapanis: "close",
-  takip: "plane",
   haftalik: "weekly",
-  sonra: "magnifier",
+  sonra: "search",
 };
 
 // Each chapter's heading icon.
@@ -33,15 +39,19 @@ const CHAPTER_ART: Record<string, IconName> = {
 
 /** One stop in the meeting's life: the time on the spine, then its own composition. */
 function Chapter({ ch, children }: { ch: ChapterData; children: React.ReactNode }) {
-  const flight = CHAPTER_FLIGHT[ch.id];
+  const doodle = CHAPTER_DOODLE[ch.id];
   return (
     <article id={ch.id} aria-labelledby={`${ch.id}-h`} className="relative isolate grid gap-6 py-16 md:py-20 lg:grid-cols-12 lg:gap-10 xl:py-32">
-      {flight && <Flight kind={flight} className="top-[-12rem]" />}
+      {ch.id === "takip" && <Flight className="top-[-12rem]" />}
       <div className="lg:col-span-2 lg:border-l lg:border-rule lg:pl-5">
-        <p className="mono sticky top-28 flex items-center gap-2 text-[1rem] font-semibold">
-          <span aria-hidden="true" className="size-2 bg-ink lg:-ml-[1.5625rem]" />
-          {ch.time}
-        </p>
+        {/* The spine column is empty below the time: the chapter's drawing rides there with it */}
+        <div className="sticky top-28">
+          <p className="mono flex items-center gap-2 text-[1rem] font-semibold">
+            <span aria-hidden="true" className="size-2 bg-ink lg:-ml-[1.5625rem]" />
+            {ch.time}
+          </p>
+          {doodle && <Doodle kind={doodle} className="mt-8 w-full max-w-[9.5rem]" />}
+        </div>
       </div>
       <div className="reveal min-w-0 lg:col-span-10">{children}</div>
     </article>
@@ -79,18 +89,33 @@ export function Life({ c }: { c: SiteContent }) {
   const L = c.life;
   const m = c.meeting;
   const doc = L.close.doc;
+  const spanned = c.hero.tickets.find((t) => t.day !== undefined && t.day > MEETING_DAY);
+  const process: ProcessData = {
+    title: m.title,
+    date: `${m.date} · ${m.platform}`,
+    invite: L.invite.card.label,
+    assistant: c.ui.assistant,
+    question: L.later.qa[0].q,
+    days: m.days,
+    active: MEETING_DAY,
+    span: spanned && { from: MEETING_DAY, to: spanned.day!, ticket: spanned.no },
+    lines: L.record.lines.map((l) => ({ time: l.time, who: personName(l.who, c.people) ?? "", text: l.text })),
+    tickets: railTickets(c, c.hero.tickets, MEETING_DAY),
+  };
 
   return (
     <section id={L.id} aria-labelledby={`${L.id}-h`} className="relative isolate border-t border-rule bg-pass-2/50">
       <div aria-hidden="true" className="pad-grid absolute inset-0 -z-20" />
-      <Ornament kind="waves" side="left" className="top-[-10rem]" />
       <div className="shell pt-24 lg:pt-32 xl:pt-40">
         <div className="reveal grid gap-6 lg:grid-cols-12 lg:gap-10 xl:mb-24">
+          <Ornament kind="waves" className="w-full max-w-[9.5rem] self-center lg:col-span-2" />
           <h2 id={`${L.id}-h`} className="h-section lg:col-span-6 lg:col-start-3">
             {L.title}
           </h2>
           <p className="lead lg:col-span-4 lg:pt-3">{L.lead}</p>
         </div>
+
+        <ProcessStage data={process} steps={[L.invite, L.record, L.moment, L.followup, L.later].map(({ id, time, title }) => ({ id, time, title }))} />
 
         {/* 1. Invite: the slip hangs, the copy sits under the rail beside it */}
         <Chapter ch={L.invite}>

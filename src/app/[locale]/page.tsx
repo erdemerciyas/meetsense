@@ -9,6 +9,7 @@ import { Templates } from "@/components/sections/Templates";
 import { Enterprise } from "@/components/sections/Enterprise";
 import { Demo } from "@/components/sections/Demo";
 import { PointerLean } from "@/components/ui/PointerLean";
+import { Intro } from "@/components/ui/Intro";
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -17,6 +18,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
   return (
     <>
+      <Intro />
       <a
         href="#main"
         className="sr-only z-50 bg-ink px-4 py-2 text-paper focus:not-sr-only focus:fixed focus:top-3 focus:left-3"

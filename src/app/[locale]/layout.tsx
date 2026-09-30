@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Martian_Mono, Schibsted_Grotesk } from "next/font/google";
 import { getContent } from "@/content";
 import { isLocale, locales } from "@/lib/i18n";
+import { INTRO_HEAD_SCRIPT } from "@/lib/intro";
 import "../globals.css";
 
 const grotesk = Schibsted_Grotesk({
@@ -55,7 +56,11 @@ export default async function LocaleLayout({
   if (!isLocale(locale)) notFound();
 
   return (
-    <html lang={locale} className={`${grotesk.variable} ${mono.variable}`}>
+    // The head script marks <html> for the loader before first paint, hence the warning suppression
+    <html lang={locale} className={`${grotesk.variable} ${mono.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: INTRO_HEAD_SCRIPT }} />
+      </head>
       <body>{children}</body>
     </html>
   );

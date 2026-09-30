@@ -40,6 +40,12 @@ export function LiveRecorder({ c, lines, tickets, status }: { c: SiteContent; li
     return () => clearTimeout(id);
   }, [typed, done, line.text.length, lines.length]);
 
+  // Tell the 3D rail (if it's up) which ticket this sentence just printed
+  const hitNo = hit?.no;
+  useEffect(() => {
+    if (hitNo) dispatchEvent(new CustomEvent("ms:hit", { detail: hitNo }));
+  }, [hitNo, i]);
+
   useEffect(() => {
     const id = setInterval(() => setSec((s) => Math.min(s + 1, 59)), 1000);
     return () => clearInterval(id);

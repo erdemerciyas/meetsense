@@ -2,6 +2,9 @@ import type { SiteContent } from "@/content/types";
 import { Icon } from "@/components/ui/Icon";
 import { RailBoard } from "@/components/ui/RailBoard";
 import { LiveRecorder } from "@/components/ui/LiveRecorder";
+import { RailStage } from "@/components/ui/RailStage";
+import type { RailData } from "@/components/ui/rail3d";
+import { railTickets } from "@/lib/rail-data";
 
 const MEETING_DAY = 1;
 
@@ -11,6 +14,13 @@ export function Hero({ c }: { c: SiteContent }) {
   const order = [...h.tickets].sort((a, b) => a.from.localeCompare(b.from));
   const delay = (no: string) => 0.5 + order.findIndex((t) => t.no === no) * 0.65;
   const spanned = h.tickets.find((t) => t.day !== undefined && t.day > MEETING_DAY);
+  // The same tickets, flattened for the 3D rail's canvas textures
+  const rail: RailData = {
+    days: c.meeting.days,
+    active: MEETING_DAY,
+    span: spanned && { from: MEETING_DAY, to: spanned.day!, ticket: spanned.no },
+    tickets: railTickets(c, h.tickets, MEETING_DAY, (t) => delay(t.no) - 0.2),
+  };
 
   return (
     <section id="top" className="pt-28 pb-24 md:pt-32 lg:pb-28">
@@ -45,14 +55,16 @@ export function Hero({ c }: { c: SiteContent }) {
 
           <LiveRecorder c={c} lines={c.life.record.lines} tickets={h.tickets} status={c.life.record.status} />
 
-        <RailBoard
-          c={c}
-          tickets={h.tickets}
-          active={MEETING_DAY}
-          span={spanned ? { from: MEETING_DAY, to: spanned.day!, delay: delay(spanned.no) - 0.55 } : undefined}
-          delay={(t) => delay(t.no)}
-          hot
-        />
+        <RailStage data={rail}>
+          <RailBoard
+            c={c}
+            tickets={h.tickets}
+            active={MEETING_DAY}
+            span={spanned ? { from: MEETING_DAY, to: spanned.day!, delay: delay(spanned.no) - 0.55 } : undefined}
+            delay={(t) => delay(t.no)}
+            hot
+          />
+        </RailStage>
         </figure>
       </div>
     </section>

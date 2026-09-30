@@ -1,6 +1,5 @@
 import type { SiteContent } from "@/content/types";
-import { Ornament } from "@/components/ui/Ornament";
-import { Flight } from "@/components/ui/Flight";
+import { Doodle } from "@/components/ui/Doodle";
 import { Icon } from "@/components/ui/Icon";
 import { DemoForm } from "./DemoForm";
 
@@ -8,9 +7,7 @@ export function Demo({ c }: { c: SiteContent }) {
   const s = c.demo;
   return (
     <section id={s.id} aria-labelledby={`${s.id}-h`} className="edge-torn relative isolate bg-paper">
-      <Flight kind="demo" className="top-4 xl:top-8" />
       <div className="shell grid gap-12 pt-24 pb-28 lg:grid-cols-12 lg:gap-10 lg:pt-32 lg:pb-40 xl:pt-40">
-      <Ornament kind="demo" side="right" split="dark-light" className="top-[-10rem]" />
       <div className="reveal lg:col-span-5">
         <h2 id={`${s.id}-h`} className="h-section">
           {s.title}
@@ -23,6 +20,7 @@ export function Demo({ c }: { c: SiteContent }) {
             hello@bgts.ai
           </a>
         </p>
+        <Doodle kind="stamp" className="mt-14 w-48" />
       </div>
       <div className="reveal lg:col-span-7">
         <div className="rail-bar mb-5" aria-hidden="true" />

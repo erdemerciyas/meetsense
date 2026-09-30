@@ -1,6 +1,5 @@
 import type { SiteContent } from "@/content/types";
-import { Ornament } from "@/components/ui/Ornament";
-import { Flight } from "@/components/ui/Flight";
+import { Doodle } from "@/components/ui/Doodle";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { KindGlyph } from "@/components/ui/KindGlyph";
 
@@ -10,8 +9,6 @@ export function Templates({ c }: { c: SiteContent }) {
   const s = c.templates;
   return (
     <section id={s.id} aria-labelledby={`${s.id}-h`} className="tone-tint relative isolate border-t border-rule">
-      <Ornament kind="templates" side="right" className="top-[-10rem]" />
-      <Flight kind="pencil" className="top-4 xl:top-12" />
       <div className="shell py-24 lg:py-32 xl:py-40">
       <div className="reveal grid gap-6 lg:grid-cols-12 lg:gap-10">
         <h2 id={`${s.id}-h`} className="h-section lg:col-span-7">
@@ -59,7 +56,10 @@ export function Templates({ c }: { c: SiteContent }) {
           ))}
         </ul>
       </div>
-      <p className="mt-10 max-w-[62ch] text-ink-2">{s.custom}</p>
+      <div className="mt-10 flex items-center justify-between gap-10">
+        <p className="max-w-[62ch] text-ink-2">{s.custom}</p>
+        <Doodle kind="templates" className="w-40 shrink-0" />
+      </div>
       </div>
     </section>
   );
