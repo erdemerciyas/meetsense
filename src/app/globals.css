@@ -327,6 +327,7 @@
   --color-rule: oklch(34% 0.007 60);
   --color-steel-lo: oklch(62% 0.008 250);
   --color-ember-ink: oklch(74% 0.14 45);
+  --flight-bg: oklch(21% 0.006 60);
   background: oklch(21% 0.006 60);
   color: var(--color-ink);
 }
@@ -591,12 +592,9 @@
 :is(section, article):hover > .ornament .ornament-lean {
   scale: 1.05;
 }
-.ornament :is(.o-ring, .o-eq, .o-bar, .o-pulse, .o-blink, .o-type, .o-float, .o-scan) {
+.ornament :is(.o-ring, .o-pulse, .o-blink, .o-type, .o-float) {
   transform-box: fill-box;
   transform-origin: center;
-}
-.ornament .o-bar {
-  transform-origin: bottom;
 }
 .ornament .o-type {
   transform-origin: left;
@@ -634,12 +632,6 @@
   .ornament .o-ring {
     animation: o-ring 2.8s ease-in-out calc(var(--i) * 0.35s) infinite;
   }
-  .ornament .o-eq {
-    animation: o-eq 1.1s ease-in-out calc(var(--i) * -0.13s) infinite alternate;
-  }
-  .ornament .o-bar {
-    animation: o-bar 2.4s var(--ease-out) calc(var(--i) * 0.12s) infinite alternate;
-  }
   .ornament .o-pulse {
     animation: o-pulse 2.6s ease-in-out infinite;
   }
@@ -651,12 +643,6 @@
   }
   .ornament .o-float {
     animation: o-float 5s ease-in-out infinite;
-  }
-  .ornament .o-scan {
-    animation: o-scan 6s ease-in-out infinite;
-  }
-  .ornament .o-flow {
-    animation: o-flow 1.4s linear infinite;
   }
 }
 
@@ -722,14 +708,6 @@
   0%, 100% { opacity: 0.25; scale: 0.94; }
   50% { opacity: 1; scale: 1; }
 }
-@keyframes o-eq {
-  from { scale: 1 0.35; }
-  to { scale: 1 1.15; }
-}
-@keyframes o-bar {
-  from { scale: 1 0.55; }
-  to { scale: 1 1; }
-}
 @keyframes o-pulse {
   0%, 100% { scale: 1; opacity: 1; }
   50% { scale: 1.14; opacity: 0.55; }
@@ -745,12 +723,4 @@
 @keyframes o-float {
   0%, 100% { translate: 0 0; }
   50% { translate: 0 -6px; }
-}
-@keyframes o-scan {
-  0%, 100% { translate: 0 0; }
-  33% { translate: -52px -34px; }
-  66% { translate: -30px 30px; }
-}
-@keyframes o-flow {
-  to { stroke-dashoffset: -11; }
 }

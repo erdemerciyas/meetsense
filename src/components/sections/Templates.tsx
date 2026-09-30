@@ -1,5 +1,6 @@
 import type { SiteContent } from "@/content/types";
 import { Ornament } from "@/components/ui/Ornament";
+import { Flight } from "@/components/ui/Flight";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { KindGlyph } from "@/components/ui/KindGlyph";
 
@@ -10,6 +11,7 @@ export function Templates({ c }: { c: SiteContent }) {
   return (
     <section id={s.id} aria-labelledby={`${s.id}-h`} className="tone-tint relative isolate border-t border-rule">
       <Ornament kind="templates" side="right" className="top-[-10rem]" />
+      <Flight kind="pencil" className="top-4 xl:top-12" />
       <div className="shell py-24 lg:py-32 xl:py-40">
       <div className="reveal grid gap-6 lg:grid-cols-12 lg:gap-10">
         <h2 id={`${s.id}-h`} className="h-section lg:col-span-7">

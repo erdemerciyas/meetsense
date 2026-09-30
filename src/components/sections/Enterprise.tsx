@@ -1,5 +1,6 @@
 import type { SiteContent } from "@/content/types";
 import { Ornament } from "@/components/ui/Ornament";
+import { Flight } from "@/components/ui/Flight";
 import { Icon, type IconName } from "@/components/ui/Icon";
 
 const ITEM_ICONS: IconName[] = ["key", "calendar", "eye", "channels", "share", "globe"];
@@ -9,6 +10,7 @@ export function Enterprise({ c }: { c: SiteContent }) {
   return (
     <section id={s.id} aria-labelledby={`${s.id}-h`} className="on-ink edge-torn relative isolate">
       <Ornament kind="enterprise" side="left" split="light-dark" className="top-[-10rem]" />
+      <Flight kind="key" className="top-4 xl:top-8" />
       <div className="shell grid gap-10 py-24 lg:grid-cols-12 lg:gap-10 lg:py-32 xl:py-40">
         <div className="reveal lg:col-span-5">
           <h2 id={`${s.id}-h`} className="h-section">

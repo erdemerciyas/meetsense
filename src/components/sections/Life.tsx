@@ -2,14 +2,26 @@ import type { Chapter as ChapterData, SiteContent } from "@/content/types";
 import { KindGlyph } from "@/components/ui/KindGlyph";
 import { RailBoard } from "@/components/ui/RailBoard";
 import { Ticket } from "@/components/ui/Ticket";
-import { Ornament, type OrnamentKind } from "@/components/ui/Ornament";
+import { Ornament } from "@/components/ui/Ornament";
+import { Flight, type FlightKind } from "@/components/ui/Flight";
 import { Icon, IconChip, type IconName } from "@/components/ui/Icon";
 import { personName } from "@/lib/people";
 import { cn } from "@/lib/cn";
 import { LaterQA } from "./LaterQA";
 
-// Each chapter's drawing (kept on the right: the left margin holds the time spine) and its heading icon.
-const CHAPTER_ART: Record<string, OrnamentKind & IconName> = {
+// Each chapter's travelling doodle: its heading icon, set loose across the page in its own way.
+const CHAPTER_FLIGHT: Record<string, FlightKind> = {
+  davet: "invite",
+  kayit: "record",
+  an: "moment",
+  kapanis: "close",
+  takip: "plane",
+  haftalik: "weekly",
+  sonra: "magnifier",
+};
+
+// Each chapter's heading icon.
+const CHAPTER_ART: Record<string, IconName> = {
   davet: "invite",
   kayit: "record",
   an: "moment",
@@ -21,10 +33,10 @@ const CHAPTER_ART: Record<string, OrnamentKind & IconName> = {
 
 /** One stop in the meeting's life: the time on the spine, then its own composition. */
 function Chapter({ ch, children }: { ch: ChapterData; children: React.ReactNode }) {
-  const art = CHAPTER_ART[ch.id];
+  const flight = CHAPTER_FLIGHT[ch.id];
   return (
     <article id={ch.id} aria-labelledby={`${ch.id}-h`} className="relative isolate grid gap-6 py-16 md:py-20 lg:grid-cols-12 lg:gap-10 xl:py-32">
-      {art && <Ornament kind={art} side="right" className="top-[-9rem] w-72" />}
+      {flight && <Flight kind={flight} className="top-[-12rem]" />}
       <div className="lg:col-span-2 lg:border-l lg:border-rule lg:pl-5">
         <p className="mono sticky top-28 flex items-center gap-2 text-[1rem] font-semibold">
           <span aria-hidden="true" className="size-2 bg-ink lg:-ml-[1.5625rem]" />
