@@ -562,7 +562,7 @@
   support (or with reduced motion) content simply sits still and visible.
 */
 .ornament {
-  opacity: 0.5;
+  opacity: 0.55;
   view-timeline: --orn block;
   transition: opacity 400ms var(--ease-out);
 }
@@ -573,6 +573,20 @@
 }
 :is(section, article):hover > .ornament {
   opacity: 0.75;
+}
+/* Stroke tones for ornaments that cross a light/dark boundary */
+.orn-light {
+  stop-color: oklch(56% 0.009 250);
+}
+.orn-dark {
+  stop-color: oklch(76% 0.008 250);
+}
+/* On the warm tint the cool steel reads washed out; warm it slightly */
+.tone-tint > .ornament {
+  color: oklch(55% 0.02 55);
+}
+.on-ink > .ornament:not([data-split]) {
+  color: oklch(76% 0.008 250);
 }
 :is(section, article):hover > .ornament .ornament-lean {
   scale: 1.05;
@@ -653,7 +667,8 @@
       animation-timeline: view();
       animation-range: entry 5% entry 70%;
     }
-    .ornament {
+    /* A split ornament must stay on its boundary, so only the others drift */
+    .ornament:not([data-split]) {
       animation: drift linear both;
       animation-timeline: --orn;
       animation-range: cover;

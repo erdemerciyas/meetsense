@@ -19,10 +19,6 @@ export function Hero({ c }: { c: SiteContent }) {
         <div className="lg:col-span-5 lg:pb-2">
           <p className="lead">{h.lead}</p>
           <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <a href="#demo" className="btn btn-primary group">
-              {h.primary}
-              <Icon name="arrow" className="transition-transform duration-200 group-hover:translate-x-0.5" />
-            </a>
             <a href="#akis" className="text-link inline-flex items-center gap-2">
               <Icon name="play" className="text-ember-ink" />
               {h.secondary}

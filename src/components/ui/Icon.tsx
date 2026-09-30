@@ -2,7 +2,6 @@ import { cn } from "@/lib/cn";
 
 /** Line icons that support copy across the page. Same stroke language as the margin ornaments. */
 const PATHS = {
-  arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
   play: (
     <>
       <circle cx="12" cy="12" r="9" />

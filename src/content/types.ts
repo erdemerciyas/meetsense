@@ -55,7 +55,6 @@ export type SiteContent = {
   hero: {
     title: string;
     lead: string;
-    primary: string;
     secondary: string;
     railLabel: string;
     tickets: Ticket[];

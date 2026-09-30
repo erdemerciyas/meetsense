@@ -1,4 +1,4 @@
-import { Children, Fragment, cloneElement, isValidElement, type ReactElement, type ReactNode } from "react";
+import { Children, Fragment, cloneElement, isValidElement, useId, type ReactElement, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 /**
@@ -146,11 +146,28 @@ function drawable(node: ReactNode): ReactNode {
   });
 }
 
-export function Ornament({ kind, side, className }: { kind: OrnamentKind; side: "left" | "right"; className?: string }) {
+/**
+ * `split` is for an ornament that straddles a light and a dark section: the stroke
+ * takes each ground's tone on its own side of the boundary so neither half fades out.
+ */
+export function Ornament({
+  kind,
+  side,
+  split,
+  className,
+}: {
+  kind: OrnamentKind;
+  side: "left" | "right";
+  split?: "light-dark" | "dark-light";
+  className?: string;
+}) {
+  const id = useId();
+  const [top, bottom] = split === "dark-light" ? ["dark", "light"] : ["light", "dark"];
   return (
     <div
       aria-hidden="true"
       data-side={side}
+      data-split={split}
       className={cn(
         "ornament pointer-events-none absolute -z-10 hidden w-80 text-steel-lo xl:block",
         side === "left" ? "left-[calc(50%-50vw+1rem)]" : "right-[calc(50%-50vw+1rem)]",
@@ -158,7 +175,15 @@ export function Ornament({ kind, side, className }: { kind: OrnamentKind; side: 
       )}
     >
       <div className="ornament-lean">
-        <svg viewBox="0 0 240 240" overflow="visible" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 240 240" overflow="visible" fill="none" stroke={split ? `url(#${id})` : "currentColor"} strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+          {split && (
+            <defs>
+              <linearGradient id={id} x1="0" y1="0" x2="0" y2="240" gradientUnits="userSpaceOnUse">
+                <stop offset="0.5" className={`orn-${top}`} />
+                <stop offset="0.5" className={`orn-${bottom}`} />
+              </linearGradient>
+            </defs>
+          )}
           {drawable(ART[kind])}
         </svg>
       </div>

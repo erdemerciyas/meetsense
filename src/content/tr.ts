@@ -46,7 +46,6 @@ export const tr: SiteContent = {
   hero: {
     title: "Söylenen iş, sahibini bulur.",
     lead: "MeetSense Teams toplantınıza katılır ve konuşulanı yazıya döker. Alınan her karar, üstlenilen her iş ve dile getirilen her risk; kimin, ne zamana kadar ve hangi saniyede söylediğiyle kayda geçer.",
-    primary: "Demo talep et",
     secondary: "Bir toplantıyı baştan sona izleyin",
     railLabel: "Bu haftanın rayı",
     tickets: [

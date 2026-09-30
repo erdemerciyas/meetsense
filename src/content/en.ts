@@ -46,7 +46,6 @@ export const en: SiteContent = {
   hero: {
     title: "Work said out loud finds its owner.",
     lead: "MeetSense joins your Teams meeting and writes down what's said. Every decision made, every task taken on and every risk raised is recorded with who said it, by when, and at which second.",
-    primary: "Request a demo",
     secondary: "Follow one meeting from start to finish",
     railLabel: "This week's rail",
     tickets: [
