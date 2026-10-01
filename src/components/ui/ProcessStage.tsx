@@ -15,6 +15,7 @@ type Step = { id: string; time: string; title: string };
 export function ProcessStage({ data, steps }: { data: ProcessData; steps: Step[] }) {
   const wrap = useRef<HTMLDivElement>(null);
   const host = useRef<HTMLDivElement>(null);
+  const col = useRef<HTMLDivElement>(null);
   const [off, setOff] = useState(false);
   const [active, setActive] = useState(0);
 
@@ -60,9 +61,15 @@ export function ProcessStage({ data, steps }: { data: ProcessData; steps: Step[]
       },
       { rootMargin: "100% 0px" },
     );
+    const bleed = () => {
+      host.current!.style.left = `${-col.current!.getBoundingClientRect().left}px`;
+    };
+    bleed();
     io.observe(wrap.current!);
     addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", bleed);
     return () => {
+      removeEventListener("resize", bleed);
       alive = false;
       io.disconnect();
       cancelAnimationFrame(frame);
@@ -75,7 +82,10 @@ export function ProcessStage({ data, steps }: { data: ProcessData; steps: Step[]
   return (
     <div ref={wrap} className="relative mt-16 hidden lg:motion-safe:block xl:mt-8" style={{ height: `${steps.length * 75 + 100}vh` }}>
       <div className="sticky top-16 grid h-[calc(100vh-4rem)] grid-cols-12 items-center gap-10">
-        <div ref={host} aria-hidden="true" className="col-span-8 h-[78%]" />
+        {/* The canvas bleeds left into the page margin so the scene has room */}
+        <div ref={col} className="relative col-span-8 h-[78%]">
+          <div ref={host} aria-hidden="true" className="absolute inset-y-0 right-0 left-0 [mask-image:linear-gradient(to_right,transparent,#000_4%,#000_96%,transparent)]" />
+        </div>
         <ol className="col-span-4 space-y-7">
           {steps.map((s, i) => (
             <li key={s.id} className={cn("border-l-2 pl-5 transition-[opacity,border-color] duration-300", i === active ? "border-ember" : "border-rule opacity-40")}>

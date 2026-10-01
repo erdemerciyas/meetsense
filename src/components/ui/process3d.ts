@@ -31,7 +31,7 @@ const VIEWS: Cam[] = [
   { pos: V(0.8, 6.4, 10), look: V(0.9, 0, 0.3) },
   { pos: V(2.4, 3.4, 8.2), look: V(2.4, 0.9, 0.2) },
   { pos: V(0.3, 3.3, 10.6), look: V(0.3, 2.1, -0.8) },
-  { pos: V(-1.7, 3.6, 7.8), look: V(-1.9, 1.1, 0.3) },
+  { pos: V(-2.4, 3.6, 7.8), look: V(-2.6, 1.1, 0.3) },
 ];
 
 const SEG = 1.2; // transcript strip: length per line
@@ -333,6 +333,14 @@ export async function mountProcess(host: HTMLElement, data: ProcessData) {
     }
   });
 
+  // Step 2 frames the standing tickets: centred on the row, backed off only as far as the row needs
+  const views = VIEWS.map((v) => ({ pos: v.pos.clone(), look: v.look.clone() }));
+  const xs = tickets.map((tk, i) => tk.mark.position.x - 0.1 * i);
+  const rowMid = (Math.min(...xs) + Math.max(...xs)) / 2;
+  const rowHalf = (Math.max(...xs) - Math.min(...xs)) / 2 + 0.55 + 0.35;
+  const back = VIEWS[2].pos.clone().sub(VIEWS[2].look);
+  views[2].look.x = rowMid;
+
   const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
   const fit = () => {
     const { width, height } = host.getBoundingClientRect();
@@ -340,6 +348,9 @@ export async function mountProcess(host: HTMLElement, data: ProcessData) {
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
+    const tanH = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.aspect;
+    const d = Math.max(back.length(), rowHalf / tanH);
+    views[2].pos.copy(views[2].look).addScaledVector(back.clone().normalize(), d);
   };
   fit();
   const ro = new ResizeObserver(fit);
@@ -372,8 +383,8 @@ export async function mountProcess(host: HTMLElement, data: ProcessData) {
     const t = P - k;
 
     // Camera: glide to this step's view in the first third of the step, then hold
-    const from = VIEWS[Math.max(0, k - 1)];
-    const to = VIEWS[k];
+    const from = views[Math.max(0, k - 1)];
+    const to = views[k];
     const c = smooth(k === 0 ? 1 : seg(t, 0, 0.35));
     camPos.lerpVectors(from.pos, to.pos, c).add(tmpA.set(px * 0.3, -py * 0.2, 0));
     camLook.lerpVectors(from.look, to.look, c);
@@ -479,7 +490,7 @@ export async function mountProcess(host: HTMLElement, data: ProcessData) {
 
     renderer.render(scene, camera);
   };
-  camera.position.copy(VIEWS[0].pos);
+  camera.position.copy(views[0].pos);
   raf = requestAnimationFrame(frame);
 
   return {
