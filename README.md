@@ -25,7 +25,7 @@ assets/js/config.js        Video ve iletişim ayarları
 assets/js/main.js          Etkileşimler: dil, canlı kayıt alanı, sekmeler, şablonlar, asistan, form, videolar
 assets/js/orb.js           Three.js sahneleri: hero ses küresi ve 3D logo
 assets/vendor/three.min.js Three.js r159
-assets/img/                Logo ve video kapak görselleri
+assets/img/                Logo, video kapakları ve app/ altında gerçek ürün ekranlarından kırpılmış görseller
 assets/video/              MP4 videolar
 ```
 
@@ -48,16 +48,22 @@ YouTube kimliği, video linkindeki `v=` değeridir: `https://www.youtube.com/wat
 |---|---|---|
 | a1 | A1 · MeetSense nedir (1:15) | Hero düğmesi + Videolar bölümü |
 | a2 | A2 · Teaser 9:16 (0:13) | Videolar bölümü, telefon çerçevesi |
-| b1 | B1 · Üç adımda nasıl çalışır (0:58) | Nasıl çalışır |
+| b1 | B1 · Üç adımda nasıl çalışır (0:59) | Nasıl çalışır |
 | d1 | D1 · Müşteri Yönetimi şablonu (0:53) | Şablonlar → Müşteri Yönetimi |
 | d2 | D2 · Mülakat şablonu (0:53) | Şablonlar → Mülakat |
 | e1 | E1 · Microsoft altyapısı (0:52) | Kurumsal |
+
+Videoların ikinci sürümü (v2) kullanılıyor; altyazılar videonun içine gömülüdür. Video ya da kapak görseli değiştiğinde tarayıcı önbelleğini aşmak için `config.js` içindeki `?v=2` değerini artırın.
+Kapak görselleri `assets/img/posters/` altındadır ve videolardan alınmış karelerdir.
 
 ## Demo formu
 
 Form, bilgileri `config.js` içindeki `demoEmail` adresine (varsayılan `hello@bgts.ai`) gönderilmeye hazır bir e-posta olarak açar. Bir form servisi ya da CRM bağlanacaksa `main.js` içindeki `demo-form` `submit` olayını değiştirmek yeterlidir.
 
 ## Notlar
+
+- Rapor örnekleri ve uygulama ekranlarındaki kişi, toplantı ve rakamlar örnek veridir. Gerçek raporlardaki çalışan ve aday isimleri bilerek kullanılmamıştır.
+- `assets/img/app/` içindeki görseller MeetSense 2.0 (Enterprise Edition) arayüzünden kişisel bilgi içermeyen bölümler kırpılarak alınmıştır.
 
 - Sayfadaki toplantılar, kişiler ve rakamlar örnek veridir; sayfanın altında da bu belirtilir.
 - `prefers-reduced-motion` açık olan kullanıcılarda tüm animasyonlar durur, 3D sahneler sabit bir açıyla gösterilir.

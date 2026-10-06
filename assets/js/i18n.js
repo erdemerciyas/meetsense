@@ -77,18 +77,22 @@ window.MS_I18N = {
       "a1": "MeetSense nedir?",
       "a2": "Katılır. Kaydeder. Yazıya döker. Analiz eder.",
       "b1": "Üç adımda nasıl çalışır",
-      "b1Lead": "Takvimden AI Botu göndermekten toplantı sayfasının açılmasına kadar üç adım.",
+      "b1Lead": "Takvimden toplantıyı seçip AI Botu ekleyin; canlı oturumu dilediğiniz an duraklatın ya da bitirin. Rapor hazır olunca linki kopyalayın ya da PDF indirin.",
       "d1": "Müşteri Yönetimi şablonu",
       "d2": "Mülakat şablonu",
       "tplWatch": "Bu şablonu videoda izleyin",
       "e1": "Microsoft altyapısıyla çalışma",
-      "e1Lead": "Microsoft hesabıyla giriş, Graph ve EWS üzerinden takvim bağlantısı, lobi kuralları ve toplantı bazlı görünürlük.",
+      "e1Lead": "Kurumsal Microsoft hesabıyla giriş, Graph ve Exchange üzerinden takvim, Bot Kimliği ayarları, lobi kuralı ve toplantı bazında görünürlük: herkese açık, gizli ya da yalnızca seçtiğiniz kişiler.",
       "cats": {
         "a": "A · Tanıtım",
         "b": "B · Nasıl çalışır",
         "d": "D · Şablon",
         "e": "E · Kurumsal"
-      }
+      },
+      "badge": "VİDEO",
+      "watchVideo": "Videoyu izle",
+      "d1Lead": "Bir satış görüşmesinden BANT analizi, itiraz haritası, önerilen yanıtlar ve 81 deal skoru nasıl çıkar; CRM’e tek tıkla kopyalama.",
+      "d2Lead": "Kriter puanları, soru kategorileri ve gerekçeli Kabul / Red / Beklet önerisi; ücret alanında rakam yok, son söz jürinin."
     },
     "nav": {
       "video": "Videolar",
@@ -98,7 +102,9 @@ window.MS_I18N = {
       "assistant": "AI Asistan",
       "enterprise": "Kurumsal",
       "faq": "SSS",
-      "demo": "Demo talep et"
+      "demo": "Demo talep et",
+      "app": "Uygulama",
+      "reports": "Raporlar"
     },
     "hero": {
       "eyebrow": "Microsoft Teams için yapay zekâ toplantı asistanı",
@@ -173,23 +179,23 @@ window.MS_I18N = {
       "items": [
         {
           "n": "1",
-          "l": "Toplantı başına tek sayfa",
-          "c": "Özet, kararlar, aksiyonlar, riskler ve transkript"
+          "l": "Toplantı başına tek sayfa ve PDF",
+          "c": "Amaç, sonuç, ana konular, kararlar, aksiyonlar ve AI metrikleri"
         },
         {
           "n": "4",
           "l": "Hazır analiz şablonu",
-          "c": "Standart, Müşteri Yönetimi, Mülakat, Günlük Takip"
+          "c": "Standart, Müşteri Yönetimi, Mülakat, Günlük Takip; ayrıca kendi şablonunuz"
+        },
+        {
+          "n": "2",
+          "l": "Katılım yöntemi",
+          "c": "Yerel (Teams uygulaması) ya da misafir (tarayıcı ile, farklı kurumların toplantıları)"
         },
         {
           "n": "3",
           "l": "Asistan kapsamı",
           "c": "Tek toplantı, bir seri ya da bütün toplantılar"
-        },
-        {
-          "n": "0–100",
-          "l": "Deal skoru",
-          "c": "Satış görüşmeleri için BANT tabanlı değerlendirme"
         }
       ]
     },
@@ -200,21 +206,21 @@ window.MS_I18N = {
       "steps": [
         {
           "n": "01",
-          "t": "AI Botu gönderin",
-          "d": "Takviminizdeki Teams toplantısını açıp AI Botu gönderin. Bot yalnızca o toplantıya ya da serinin bütün toplantılarına katılabilir.",
-          "tag": "Microsoft 365 takvimi"
+          "t": "AI Botu ekleyin",
+          "d": "Takviminizdeki Teams toplantısını seçin ya da linkini yapıştırın. Botun tek başına mı yoksa yalnızca sizinle mi gireceğini, analiz şablonunu ve toplantı dilini (Türkçe, İngilizce ya da otomatik algıla) seçin. Tekrarlayan toplantılarda “Tüm seri için uygula” yeterli.",
+          "tag": "Takvimden seç · Tüm seri"
         },
         {
           "n": "02",
-          "t": "Bot dinler ve yazıya döker",
-          "d": "MeetSense AI toplantıya katılımcı olarak girer, konuşmayı konuşmacı adlarıyla yazıya döker. Kaydı istediğiniz an duraklatır ya da bitirirsiniz.",
-          "tag": "Canlı transkript"
+          "t": "Konuşma yazıya dökülür",
+          "d": "MeetSense AI toplantıya katılımcı olarak girer, karşılama mesajını iletir ve konuşmayı konuşmacı adlarıyla yazıya döker. Lobiden kabul edilmezse kayıt almaz. Kaydı istediğiniz an duraklatır ya da bitirirsiniz.",
+          "tag": "Canlı transkript · Duraklat / Bitir"
         },
         {
           "n": "03",
-          "t": "Analiz hazır olur",
-          "d": "Toplantı bitince seçtiğiniz şablona göre özet, kararlar, aksiyonlar ve riskler çıkarılır; sayfa paylaşılmaya hazırdır.",
-          "tag": "Şablona göre analiz"
+          "t": "Sayfa hazır",
+          "d": "Toplantı bitince şablona göre sayfa oluşur: amaç, sonuç, ana konular, kararlar, öncelikli aksiyonlar ve AI metrikleri. Linki kopyalayıp paylaşın ya da PDF indirin.",
+          "tag": "Link · PDF"
         }
       ]
     },
@@ -235,9 +241,9 @@ window.MS_I18N = {
       },
       "tabs": {
         "summary": "Özet",
-        "decisions": "Kararlar",
         "actions": "Aksiyonlar",
-        "risks": "Riskler",
+        "decisions": "Kararlar",
+        "metrics": "AI metrikleri",
         "transcript": "Transkript"
       },
       "noOwnerCount": "Sorumlusu yok",
@@ -279,25 +285,29 @@ window.MS_I18N = {
           "x": "Müşteriye yeni sürüm tarihini bildir",
           "owner": "Burak Şahin",
           "noOwner": false,
-          "due": "2 Ekim"
-        },
-        {
-          "x": "Test ortamını yeni veritabanına taşı",
-          "owner": "",
-          "noOwner": true,
-          "due": "2 Ekim"
+          "due": "2 Ekim",
+          "p": "high"
         },
         {
           "x": "Ödeme SDK’sını 5.2 sürümüne yükselt",
           "owner": "Elif Kaya",
           "noOwner": false,
-          "due": "7 Ekim"
+          "due": "7 Ekim",
+          "p": "med"
         },
         {
           "x": "Güncel fiyatlandırma sunumunu yönetime gönder",
           "owner": "Deniz Yılmaz",
           "noOwner": false,
-          "due": "6 Ekim"
+          "due": "6 Ekim",
+          "p": "low"
+        },
+        {
+          "x": "Test ortamını yeni veritabanına taşı",
+          "owner": "",
+          "noOwner": true,
+          "due": "2 Ekim",
+          "p": "high"
         }
       ],
       "risks": [
@@ -343,12 +353,72 @@ window.MS_I18N = {
           "tm": "06:15",
           "x": "SDK tarafındaki sorun eski sürümden. 5.2’ye geçince düzelmesi lazım."
         }
+      ],
+      "prio": {
+        "high": "YÜKSEK",
+        "med": "ORTA",
+        "low": "DÜŞÜK"
+      },
+      "unassigned": "Atanmamış",
+      "purposeTitle": "Toplantının amacı",
+      "purpose": "Kasım sürümünün tarihini ve kapsamını netleştirmek, test ortamı hazırlığını gözden geçirmek.",
+      "resultTitle": "Sonuç ve genel değerlendirme",
+      "topicsTitle": "Ele alınan ana konular",
+      "topics": [
+        {
+          "t": "Sürüm tarihi",
+          "x": "Ödeme ekranındaki hata nedeniyle sürüm 14 Kasım’a alındı."
+        },
+        {
+          "t": "Test ortamı",
+          "x": "Ortamın yeni veritabanına taşınması kritik yolda; işin henüz sorumlusu yok."
+        },
+        {
+          "t": "Fiyatlandırma",
+          "x": "Güncel sunum 6 Ekim’de yönetime gidecek."
+        }
+      ],
+      "metrics": {
+        "participants": "Toplam katılımcı",
+        "duration": "Süre (dk)",
+        "confidence": "Transkript güveni",
+        "confidenceV": "%92",
+        "balance": "Konuşma dengesi",
+        "balanced": "Dengeli",
+        "mostActive": "En aktif konuşmacı",
+        "keywords": "Anahtar kelimeler",
+        "kw": [
+          "sürüm tarihi",
+          "ödeme SDK",
+          "test ortamı",
+          "regresyon",
+          "fiyatlandırma"
+        ],
+        "other": "Diğer"
+      },
+      "speakers": [
+        [
+          "Elif Kaya",
+          34
+        ],
+        [
+          "Zeynep Arslan",
+          26
+        ],
+        [
+          "Burak Şahin",
+          22
+        ],
+        [
+          "Deniz Yılmaz",
+          18
+        ]
       ]
     },
     "templates": {
-      "kicker": "Şablonlar",
-      "title": "Her toplantı türü için ayrı bir analiz",
-      "lead": "Analiz, seçtiğiniz şablona göre üretilir; seçim yapmazsanız varsayılan şablonunuz kullanılır.",
+      "kicker": "Şablonlar ve raporlar",
+      "title": "Her toplantı türü için ayrı bir rapor",
+      "lead": "Analiz seçtiğiniz şablona göre üretilir ve aynı yapıda PDF rapor olarak indirilir. Aşağıdaki örnekler gerçek MeetSense raporlarının yapısını izler.",
       "honest": "Görüşme şablona uymuyorsa MeetSense analizi zorlamaz; bunu açıkça söyler ve eksik bilgileri listeler.",
       "custom": "Hazır şablonlar yetmezse bölümleri seçip kendi şablonunuzu kurar, mevcut bir şablonu klonlar ya da ekibinizin varsayılanı yaparsınız.",
       "list": [
@@ -391,30 +461,34 @@ window.MS_I18N = {
             "v": "2",
             "l": "Risk"
           }
-        ]
+        ],
+        "title": "Kasım sürümü planlama",
+        "when": "28 Eyl 2026, 14:00 - 14:45",
+        "ppl": "4 kişi",
+        "org": "Elif Kaya"
       },
       "sales": {
         "title": "Filo takip çözümü, ikinci görüşme",
         "meta": "29 Eylül 2026 · 10:00–10:50 · Microsoft Teams",
         "copy": "CRM’e kopyala",
         "scoreLabel": "Deal skoru",
-        "band": "Orta-Yüksek",
+        "band": "Yüksek olasılık",
         "bars": [
           {
             "l": "BANT netliği",
-            "v": 70
+            "v": 88
           },
           {
             "l": "İtiraz baskısı",
-            "v": 55
+            "v": 70
           },
           {
             "l": "Katılım sinyalleri",
-            "v": 80
+            "v": 90
           },
           {
             "l": "Momentum",
-            "v": 65
+            "v": 85
           }
         ],
         "posTitle": "Pozitif sinyaller",
@@ -426,7 +500,67 @@ window.MS_I18N = {
         "risks": [
           "Fiyat itirazı yanıtlanmadı.",
           "Mevcut sözleşme Mart’ta bitiyor; geçiş takvimi belirsiz."
-        ]
+        ],
+        "when": "29 Eyl 2026, 10:00 - 10:50",
+        "ppl": "3 kişi",
+        "org": "Burak Şahin",
+        "bant": "BANT analizi",
+        "net": "Net",
+        "unclear": "Belirsiz",
+        "bantItems": [
+          {
+            "k": "Bütçe",
+            "ok": true,
+            "x": "Yıllık bütçe aralığı paylaşıldı; liste fiyatı bu aralığın üzerinde."
+          },
+          {
+            "k": "Yetki",
+            "ok": true,
+            "x": "Değerlendirme operasyon müdüründe, nihai onay genel müdürde."
+          },
+          {
+            "k": "İhtiyaç",
+            "ok": true,
+            "x": "Saha ekibinin görüşme notları CRM’e zamanında girilmiyor."
+          },
+          {
+            "k": "Zaman çizelgesi",
+            "ok": false,
+            "x": "Mevcut sözleşme Mart’ta bitiyor; geçiş takvimi netleşmedi."
+          }
+        ],
+        "objTitle": "İtiraz haritası",
+        "objCount": "5 itiraz · 1 açık",
+        "answered": "Görüşmede yanıtlandı",
+        "open": "Açık",
+        "suggest": "Önerilen yanıt",
+        "objs": [
+          {
+            "c": "Fiyat",
+            "s": "YÜKSEK",
+            "open": false,
+            "x": "Lisans maliyeti planlanan bütçenin üzerinde."
+          },
+          {
+            "c": "Teknik",
+            "s": "ORTA",
+            "open": false,
+            "x": "Mevcut CRM ile senkron sorunları yaşanmasından endişe ediyor."
+          },
+          {
+            "c": "Otorite",
+            "s": "ORTA",
+            "open": true,
+            "x": "Nihai karar genel müdür onayına bağlı.",
+            "sug": "Karar toplantısı için geri dönüş hesabı içeren kısa bir yönetici sunumu hazırlayın."
+          }
+        ],
+        "next": "Sonraki adımlar",
+        "nextItems": [
+          "Kademeli fiyat teklifini hazırlayıp iletmek · Burak Şahin",
+          "İki depoda pilot planını netleştirmek · Müşteri"
+        ],
+        "dealLabel": "Deal skoru"
       },
       "interview": {
         "meta": "Kıdemli Backend Geliştirici · 24 Eylül 2026",
@@ -470,7 +604,43 @@ window.MS_I18N = {
         "warn": [
           "Ayrılma nedenine dair soruyu yanıtlamadı"
         ],
-        "foot": "Ücret beklentisi rakam olarak yazılmaz, yalnızca bütçeyle uyumu belirtilir. Son söz jürinindir; rapor PDF olarak indirilir."
+        "foot": "Ücret beklentisi rakam olarak yazılmaz, yalnızca bütçeyle uyumu belirtilir. Son söz jürinindir; rapor PDF olarak indirilir.",
+        "when": "24 Eyl 2026, 14:00 - 14:50",
+        "ppl": "2 kişi",
+        "org": "İK ekibi",
+        "profile": "Aday profili",
+        "role": "Başvuru · Kıdemli Backend Geliştirici",
+        "advice": "AI tavsiyesi",
+        "exp": "Deneyim özeti",
+        "expX": "Ödeme sistemleri ve dağıtık servislerde yedi yıllık deneyim; son rolünde yüksek trafikli bir API katmanından sorumlu.",
+        "skills": "Öne çıkan teknik yetkinlikler",
+        "skillList": [
+          "Go",
+          "PostgreSQL",
+          "Kafka",
+          "Redis",
+          "Kubernetes",
+          "gRPC"
+        ],
+        "info": "Eğitim: Bilgisayar mühendisliği · Ücret beklentisi: bütçeyle uyumlu · İşe başlama: Belirtilmedi",
+        "card": "Mülakat kartı",
+        "questions": "Mülakat soruları",
+        "qCount": "18 soru",
+        "qs": [
+          {
+            "q": "Yük altında yavaşlayan bir servisi nasıl analiz edersin?",
+            "c": "Teknik"
+          },
+          {
+            "q": "Ekipte teknik bir anlaşmazlığı nasıl çözdün?",
+            "c": "Liderlik & İletişim"
+          },
+          {
+            "q": "Neden şimdi yeni bir rol arıyorsun?",
+            "c": "Motivasyon & Uyum",
+            "flag": "Yanıtsız"
+          }
+        ]
       },
       "standup": {
         "title": "Mobil ekip günlük takip",
@@ -484,24 +654,45 @@ window.MS_I18N = {
         "rows": [
           {
             "p": "Elif Kaya",
-            "y": "SDK 5.2 geçişini test ortamında denedi",
-            "t": "Ödeme hatasını yeni sürümde yeniden üretecek",
-            "b": "Yok"
+            "y": "SDK 5.2 geçişini test ortamında denedi.",
+            "t": "Ödeme hatasını yeni sürümde yeniden üretecek.",
+            "ok": true
           },
           {
             "p": "Burak Şahin",
-            "y": "Müşteriyle yeni tarih için görüştü",
-            "t": "Sürüm notlarını hazırlayacak",
-            "b": "Yok"
+            "y": "Müşteriyle yeni tarih için görüştü.",
+            "t": "Sürüm notlarını hazırlayacak.",
+            "ok": true
           },
           {
             "p": "Zeynep Arslan",
-            "y": "Regresyon test planını güncelledi",
-            "t": "Test ortamı taşımasının sahibini netleştirecek",
-            "b": "Test ortamı hâlâ eski veritabanında"
+            "y": "Regresyon test planını güncelledi.",
+            "t": "Test ortamı taşımasının sahibini netleştirecek.",
+            "ok": false
           }
         ],
-        "foot": "Engeller ayrıca listelenir; tekrar eden engeller haftalık raporda görünür."
+        "foot": "Tekrar eden engeller haftalık içgörü raporunda görünür.",
+        "when": "1 Eki 2026, 09:30 - 09:45",
+        "ppl": "6 kişi",
+        "org": "Zeynep Arslan",
+        "team": "Ekip durumu",
+        "ok": "Yolunda",
+        "blocked": "Engel var",
+        "yesterday": "Dün",
+        "today": "Bugün",
+        "blockers": "Engel: test ortamı hâlâ eski veritabanında."
+      },
+      "report": {
+        "brand": "Toplantı özeti",
+        "auto": "Bu doküman, toplantı kayıtları analiz edilerek BGTS MeetSense yapay zekâ platformu tarafından otomatik olarak hazırlanmıştır.",
+        "what": "MeetSense nedir?",
+        "whatX": "BGTS mühendisleri tarafından geliştirilen yapay zekâ destekli toplantı asistanı platformu.",
+        "dt": "Tarih & saat",
+        "ppl": "Katılımcı",
+        "org": "Organizatör",
+        "pdf": "PDF indir",
+        "copy": "CRM’e kopyala",
+        "page": "Sayfa"
       }
     },
     "assistant": {
@@ -631,9 +822,9 @@ window.MS_I18N = {
     },
     "roles": {
       "kicker": "Kimler için",
-      "bannerTitle": "Demoyu ekibinize göre hazırlayalım",
-      "hintNone": "Yukarıdan bir ekip seçin; demoyu o toplantı türüyle yapalım.",
-      "hintPre": "Demoda gösterilecek: ",
+      "bannerTitle": "Rolünüze uygun şablon",
+      "hintNone": "Bir ekip seçin; size uygun şablonu gösterelim.",
+      "hintPre": "Önerilen şablon: ",
       "title": "Toplantıda söylenenin peşine düşen herkes için",
       "items": [
         {
@@ -678,24 +869,24 @@ window.MS_I18N = {
           "v": "Microsoft 365 takvimi Graph üzerinden, kurum içi Exchange sunucuları EWS üzerinden bağlanır."
         },
         {
-          "ic": "eye",
-          "l": "Kimin göreceği sizde",
-          "v": "Her toplantıyı katılımcılara açık, gizli ya da yalnızca seçtiğiniz kişilere açık tutarsınız."
-        },
-        {
           "ic": "team",
-          "l": "Kanallar",
-          "v": "Proje ya da ekip toplantılarını kanallarda toplarsınız. Kanal üyeleri kanaldaki açık toplantıları görür."
+          "l": "Yerel veya misafir katılım",
+          "v": "Bot kurumunuzun toplantılarına Teams uygulaması üzerinden, farklı bir kurumun toplantısına tarayıcıyla misafir olarak katılır."
         },
         {
-          "ic": "share",
-          "l": "Paylaşım",
-          "v": "Toplantı sayfasını bağlantıyla paylaşır ya da PDF olarak indirirsiniz. Mülakat raporu da PDF olarak alınır."
+          "ic": "eye",
+          "l": "Varsayılan gizlilik",
+          "v": "Toplantılar katılımcılara açık, gizli ya da yalnızca seçtiğiniz kişilere açık olur; proje toplantıları kanallarda toplanır."
+        },
+        {
+          "ic": "chat",
+          "l": "Bot kimliği",
+          "v": "Botun adını, karşılama ve çıkış mesajını, yazılı ya da sesli yanıt kanalını kurumunuza göre ayarlarsınız."
         },
         {
           "ic": "globe",
-          "l": "Dil",
-          "v": "Toplantı dili Türkçe, İngilizce ya da otomatik algılama olabilir. Arayüz ve rapor dili ayrıca seçilir."
+          "l": "Dil, tema ve saat dilimi",
+          "v": "Toplantı dili Türkçe, İngilizce ya da kurum varsayılanı olabilir. Arayüz dili, açık/koyu tema ve saat dilimi ayrıca seçilir."
         }
       ],
       "principlesTitle": "Toplantıdaki insanlara saygı",
@@ -726,7 +917,15 @@ window.MS_I18N = {
         },
         {
           "q": "Hangi toplantı platformlarıyla çalışır?",
-          "a": "MeetSense bugün Microsoft Teams toplantılarıyla çalışır. Microsoft 365 takvimi Graph üzerinden, kurum içi Exchange sunucuları EWS üzerinden bağlanır."
+          "a": "MeetSense bugün Microsoft Teams toplantılarıyla çalışır. Toplantıyı takviminizden seçebilir ya da Teams linkini yapıştırabilirsiniz; Microsoft 365 takvimi Graph, kurum içi Exchange EWS üzerinden bağlanır."
+        },
+        {
+          "q": "Farklı bir şirketin Teams toplantısına katılabilir mi?",
+          "a": "Evet. Misafir katılım seçeneğiyle bot, farklı bir organizasyondaki toplantıya tarayıcı üzerinden katılır. Kendi kurumunuzun toplantılarında Teams uygulaması üzerinden yerel katılım en iyi kaliteyi verir."
+        },
+        {
+          "q": "Bot toplantıda konuşur mu?",
+          "a": "Toplantıya girerken karşılama, ayrılırken çıkış mesajı iletir; bu mesajları siz belirlersiniz. Yanıt kanalı yazılı ya da sesli olabilir, sesli komutlar ayrıca açılıp kapatılır."
         },
         {
           "q": "Verilerimiz nerede tutulur?",
@@ -793,7 +992,157 @@ window.MS_I18N = {
       "company": "BGTS",
       "allProducts": "Tüm BGTS AI ürünleri",
       "contact": "İletişim",
-      "disclaimer": "Bu sayfadaki toplantılar, kişiler ve rakamlar örnek veridir."
+      "disclaimer": "Toplantı, kişi ve rakamlar örnek veridir. “Gerçek ürün ekranı” etiketli görseller MeetSense 2.0 Enterprise Edition arayüzündendir."
+    },
+    "app": {
+      "kicker": "Uygulama",
+      "title": "Ekibinizin her gün kullanacağı ekranlar",
+      "lead": "Toplantılar, takvim, bot ve rapor ayarları tek uygulamada. Açık ve koyu tema; Türkçe ve İngilizce arayüz.",
+      "tabs": {
+        "home": "Ana sayfa",
+        "meetings": "Toplantılar",
+        "bot": "AI Bot ekleme",
+        "settings": "Bot kimliği"
+      },
+      "real": "Gerçek ürün ekranı",
+      "nav": [
+        "Ana Sayfa",
+        "Toplantılar",
+        "Takvim",
+        "Ayarlar"
+      ],
+      "newMeeting": "Yeni Toplantı",
+      "hello": "Merhaba, Selin",
+      "today": "Bugün, 6 Ekim 2026 · Salı",
+      "stats": [
+        {
+          "l": "Toplantılar",
+          "v": "12"
+        },
+        {
+          "l": "Aksiyonlar",
+          "v": "31"
+        },
+        {
+          "l": "Kararlar",
+          "v": "23"
+        }
+      ],
+      "range": "5 - 12 Ekim 2026",
+      "todays": "Bugünkü toplantılar",
+      "seeAll": "Tümünü gör",
+      "done": "TAMAMLANDI",
+      "planned": "PLANLANDI",
+      "failed": "KAYIT EDİLEMEDİ",
+      "dt": "Tarih & saat",
+      "ppl": "Katılımcı",
+      "meetings": [
+        {
+          "t": "Kasım sürümü planlama",
+          "w": "6 Eki 2026, 14:00 - 14:45",
+          "s": "done"
+        },
+        {
+          "t": "Haftalık ürün toplantısı",
+          "w": "6 Eki 2026, 16:00 - 16:30",
+          "s": "planned"
+        }
+      ],
+      "dist": "Haftalık toplantı dağılımı",
+      "days": [
+        "Pzt",
+        "Sal",
+        "Çar",
+        "Per",
+        "Cum"
+      ],
+      "distVals": [
+        3,
+        4,
+        2,
+        3,
+        2
+      ],
+      "live": "Canlı AI Bot oturumları",
+      "liveOne": "1 aktif",
+      "liveMeeting": "Müşteri görüşmesi · kaydediliyor",
+      "search": "Toplantılarda ara",
+      "filter": "Filtrele",
+      "sort": "Sırala",
+      "groups": [
+        {
+          "d": "Bugün, 6 Eki",
+          "items": [
+            {
+              "t": "Kasım sürümü planlama",
+              "w": "14:00 - 14:45",
+              "s": "done"
+            },
+            {
+              "t": "Haftalık ürün toplantısı",
+              "w": "16:00 - 16:30",
+              "s": "planned"
+            }
+          ]
+        },
+        {
+          "d": "5 Eki Pazartesi",
+          "items": [
+            {
+              "t": "Filo takip çözümü · ikinci görüşme",
+              "w": "10:00 - 10:50",
+              "s": "done"
+            },
+            {
+              "t": "Mobil ekip günlük takip",
+              "w": "09:30 - 09:45",
+              "s": "failed"
+            }
+          ]
+        }
+      ],
+      "menu": [
+        "Yeniden adlandır",
+        "Linki kopyala",
+        "Takip toplantısı",
+        "Sil"
+      ],
+      "botPoints": [
+        {
+          "t": "Toplantıyı seçin",
+          "x": "Teams linkini yapıştırın ya da takvimden seçin; farklı bir kurumun toplantısı için misafir katılımı açın."
+        },
+        {
+          "t": "Katılım şekli",
+          "x": "Tekil katılabilsin: bot tek başına girer. Sadece benimle: bot yalnızca siz katıldığınızda girer."
+        },
+        {
+          "t": "Katılım yöntemi",
+          "x": "Yerel: Teams uygulaması üzerinden, en iyi kalite. Misafir: tarayıcı ile, farklı organizasyondaki toplantıya."
+        },
+        {
+          "t": "Şablon ve dil",
+          "x": "Analiz şablonunu ve toplantı dilini seçin; isterseniz serinin tüm toplantılarına uygulayın."
+        }
+      ],
+      "setPoints": [
+        {
+          "t": "Bot adı ve mesajları",
+          "x": "Toplantıda görünen adı, karşılama ve çıkış mesajını belirleyin."
+        },
+        {
+          "t": "Yanıt kanalı",
+          "x": "Bot yazılı ya da sesli yanıt verir; sesli komutlar açılıp kapatılabilir."
+        },
+        {
+          "t": "Varsayılan gizlilik",
+          "x": "Yeni toplantılar katılımcılara gizli ya da açık başlar."
+        },
+        {
+          "t": "Varsayılan dil ve şablon",
+          "x": "Toplantı dili ve otomatik analiz şablonu kurum geneline göre ayarlanır."
+        }
+      ]
     }
   },
   "en": {
@@ -873,18 +1222,22 @@ window.MS_I18N = {
       "a1": "What is MeetSense?",
       "a2": "Joins. Records. Transcribes. Analyses.",
       "b1": "How it works in three steps",
-      "b1Lead": "Three steps from sending the AI Bot from your calendar to the meeting page opening.",
+      "b1Lead": "Pick the meeting from your calendar and add the AI Bot; pause or stop the live session whenever you want. When the report is ready, copy the link or download the PDF.",
       "d1": "Customer Management template",
       "d2": "Interview template",
       "tplWatch": "Watch this template in action",
       "e1": "Working with your Microsoft setup",
-      "e1Lead": "Microsoft sign-in, calendar connection via Graph and EWS, lobby rules and per-meeting visibility.",
+      "e1Lead": "Corporate Microsoft sign-in, calendar via Graph and Exchange, bot identity settings, lobby rules and per-meeting visibility: open to participants, private or only the people you choose.",
       "cats": {
         "a": "A · Intro",
         "b": "B · How it works",
         "d": "D · Template",
         "e": "E · Enterprise"
-      }
+      },
+      "badge": "VIDEO",
+      "watchVideo": "Watch the video",
+      "d1Lead": "How a sales call turns into a BANT analysis, objection map, suggested answers and an 81 deal score, copied to your CRM in one click.",
+      "d2Lead": "Criteria scores, question categories and a reasoned Accept / Reject / Hold recommendation; no salary figures, the panel has the final say."
     },
     "nav": {
       "video": "Videos",
@@ -894,7 +1247,9 @@ window.MS_I18N = {
       "assistant": "AI Assistant",
       "enterprise": "Enterprise",
       "faq": "FAQ",
-      "demo": "Request a demo"
+      "demo": "Request a demo",
+      "app": "App",
+      "reports": "Reports"
     },
     "hero": {
       "eyebrow": "AI meeting assistant for Microsoft Teams",
@@ -969,23 +1324,23 @@ window.MS_I18N = {
       "items": [
         {
           "n": "1",
-          "l": "Page per meeting",
-          "c": "Summary, decisions, actions, risks and transcript"
+          "l": "Page and PDF per meeting",
+          "c": "Purpose, outcome, main topics, decisions, actions and AI metrics"
         },
         {
           "n": "4",
           "l": "Ready-made templates",
-          "c": "Standard, Customer Management, Interview, Daily Standup"
+          "c": "Standard, Customer Management, Interview, Daily Standup; plus your own"
+        },
+        {
+          "n": "2",
+          "l": "Ways to join",
+          "c": "Local (Teams app) or guest (browser, other organisations’ meetings)"
         },
         {
           "n": "3",
           "l": "Assistant scopes",
           "c": "One meeting, a series, or every meeting"
-        },
-        {
-          "n": "0–100",
-          "l": "Deal score",
-          "c": "BANT-based assessment for sales calls"
         }
       ]
     },
@@ -996,21 +1351,21 @@ window.MS_I18N = {
       "steps": [
         {
           "n": "01",
-          "t": "Send the AI Bot",
-          "d": "Open the Teams meeting in your calendar and send the AI Bot. It can join just that meeting or every meeting in the series.",
-          "tag": "Microsoft 365 calendar"
+          "t": "Add the AI Bot",
+          "d": "Pick the Teams meeting from your calendar or paste its link. Choose whether the bot joins on its own or only with you, the analysis template and the meeting language (Turkish, English or auto-detect). For recurring meetings, “Apply to the whole series” is enough.",
+          "tag": "From calendar · Whole series"
         },
         {
           "n": "02",
-          "t": "The bot listens and transcribes",
-          "d": "MeetSense AI joins as a participant and writes down the conversation with speaker names. Pause or stop the recording whenever you want.",
-          "tag": "Live transcript"
+          "t": "The conversation is transcribed",
+          "d": "MeetSense AI joins as a participant, posts its welcome message and writes down the conversation with speaker names. It records nothing unless admitted from the lobby. You can pause or stop the recording at any time.",
+          "tag": "Live transcript · Pause / Stop"
         },
         {
           "n": "03",
-          "t": "The analysis is ready",
-          "d": "When the meeting ends, summary, decisions, actions and risks are drawn out according to the template you chose, ready to share.",
-          "tag": "Template-based analysis"
+          "t": "The page is ready",
+          "d": "When the meeting ends, a page is built from the template: purpose, outcome, main topics, decisions, prioritised actions and AI metrics. Copy the link to share it or download the PDF.",
+          "tag": "Link · PDF"
         }
       ]
     },
@@ -1031,9 +1386,9 @@ window.MS_I18N = {
       },
       "tabs": {
         "summary": "Summary",
-        "decisions": "Decisions",
         "actions": "Actions",
-        "risks": "Risks",
+        "decisions": "Decisions",
+        "metrics": "AI metrics",
         "transcript": "Transcript"
       },
       "noOwnerCount": "Without an owner",
@@ -1075,25 +1430,29 @@ window.MS_I18N = {
           "x": "Tell the customer the new release date",
           "owner": "Burak Şahin",
           "noOwner": false,
-          "due": "Oct 2"
-        },
-        {
-          "x": "Move the test environment to the new database",
-          "owner": "",
-          "noOwner": true,
-          "due": "Oct 2"
+          "due": "Oct 2",
+          "p": "high"
         },
         {
           "x": "Upgrade the payment SDK to 5.2",
           "owner": "Elif Kaya",
           "noOwner": false,
-          "due": "Oct 7"
+          "due": "Oct 7",
+          "p": "med"
         },
         {
           "x": "Send the updated pricing deck to management",
           "owner": "Deniz Yılmaz",
           "noOwner": false,
-          "due": "Oct 6"
+          "due": "Oct 6",
+          "p": "low"
+        },
+        {
+          "x": "Move the test environment to the new database",
+          "owner": "",
+          "noOwner": true,
+          "due": "Oct 2",
+          "p": "high"
         }
       ],
       "risks": [
@@ -1139,12 +1498,72 @@ window.MS_I18N = {
           "tm": "06:15",
           "x": "The SDK issue comes from the old version. Moving to 5.2 should fix it."
         }
+      ],
+      "prio": {
+        "high": "HIGH",
+        "med": "MEDIUM",
+        "low": "LOW"
+      },
+      "unassigned": "Unassigned",
+      "purposeTitle": "Purpose of the meeting",
+      "purpose": "Settle the date and scope of the November release and review test environment readiness.",
+      "resultTitle": "Outcome and overall assessment",
+      "topicsTitle": "Main topics discussed",
+      "topics": [
+        {
+          "t": "Release date",
+          "x": "Because of the payment screen bug, the release moved to November 14."
+        },
+        {
+          "t": "Test environment",
+          "x": "Moving it to the new database is on the critical path; nobody owns it yet."
+        },
+        {
+          "t": "Pricing",
+          "x": "The updated deck goes to management on October 6."
+        }
+      ],
+      "metrics": {
+        "participants": "Participants",
+        "duration": "Duration (min)",
+        "confidence": "Transcript confidence",
+        "confidenceV": "92%",
+        "balance": "Speaking balance",
+        "balanced": "Balanced",
+        "mostActive": "Most active speaker",
+        "keywords": "Keywords",
+        "kw": [
+          "release date",
+          "payment SDK",
+          "test environment",
+          "regression",
+          "pricing"
+        ],
+        "other": "Other"
+      },
+      "speakers": [
+        [
+          "Elif Kaya",
+          34
+        ],
+        [
+          "Zeynep Arslan",
+          26
+        ],
+        [
+          "Burak Şahin",
+          22
+        ],
+        [
+          "Deniz Yılmaz",
+          18
+        ]
       ]
     },
     "templates": {
-      "kicker": "Templates",
-      "title": "A different analysis for every kind of meeting",
-      "lead": "The analysis follows the template you choose; if you don’t pick one, your default template is used.",
+      "kicker": "Templates and reports",
+      "title": "A different report for every kind of meeting",
+      "lead": "The analysis follows the template you choose and downloads as a PDF report with the same structure. The examples below follow the structure of real MeetSense reports.",
       "honest": "If a conversation doesn’t fit the template, MeetSense doesn’t force an analysis; it says so plainly and lists what’s missing.",
       "custom": "If the ready-made templates aren’t enough, build your own section by section, clone an existing one, or make it your team’s default.",
       "list": [
@@ -1187,30 +1606,34 @@ window.MS_I18N = {
             "v": "2",
             "l": "Risks"
           }
-        ]
+        ],
+        "title": "November release planning",
+        "when": "Sep 28, 2026, 14:00 - 14:45",
+        "ppl": "4 people",
+        "org": "Elif Kaya"
       },
       "sales": {
         "title": "Fleet tracking solution, second call",
         "meta": "Sep 29, 2026 · 10:00–10:50 · Microsoft Teams",
         "copy": "Copy to CRM",
         "scoreLabel": "Deal score",
-        "band": "Medium-High",
+        "band": "High likelihood",
         "bars": [
           {
             "l": "BANT clarity",
-            "v": 70
+            "v": 88
           },
           {
             "l": "Objection pressure",
-            "v": 55
+            "v": 70
           },
           {
             "l": "Engagement signals",
-            "v": 80
+            "v": 90
           },
           {
             "l": "Momentum",
-            "v": 65
+            "v": 85
           }
         ],
         "posTitle": "Positive signals",
@@ -1222,7 +1645,67 @@ window.MS_I18N = {
         "risks": [
           "The price objection went unanswered.",
           "Their current contract ends in March; the switch timeline is unclear."
-        ]
+        ],
+        "when": "Sep 29, 2026, 10:00 - 10:50",
+        "ppl": "3 people",
+        "org": "Burak Şahin",
+        "bant": "BANT analysis",
+        "net": "Clear",
+        "unclear": "Unclear",
+        "bantItems": [
+          {
+            "k": "Budget",
+            "ok": true,
+            "x": "An annual budget range was shared; list price is above it."
+          },
+          {
+            "k": "Authority",
+            "ok": true,
+            "x": "The operations manager evaluates; the general manager approves."
+          },
+          {
+            "k": "Need",
+            "ok": true,
+            "x": "Field team call notes don’t reach the CRM on time."
+          },
+          {
+            "k": "Timeline",
+            "ok": false,
+            "x": "Their current contract ends in March; the switch timeline is unclear."
+          }
+        ],
+        "objTitle": "Objection map",
+        "objCount": "5 objections · 1 open",
+        "answered": "Answered in the call",
+        "open": "Open",
+        "suggest": "Suggested answer",
+        "objs": [
+          {
+            "c": "Price",
+            "s": "HIGH",
+            "open": false,
+            "x": "Licence cost is above the planned budget."
+          },
+          {
+            "c": "Technical",
+            "s": "MEDIUM",
+            "open": false,
+            "x": "Worried about sync issues with their current CRM."
+          },
+          {
+            "c": "Authority",
+            "s": "MEDIUM",
+            "open": true,
+            "x": "The final decision depends on the general manager.",
+            "sug": "Prepare a short executive deck with a payback calculation for the decision meeting."
+          }
+        ],
+        "next": "Next steps",
+        "nextItems": [
+          "Prepare and send a tiered pricing offer · Burak Şahin",
+          "Finalise the two-warehouse pilot plan · Customer"
+        ],
+        "dealLabel": "Deal score"
       },
       "interview": {
         "meta": "Senior Backend Developer · Sep 24, 2026",
@@ -1266,7 +1749,43 @@ window.MS_I18N = {
         "warn": [
           "Didn’t answer the question about why they’re leaving"
         ],
-        "foot": "Salary expectation is never written as a number, only as fit with the budget. The panel makes the final call; the report exports to PDF."
+        "foot": "Salary expectation is never written as a number, only as fit with the budget. The panel makes the final call; the report exports to PDF.",
+        "when": "Sep 24, 2026, 14:00 - 14:50",
+        "ppl": "2 people",
+        "org": "HR team",
+        "profile": "Candidate profile",
+        "role": "Applied · Senior Backend Developer",
+        "advice": "AI recommendation",
+        "exp": "Experience summary",
+        "expX": "Seven years in payment systems and distributed services; in the latest role, owned a high-traffic API layer.",
+        "skills": "Key technical skills",
+        "skillList": [
+          "Go",
+          "PostgreSQL",
+          "Kafka",
+          "Redis",
+          "Kubernetes",
+          "gRPC"
+        ],
+        "info": "Education: Computer engineering · Salary expectation: within budget · Start date: Not mentioned",
+        "card": "Interview card",
+        "questions": "Interview questions",
+        "qCount": "18 questions",
+        "qs": [
+          {
+            "q": "How would you analyse a service that slows down under load?",
+            "c": "Technical"
+          },
+          {
+            "q": "How did you resolve a technical disagreement in your team?",
+            "c": "Leadership & Communication"
+          },
+          {
+            "q": "Why are you looking for a new role now?",
+            "c": "Motivation & Fit",
+            "flag": "Unanswered"
+          }
+        ]
       },
       "standup": {
         "title": "Mobile team daily standup",
@@ -1280,24 +1799,45 @@ window.MS_I18N = {
         "rows": [
           {
             "p": "Elif Kaya",
-            "y": "Tried the SDK 5.2 upgrade in the test environment",
-            "t": "Will reproduce the payment bug on the new version",
-            "b": "None"
+            "y": "Tried the SDK 5.2 upgrade in the test environment.",
+            "t": "Will reproduce the payment bug on the new version.",
+            "ok": true
           },
           {
             "p": "Burak Şahin",
-            "y": "Talked to the customer about the new date",
-            "t": "Will prepare the release notes",
-            "b": "None"
+            "y": "Talked to the customer about the new date.",
+            "t": "Will prepare the release notes.",
+            "ok": true
           },
           {
             "p": "Zeynep Arslan",
-            "y": "Updated the regression test plan",
-            "t": "Will find an owner for the test environment move",
-            "b": "Test environment still on the old database"
+            "y": "Updated the regression test plan.",
+            "t": "Will find an owner for the test environment move.",
+            "ok": false
           }
         ],
-        "foot": "Blockers are listed separately; recurring ones show up in the weekly report."
+        "foot": "Recurring blockers show up in the weekly insights report.",
+        "when": "Oct 1, 2026, 09:30 - 09:45",
+        "ppl": "6 people",
+        "org": "Zeynep Arslan",
+        "team": "Team status",
+        "ok": "On track",
+        "blocked": "Blocked",
+        "yesterday": "Yesterday",
+        "today": "Today",
+        "blockers": "Blocker: the test environment is still on the old database."
+      },
+      "report": {
+        "brand": "Meeting summary",
+        "auto": "This document was generated automatically by the BGTS MeetSense AI platform by analysing the meeting recordings.",
+        "what": "What is MeetSense?",
+        "whatX": "An AI-powered meeting assistant platform built by BGTS engineers.",
+        "dt": "Date & time",
+        "ppl": "Participants",
+        "org": "Organiser",
+        "pdf": "Download PDF",
+        "copy": "Copy to CRM",
+        "page": "Page"
       }
     },
     "assistant": {
@@ -1427,9 +1967,9 @@ window.MS_I18N = {
     },
     "roles": {
       "kicker": "Who it’s for",
-      "bannerTitle": "Let’s tailor the demo to your team",
-      "hintNone": "Pick a team above and we’ll run the demo with that kind of meeting.",
-      "hintPre": "Shown in the demo: ",
+      "bannerTitle": "The template for your role",
+      "hintNone": "Pick a team and we’ll show the template that fits.",
+      "hintPre": "Suggested template: ",
       "title": "For everyone who has to follow up on what was said",
       "items": [
         {
@@ -1474,24 +2014,24 @@ window.MS_I18N = {
           "v": "Microsoft 365 calendars connect via Graph; on-premise Exchange servers connect via EWS."
         },
         {
-          "ic": "eye",
-          "l": "You decide who sees it",
-          "v": "Keep each meeting open to attendees, private, or open only to people you choose."
-        },
-        {
           "ic": "team",
-          "l": "Channels",
-          "v": "Group project or team meetings into channels. Channel members see the open meetings in them."
+          "l": "Local or guest joining",
+          "v": "The bot joins your organisation’s meetings through the Teams app, and another organisation’s meeting as a guest through the browser."
         },
         {
-          "ic": "share",
-          "l": "Sharing",
-          "v": "Share the meeting page with a link or download it as a PDF. Interview reports export to PDF too."
+          "ic": "eye",
+          "l": "Default privacy",
+          "v": "Meetings are open to participants, private, or visible only to the people you choose; project meetings can be grouped into channels."
+        },
+        {
+          "ic": "chat",
+          "l": "Bot identity",
+          "v": "Set the bot’s name, its welcome and goodbye messages, and a text or voice reply channel for your organisation."
         },
         {
           "ic": "globe",
-          "l": "Language",
-          "v": "Meeting language can be Turkish, English or auto-detect. Interface and report language are set separately."
+          "l": "Language, theme and time zone",
+          "v": "Meeting language can be Turkish, English or your organisation’s default. Interface language, light/dark theme and time zone are set separately."
         }
       ],
       "principlesTitle": "Respect for the people in the meeting",
@@ -1522,7 +2062,15 @@ window.MS_I18N = {
         },
         {
           "q": "Which meeting platforms does it work with?",
-          "a": "Today MeetSense works with Microsoft Teams meetings. Microsoft 365 calendars connect via Graph and on-premise Exchange servers via EWS."
+          "a": "Today MeetSense works with Microsoft Teams meetings. Pick the meeting from your calendar or paste its Teams link; Microsoft 365 calendars connect via Graph and on-premise Exchange via EWS."
+        },
+        {
+          "q": "Can it join another company’s Teams meeting?",
+          "a": "Yes. With guest joining, the bot joins a meeting in another organisation through the browser. For your own organisation’s meetings, local joining through the Teams app gives the best quality."
+        },
+        {
+          "q": "Does the bot speak in the meeting?",
+          "a": "It posts a welcome message when it joins and a goodbye message when it leaves; you set both. Its reply channel can be text or voice, and voice commands can be switched on or off."
         },
         {
           "q": "Where is our data kept?",
@@ -1589,7 +2137,157 @@ window.MS_I18N = {
       "company": "BGTS",
       "allProducts": "All BGTS AI products",
       "contact": "Contact",
-      "disclaimer": "Meetings, people and figures on this page are example data."
+      "disclaimer": "Meetings, people and figures are example data. Images marked “Real product screen” are from the MeetSense 2.0 Enterprise Edition interface."
+    },
+    "app": {
+      "kicker": "App",
+      "title": "The screens your team will use every day",
+      "lead": "Meetings, calendar, bot and report settings in one app. Light and dark theme; Turkish and English interface.",
+      "tabs": {
+        "home": "Home",
+        "meetings": "Meetings",
+        "bot": "Adding the AI Bot",
+        "settings": "Bot identity"
+      },
+      "real": "Real product screen",
+      "nav": [
+        "Home",
+        "Meetings",
+        "Calendar",
+        "Settings"
+      ],
+      "newMeeting": "New meeting",
+      "hello": "Hello, Selin",
+      "today": "Today, October 6, 2026 · Tuesday",
+      "stats": [
+        {
+          "l": "Meetings",
+          "v": "12"
+        },
+        {
+          "l": "Actions",
+          "v": "31"
+        },
+        {
+          "l": "Decisions",
+          "v": "23"
+        }
+      ],
+      "range": "Oct 5 - 12, 2026",
+      "todays": "Today’s meetings",
+      "seeAll": "See all",
+      "done": "COMPLETED",
+      "planned": "SCHEDULED",
+      "failed": "NOT RECORDED",
+      "dt": "Date & time",
+      "ppl": "Participants",
+      "meetings": [
+        {
+          "t": "November release planning",
+          "w": "Oct 6, 2026, 14:00 - 14:45",
+          "s": "done"
+        },
+        {
+          "t": "Weekly product meeting",
+          "w": "Oct 6, 2026, 16:00 - 16:30",
+          "s": "planned"
+        }
+      ],
+      "dist": "Weekly meeting distribution",
+      "days": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "distVals": [
+        3,
+        4,
+        2,
+        3,
+        2
+      ],
+      "live": "Live AI Bot sessions",
+      "liveOne": "1 active",
+      "liveMeeting": "Customer call · recording",
+      "search": "Search meetings",
+      "filter": "Filter",
+      "sort": "Sort",
+      "groups": [
+        {
+          "d": "Today, Oct 6",
+          "items": [
+            {
+              "t": "November release planning",
+              "w": "14:00 - 14:45",
+              "s": "done"
+            },
+            {
+              "t": "Weekly product meeting",
+              "w": "16:00 - 16:30",
+              "s": "planned"
+            }
+          ]
+        },
+        {
+          "d": "Monday, Oct 5",
+          "items": [
+            {
+              "t": "Fleet tracking solution · second call",
+              "w": "10:00 - 10:50",
+              "s": "done"
+            },
+            {
+              "t": "Mobile team daily standup",
+              "w": "09:30 - 09:45",
+              "s": "failed"
+            }
+          ]
+        }
+      ],
+      "menu": [
+        "Rename",
+        "Copy link",
+        "Follow-up meeting",
+        "Delete"
+      ],
+      "botPoints": [
+        {
+          "t": "Pick the meeting",
+          "x": "Paste the Teams link or pick it from your calendar; turn on guest joining for another organisation’s meeting."
+        },
+        {
+          "t": "How it joins",
+          "x": "On its own: the bot joins by itself. Only with me: it joins only when you do."
+        },
+        {
+          "t": "Joining method",
+          "x": "Local: through the Teams app, best quality. Guest: through the browser, for a meeting in another organisation."
+        },
+        {
+          "t": "Template and language",
+          "x": "Choose the analysis template and meeting language; apply it to every meeting in the series if you like."
+        }
+      ],
+      "setPoints": [
+        {
+          "t": "Bot name and messages",
+          "x": "Set the name shown in the meeting and the welcome and goodbye messages."
+        },
+        {
+          "t": "Reply channel",
+          "x": "The bot replies in text or by voice; voice commands can be switched on or off."
+        },
+        {
+          "t": "Default privacy",
+          "x": "New meetings start hidden from or open to participants."
+        },
+        {
+          "t": "Default language and template",
+          "x": "Meeting language and the automatic analysis template follow your organisation’s setting."
+        }
+      ]
     }
   }
 };
