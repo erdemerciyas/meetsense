@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MeetSense — Microsoft Teams için yapay zekâ toplantı asistanı</title>
+<meta name="description" content="MeetSense, Teams toplantınıza katılır, konuşmayı konuşmacı adlarıyla yazıya döker. Toplantı bittiğinde kararlar, aksiyonlar ve özet tek sayfada hazırdır.">
+<meta property="og:title" content="MeetSense — Toplantı bitti. Kararlar, aksiyonlar ve özet hazır.">
+<meta property="og:description" content="Microsoft Teams için yapay zekâ toplantı asistanı. Bir BGTS ürünü.">
+<meta property="og:image" content="assets/img/posters/a1.jpg">
+<meta name="theme-color" content="#faf9f7">
+<link rel="icon" type="image/svg+xml" href="assets/img/meetsense-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Martian+Mono:wdth,wght@75..112.5,400..700&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-play" viewBox="0 0 20 20"><path fill="currentColor" d="M6 3.8v12.4c0 .8.9 1.3 1.6.8l9.3-6.2c.6-.4.6-1.2 0-1.6L7.6 3c-.7-.5-1.6 0-1.6.8z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 20 20"><rect fill="currentColor" x="5" y="4" width="3.4" height="12" rx="1"/><rect fill="currentColor" x="11.6" y="4" width="3.4" height="12" rx="1"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 10h12M11.5 5.5L16 10l-4.5 4.5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M5 10.5l3 3 7-7"/></symbol>
+    <symbol id="i-decision" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M7 10.2l2.2 2.2L13.5 8"/></g></symbol>
+    <symbol id="i-action" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M7 10h6M10.5 7.5L13 10l-2.5 2.5"/></g></symbol>
+    <symbol id="i-risk" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.5l7 12.5H3z"/><path d="M10 8.5v3.2M10 14v.01"/></g></symbol>
+    <symbol id="i-shield" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.8l6 2.4v4.6c0 3.6-2.6 6.4-6 7.4-3.4-1-6-3.8-6-7.4V5.2z"/><path d="M7.5 10l1.8 1.8L12.8 8.5"/></g></symbol>
+    <symbol id="i-wave" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M3 10h1.5M6.5 6.5v7M10 3.5v13M13.5 6.5v7M16.5 10h.5"/></symbol>
+    <symbol id="i-link" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 11.5l3-3"/><path d="M9.5 5.8l1.3-1.3a3 3 0 014.2 4.2l-1.3 1.3M10.5 14.2l-1.3 1.3a3 3 0 01-4.2-4.2l1.3-1.3"/></g></symbol>
+    <symbol id="i-download" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M10 3.5v9M6.5 9l3.5 3.5L13.5 9M4 16.5h12"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="9.5" height="9.5" rx="2"/><path d="M13 7V5a1.5 1.5 0 00-1.5-1.5h-6A1.5 1.5 0 004 5v6.5A1.5 1.5 0 005.5 13H7"/></g></symbol>
+    <symbol id="i-chat" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3.5 5.5a2 2 0 012-2h9a2 2 0 012 2v6a2 2 0 01-2 2H9l-3.5 3v-3a2 2 0 01-2-2z"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.8h7l3.2 3.2v11.2H5z"/><path d="M12 2.8V6h3.2M7.5 10h5M7.5 13h5"/></g></symbol>
+    <symbol id="i-lock" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="12" height="8" rx="2"/><path d="M7 9V6.5a3 3 0 016 0V9"/></g></symbol>
+    <symbol id="i-cal" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="14" height="12.5" rx="2"/><path d="M3 8.5h14M7 3v3M13 3v3"/></g></symbol>
+    <symbol id="i-team" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="7.5" r="2.6"/><path d="M2.8 16c.6-2.6 2.4-4 4.7-4s4.1 1.4 4.7 4"/><circle cx="13.8" cy="6.8" r="2.1"/><path d="M13.2 11.2c2 .1 3.4 1.4 4 3.8"/></g></symbol>
+    <symbol id="i-globe" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M3 10h14M10 3c2 2 2.8 4.4 2.8 7S12 15 10 17c-2-2-2.8-4.4-2.8-7S8 5 10 3z"/></g></symbol>
+    <symbol id="i-chev" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M6 8l4 4 4-4"/></symbol>
+    <symbol id="i-x" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M5.5 5.5l9 9M14.5 5.5l-9 9"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M10 6.5V10l2.5 1.6"/></g></symbol>
+    <symbol id="i-info" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><path d="M10 9v4.5M10 6.5v.01"/></g></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main" data-i18n="ui.skip">İçeriğe geç</a>
+
+<div class="promo" id="promo">
+  <div class="shell">
+    <span class="pill-live"><span class="dot blink"></span><span data-i18n="promo.pill">Canlı demo</span></span>
+    <span data-i18n="promo.text">Kendi Teams toplantınızda 30 dakikalık canlı demo planlayın.</span>
+    <a href="#demo"><span data-i18n="promo.cta">Demo planla</span>&nbsp;→</a>
+    <button type="button" class="x" id="promo-close" data-i18n-attr="aria-label:promo.close" aria-label="Duyuruyu kapat"><svg width="16" height="16"><use href="#i-x"/></svg></button>
+  </div>
+</div>
+
+<header class="header">
+  <div class="shell">
+    <a href="#top" class="brand" aria-label="MeetSense"><span class="l3d" style="--s:32px"></span>MeetSense</a>
+    <nav class="nav" data-i18n-attr="aria-label:ui.navLabel" aria-label="Ana menü">
+      <a href="#video" data-i18n="nav.video">Videolar</a>
+      <a href="#nasil" data-i18n="nav.how">Nasıl çalışır</a>
+      <a href="#urun" data-i18n="nav.tour">Ürün turu</a>
+      <a href="#sablonlar" data-i18n="nav.templates">Şablonlar</a>
+      <a href="#asistan" data-i18n="nav.assistant">AI Asistan</a>
+      <a href="#kurumsal" data-i18n="nav.enterprise">Kurumsal</a>
+      <a href="#sss" data-i18n="nav.faq">SSS</a>
+    </nav>
+    <div class="header-end">
+      <div class="lang" role="group" data-i18n-attr="aria-label:ui.langLabel" aria-label="Dil seçimi">
+        <button type="button" data-lang="tr" aria-pressed="true" aria-label="Türkçe">TR</button>
+        <button type="button" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
+      </div>
+      <a href="#demo" class="btn btn-sm hide-sm" data-i18n="nav.demo">Demo talep et</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="shell hero-head">
+    <span class="eyebrow"><span class="l3d" style="--s:22px"></span><span data-i18n="hero.eyebrow">Microsoft Teams için yapay zekâ toplantı asistanı</span></span>
+    <h1><span class="muted" data-i18n="hero.title1">Toplantı bitti.</span><span data-i18n="hero.title2">Kararlar, aksiyonlar ve özet hazır.</span></h1>
+    <p class="hero-lead" data-i18n="hero.lead">MeetSense, Teams toplantınıza bir katılımcı gibi girer ve konuşmayı konuşmacı adlarıyla yazıya döker. Toplantı bittiğinde kimin neyi ne zamana kadar yapacağı tek sayfada durur.</p>
+    <div class="cta-row">
+      <a href="#demo" class="btn"><span data-i18n="hero.cta">Demo talep et</span><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+      <a href="#video" class="btn btn-ghost" data-play="a1"><span class="play-ico"><svg width="11" height="11"><use href="#i-play"/></svg></span><span data-i18n="videos.heroCta">Tanıtım videosunu izle</span><span class="mono" style="font-size:12px;color:var(--ink-3)">1:15</span></a>
+    </div>
+    <ul class="trust" id="trust"></ul>
+  </div>
+
+  <div class="shell stage-wrap">
+    <div class="stage" id="stage" data-paused="false">
+      <div class="stage-bar">
+        <div>
+          <span class="rec-pill" role="status"><span class="dot blink"></span><span class="mono">REC</span><span id="rec-label">Kaydediliyor</span></span>
+          <span class="rec-time mono" id="rec-time">00:04:14</span>
+          <strong style="font-size:16px;font-weight:600" data-i18n="stage.meeting">Kasım sürümü planlama</strong>
+          <span class="mono" style="font-size:12px;color:var(--ink-3)">Microsoft Teams</span>
+        </div>
+        <div>
+          <span class="tag-example hide-sm" data-i18n="ui.example">Örnek veri</span>
+          <button type="button" class="mini" id="rec-toggle" aria-pressed="false"></button>
+        </div>
+      </div>
+      <div class="stage-grid">
+        <div class="col">
+          <div class="col-title" data-i18n="stage.inTitle">Toplantıda söylenenler</div>
+          <div class="col" id="stage-lines"></div>
+        </div>
+        <div class="orb-col">
+          <div class="flow flow-l" aria-hidden="true"></div>
+          <div class="flow flow-r" aria-hidden="true"></div>
+          <div class="orb-box">
+            <div class="orb-glow" aria-hidden="true"></div>
+            <div class="orb-fallback" aria-hidden="true"><span class="l3d" style="--s:32%"></span></div>
+            <canvas id="orb" role="img" data-i18n-attr="aria-label:stage.orbLabel" aria-label="MeetSense AI"></canvas>
+          </div>
+          <div style="text-align:center">
+            <div class="orb-name">MeetSense AI</div>
+            <div class="orb-state"><svg width="16" height="16"><use href="#i-wave"/></svg><span data-i18n="stage.agentState">Dinliyor ve yazıya döküyor</span></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-title" data-i18n="stage.outTitle">Toplantıdan çıkanlar</div>
+          <div class="col" id="stage-outs"></div>
+        </div>
+      </div>
+      <div class="wave-strip">
+        <div style="flex:0 0 auto;display:flex;flex-direction:column;gap:2px">
+          <span style="font-size:12px;font-weight:500;color:var(--ink-3)" data-i18n="stage.audio">Ses kaydı</span>
+          <span class="mono" style="font-size:12px">48 kHz · <span data-i18n="stage.speakers">3 konuşmacı</span></span>
+        </div>
+        <div class="wave-mask" aria-hidden="true"><div class="wave-scroll" id="hero-wave"></div></div>
+        <div class="now-mark mono" aria-hidden="true" data-i18n="stage.now">şimdi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACTS -->
+<section data-i18n-attr="aria-label:facts.label" aria-label="MeetSense bir bakışta">
+  <div class="shell"><div class="facts" id="facts"></div></div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" aria-labelledby="video-h" style="padding:96px 0 0">
+  <div class="shell">
+    <div class="sec-head">
+      <div><div class="kicker" data-i18n="videos.kicker">Videolar</div><h2 class="h2" id="video-h" data-i18n="videos.title">MeetSense’i 75 saniyede tanıyın</h2></div>
+      <p class="lead" data-i18n="videos.lead">Bir toplantının kayıttan tek sayfaya nasıl dönüştüğünü kısa videolarla izleyin.</p>
+    </div>
+    <div class="video-grid">
+      <figure class="video-main">
+        <div class="video-frame"><div class="vslot" data-video="a1"></div></div>
+        <figcaption class="video-cap">
+          <span class="cat" data-i18n="videos.cats.a">A · Tanıtım</span>
+          <strong data-i18n="videos.a1">MeetSense nedir?</strong>
+          <span class="mono" style="font-size:12px;color:var(--ink-3)">1:15 · 16:9</span>
+          <span class="voice" data-i18n="videos.voice">Türkçe seslendirme · altyazılı</span>
+        </figcaption>
+      </figure>
+      <figure class="phone-fig">
+        <div class="phone"><div class="vslot" data-video="a2" data-ratio="9:16"></div></div>
+        <figcaption style="margin-top:14px;text-align:center">
+          <div class="mono" style="font-size:12px;color:var(--ink-3)"><span data-i18n="videos.teaser">Teaser · Reels / Shorts</span> · 0:13 · 9:16</div>
+          <div style="margin-top:4px;font-size:14px;font-weight:600" data-i18n="videos.a2">Katılır. Kaydeder. Yazıya döker. Analiz eder.</div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="section" id="nasil">
+  <div class="shell">
+    <div class="sec-head">
+      <div><div class="kicker" data-i18n="how.kicker">Nasıl çalışır</div><h2 class="h2" data-i18n="how.title">Toplantı düzeniniz değişmez.</h2></div>
+      <p class="lead" data-i18n="how.lead">MeetSense toplantıya diğer katılımcılar gibi girer; lobiden kabul edilmezse kayıt almaz.</p>
+    </div>
+    <div class="steps"><ol id="steps"></ol></div>
+    <div class="video-card">
+      <div class="vwrap"><div class="vslot" data-video="b1"></div></div>
+      <div class="vtext">
+        <div class="cat"><span data-i18n="videos.cats.b">B · Nasıl çalışır</span> · 0:58</div>
+        <h3 class="h3" style="margin-top:8px" data-i18n="videos.b1">Üç adımda nasıl çalışır</h3>
+        <p data-i18n="videos.b1Lead">Takvimden AI Botu göndermekten toplantı sayfasının açılmasına kadar üç adım.</p>
+        <ol class="vsteps" id="vsteps"></ol>
+        <div class="voice" data-i18n="videos.voice">Türkçe seslendirme · altyazılı</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO BANNER -->
+<section aria-labelledby="band1-h" style="padding:0 0 112px">
+  <div class="shell">
+    <div class="band1">
+      <div class="band1-wave" id="band-wave" aria-hidden="true"></div>
+      <div class="band1-text">
+        <span class="chip-w"><svg width="16" height="16"><use href="#i-clock"/></svg><span data-i18n="band1.kicker">30 dakikalık canlı demo</span></span>
+        <h2 id="band1-h" data-i18n="band1.title">Toplantı bitmeden ilk kararınızı görün.</h2>
+        <p data-i18n="band1.lead">Demoda takviminizdeki bir Teams toplantısına MeetSense’i birlikte davet ediyoruz.</p>
+        <div class="cta-row">
+          <a href="#demo" class="btn btn-inv"><span data-i18n="band1.cta">Demo talep et</span><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+          <a href="#urun" class="btn btn-line" data-i18n="band1.cta2">Örnek toplantı sayfası</a>
+        </div>
+      </div>
+      <div class="band1-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <div style="display:flex;align-items:center;gap:10px"><span class="l3d" style="--s:28px"></span><b style="font-size:15px;font-weight:600" data-i18n="band1.cardTitle">Demo akışı</b></div>
+          <span class="mono" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--danger)"><span class="dot blink"></span>REC</span>
+        </div>
+        <ol id="band-steps"></ol>
+        <div aria-hidden="true" id="band-mini" style="margin-top:10px;height:30px;display:flex;align-items:center;gap:3px"></div>
+        <div class="mono" style="margin-top:8px;display:flex;justify-content:space-between;font-size:11px;color:var(--ink-3)"><span>00:00</span><span data-i18n="band1.total">30 dk</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT TOUR -->
+<section class="section band-alt" id="urun" style="overflow:hidden">
+  <div class="shell tour">
+    <div class="tour-text">
+      <div class="kicker" data-i18n="tour.kicker">Ürün turu</div>
+      <h2 class="h2" data-i18n="tour.title">Her toplantının tek bir sayfası olur</h2>
+      <p class="lead" style="margin-top:20px" data-i18n="tour.lead">Toplantıya katılamayan biri bile ne konuşulduğunu, neye karar verildiğini ve kimin neyi üstlendiğini birkaç dakikada öğrenir.</p>
+      <ul class="checks" id="tour-points"></ul>
+    </div>
+    <div class="tilt">
+      <div class="tilt-in">
+        <div class="window">
+          <div class="win-head">
+            <div>
+              <div class="win-title"><span class="l3d" style="--s:26px"></span><h3 data-i18n="tour.page.title">Kasım sürümü planlama</h3><span class="chip" data-i18n="tour.page.tpl">Standart şablon</span></div>
+              <div class="win-meta mono" data-i18n="tour.page.meta">28 Eylül 2026 · 14:00–14:45 · Microsoft Teams</div>
+            </div>
+            <div class="win-actions">
+              <div class="stack" aria-hidden="true"><span>EK</span><span>BŞ</span><span>ZA</span><span>DY</span></div>
+              <button type="button" class="mini"><svg width="16" height="16"><use href="#i-link"/></svg><span class="hide-sm" data-i18n="tour.page.share">Bağlantıyı kopyala</span></button>
+              <button type="button" class="mini"><svg width="16" height="16"><use href="#i-download"/></svg>PDF</button>
+            </div>
+          </div>
+          <div class="player">
+            <button type="button" class="player-btn" id="player-btn" aria-pressed="false"><svg width="16" height="16"><use href="#i-play"/></svg></button>
+            <div class="player-wave" aria-hidden="true">
+              <div id="player-marks"></div>
+              <div class="player-bars" id="player-bars"></div>
+              <span class="head" id="player-head"></span>
+            </div>
+            <div class="player-time mono"><span id="player-time">04:12</span> <span style="color:var(--ink-4)">/ 45:00</span><small class="hide-sm" data-i18n="tour.player.window">Bölüm 04:00–06:30</small></div>
+          </div>
+          <div class="tabs" role="tablist" id="tour-tabs" data-i18n-attr="aria-label:tour.page.title"></div>
+          <div class="panel" role="tabpanel" id="tour-panel"></div>
+        </div>
+      </div>
+      <p class="mono" style="margin-top:16px;text-align:center;font-size:11px;color:var(--ink-4)" data-i18n="ui.example">Örnek veri</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEMPLATES -->
+<section class="section" id="sablonlar">
+  <div class="shell">
+    <div class="sec-head">
+      <div><div class="kicker" data-i18n="templates.kicker">Şablonlar</div><h2 class="h2" data-i18n="templates.title">Her toplantı türü için ayrı bir analiz</h2></div>
+      <p class="lead" data-i18n="templates.lead">Analiz, seçtiğiniz şablona göre üretilir; seçim yapmazsanız varsayılan şablonunuz kullanılır.</p>
+    </div>
+    <div class="tpl-wrap">
+      <div class="tpl-side">
+        <div role="tablist" id="tpl-tabs" style="display:flex;flex-direction:column;gap:10px" data-i18n-attr="aria-label:templates.kicker"></div>
+        <div class="honest"><svg width="20" height="20" style="flex:0 0 auto;margin-top:1px;color:var(--risk)"><use href="#i-info"/></svg><span data-i18n="templates.honest">Görüşme şablona uymuyorsa MeetSense analizi zorlamaz; bunu açıkça söyler ve eksik bilgileri listeler.</span></div>
+        <p style="margin-top:6px;font-size:14px;line-height:1.55;color:var(--ink-3)" data-i18n="templates.custom">Hazır şablonlar yetmezse bölümleri seçip kendi şablonunuzu kurarsınız.</p>
+      </div>
+      <div class="tpl-panel" role="tabpanel" id="tpl-panel"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSISTANT -->
+<section class="section band-alt" id="asistan">
+  <div class="shell asst">
+    <div class="asst-text">
+      <div class="kicker" data-i18n="assistant.kicker">AI Asistan</div>
+      <h2 class="h2" data-i18n="assistant.title">Geçen ay ne karar vermiştik?</h2>
+      <p class="lead" style="margin-top:20px" data-i18n="assistant.lead">AI Asistan, toplantılarınızın transkriptlerine, kararlarına ve aksiyonlarına bakarak cevap verir.</p>
+      <p style="margin-top:12px;font-size:15px;color:var(--ink-3)" data-i18n="assistant.scopeNote">Soruyu tek bir toplantıya, bir toplantı serisine ya da bütün toplantılarınıza sorabilirsiniz.</p>
+      <div style="margin-top:28px;font-size:13px;font-weight:500;color:var(--ink-3)" data-i18n="assistant.pick">Bir örnek soru seçin</div>
+      <div id="qs" style="margin-top:12px;display:flex;flex-direction:column;gap:10px"></div>
+    </div>
+    <div class="chat">
+      <div class="chat-head">
+        <div><span class="l3d" style="--s:28px"></span><b style="font-size:16px;font-weight:600" data-i18n="assistant.panelTitle">AI Asistan</b></div>
+        <div role="group" id="scopes" data-i18n-attr="aria-label:assistant.scopeLabel"></div>
+      </div>
+      <div class="chat-body" aria-live="polite" id="chat-body"></div>
+      <div class="chat-input">
+        <label for="ask" class="sr-only" data-i18n="assistant.inputLabel">Toplantılarınıza bir soru sorun</label>
+        <input id="ask" type="text" readonly data-i18n-attr="placeholder:assistant.placeholder" placeholder="Toplantılarınıza bir soru sorun…">
+        <button type="button" data-i18n-attr="aria-label:assistant.send" aria-label="Gönder"><svg width="18" height="18"><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WEEKLY -->
+<section class="section" id="haftalik">
+  <div class="shell">
+    <div class="sec-head">
+      <div><div class="kicker" data-i18n="weekly.kicker">Haftalık içgörü</div><h2 class="h2" data-i18n="weekly.title">Haftanın toplantıları tek raporda</h2></div>
+      <p class="lead" data-i18n="weekly.lead">Her pazar, o haftanın toplantılarından bir içgörü raporu hazırlanır.</p>
+    </div>
+    <div class="report">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px">
+        <div><div style="font-size:19px;font-weight:600" data-i18n="weekly.reportTitle">Haftalık içgörüler</div><div class="mono" style="margin-top:4px;font-size:12px;color:var(--ink-3)" data-i18n="weekly.period">21–27 Eylül 2026</div></div>
+        <span class="tag-example" data-i18n="ui.example">Örnek veri</span>
+      </div>
+      <div class="kpis" id="kpis"></div>
+      <div class="insights" id="insights"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES -->
+<section class="section band-alt" aria-labelledby="roles-h">
+  <div class="shell">
+    <div class="kicker" data-i18n="roles.kicker">Kimler için</div>
+    <h2 class="h2" id="roles-h" style="max-width:760px" data-i18n="roles.title">Toplantıda söylenenin peşine düşen herkes için</h2>
+    <div class="roles" id="roles"></div>
+    <div class="role-bar">
+      <div style="display:flex;align-items:center;gap:14px;min-width:0">
+        <span class="l3d" style="--s:34px"></span>
+        <div style="min-width:0"><div style="font-size:16px;font-weight:600" data-i18n="roles.bannerTitle">Demoyu ekibinize göre hazırlayalım</div><div aria-live="polite" id="role-hint" style="margin-top:2px;font-size:14px;color:var(--ink-3)"></div></div>
+      </div>
+      <a href="#demo" class="btn"><span id="role-cta">Demo talep et</span><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE -->
+<section class="section" id="kurumsal">
+  <div class="shell">
+    <div class="sec-head">
+      <div><div class="kicker" data-i18n="ent.kicker">Kurumsal</div><h2 class="h2" data-i18n="ent.title">Kurumunuzun Microsoft altyapısıyla çalışır</h2></div>
+      <p class="lead" data-i18n="ent.lead">Ekibin açacağı yeni bir hesap, öğreneceği yeni bir ekran yok.</p>
+    </div>
+    <div class="ent-grid" id="ent-items"></div>
+    <div class="ent-video">
+      <div class="vtext">
+        <div class="cat"><span data-i18n="videos.cats.e">E · Kurumsal</span> · 0:52</div>
+        <h3 class="h3" style="margin-top:8px" data-i18n="videos.e1">Microsoft altyapısıyla çalışma</h3>
+        <p data-i18n="videos.e1Lead">Microsoft hesabıyla giriş, Graph ve EWS üzerinden takvim bağlantısı, lobi kuralları ve toplantı bazlı görünürlük.</p>
+        <div class="voice" data-i18n="videos.voice">Türkçe seslendirme · altyazılı</div>
+      </div>
+      <div class="vwrap"><div class="vslot" data-video="e1"></div></div>
+    </div>
+    <div class="principles">
+      <div style="flex:1 1 280px;min-width:0">
+        <div style="font-size:22px;font-weight:600;line-height:1.3" data-i18n="ent.principlesTitle">Toplantıdaki insanlara saygı</div>
+        <div class="deploy" data-i18n="ent.deploy">Bulut veya kurum içi (on-premise) kurulum</div>
+      </div>
+      <ul class="plist" id="principles"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- IT BANNER -->
+<section aria-labelledby="band3-h" style="padding:0 0 112px">
+  <div class="shell">
+    <div class="band3">
+      <span class="band3-ico"><svg width="30" height="30"><use href="#i-shield"/></svg></span>
+      <div style="flex:1 1 420px;min-width:0">
+        <div style="font-size:13px;font-weight:600;color:var(--ac-ink)" data-i18n="band3.kicker">BT ve güvenlik ekipleri için</div>
+        <h2 id="band3-h" data-i18n="band3.title">Teknik ekibinizle ayrı bir değerlendirme oturumu</h2>
+        <p style="margin-top:10px;max-width:640px;font-size:15px;line-height:1.6;color:var(--ink-3)" data-i18n="band3.lead">Kurulum seçeneklerini, Microsoft bağlantılarını ve toplantı bazlı erişim ayarlarını birlikte gözden geçirelim.</p>
+        <ul class="tags mono" id="it-tags"></ul>
+      </div>
+      <a href="#demo" class="btn" id="it-cta"><span data-i18n="band3.cta">Teknik demo talep et</span><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section band-alt" id="sss">
+  <div class="shell faq-wrap">
+    <div>
+      <div class="kicker" data-i18n="faq.kicker">SSS</div>
+      <h2 class="h2" data-i18n="faq.title">Sık sorulan sorular</h2>
+      <p style="margin-top:20px;font-size:16px;color:var(--ink-3)"><span data-i18n="faq.lead">Burada olmayan bir sorunuz mu var? Bize yazın:</span> <a href="mailto:hello@bgts.ai">hello@bgts.ai</a></p>
+    </div>
+    <div class="faq" id="faq"></div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo" id="demo">
+  <div class="demo-glow" aria-hidden="true"></div>
+  <div class="shell demo-grid">
+    <div class="demo-text">
+      <div class="logo-stage"><canvas id="logo3d" role="img" data-i18n-attr="aria-label:ui.logo3d" aria-label="MeetSense"></canvas><span class="l3d logo-fallback" style="--s:110px;--dz:2px"></span></div>
+      <h2 data-i18n="demo.title">Bir sonraki toplantınıza MeetSense’i davet edin.</h2>
+      <p class="lead" style="margin-top:20px;max-width:520px" data-i18n="demo.lead">Ekibiniz için 30 dakikalık bir demo planlayalım.</p>
+      <ol class="agenda" id="agenda"></ol>
+      <p style="margin-top:32px;font-size:14px;color:var(--ink-3)"><span data-i18n="demo.direct">Doğrudan yazmayı mı tercih edersiniz?</span> <a href="mailto:hello@bgts.ai">hello@bgts.ai</a></p>
+    </div>
+    <div class="form-card">
+      <form class="form" id="demo-form" novalidate>
+        <div style="font-size:20px;font-weight:600" data-i18n="demo.formTitle">Demo talebi</div>
+        <div class="focus-chip" id="focus-chip" hidden>
+          <span style="color:var(--ink-3)" data-i18n="demo.focusLabel">Demo odağı:</span><strong id="focus-name" style="font-weight:600"></strong>
+          <button type="button" class="x" id="focus-clear" style="margin-left:auto" data-i18n-attr="aria-label:demo.focusClear" aria-label="Demo odağını kaldır"><svg width="14" height="14"><use href="#i-x"/></svg></button>
+        </div>
+        <div class="fgrid">
+          <div class="field"><label for="f-name" data-i18n="demo.f.name">Ad soyad</label><input id="f-name" name="name" type="text" autocomplete="name" required data-i18n-attr="placeholder:demo.ph.name"></div>
+          <div class="field"><label for="f-email" data-i18n="demo.f.email">İş e-postası</label><input id="f-email" name="email" type="email" autocomplete="email" required data-i18n-attr="placeholder:demo.ph.email"></div>
+          <div class="field"><label for="f-company" data-i18n="demo.f.company">Şirket</label><input id="f-company" name="company" type="text" autocomplete="organization" required data-i18n-attr="placeholder:demo.ph.company"></div>
+          <div class="field"><label for="f-size" data-i18n="demo.f.size">Ekip büyüklüğü</label><select id="f-size" name="size"></select></div>
+        </div>
+        <div class="field"><label for="f-msg"><span data-i18n="demo.f.msg">Not</span> <span style="color:var(--ink-3);font-weight:400">(<span data-i18n="demo.f.optional">isteğe bağlı</span>)</span></label><textarea id="f-msg" name="message" data-i18n-attr="placeholder:demo.ph.msg"></textarea></div>
+        <button type="submit" class="btn btn-full" data-i18n="demo.submit">Demo talebini gönder</button>
+        <p style="font-size:13px;line-height:1.5;color:var(--ink-3)" data-i18n="demo.note">Form, bilgilerinizi e-posta uygulamanızda gönderilmeye hazır bir mesaja çevirir.</p>
+      </form>
+      <div class="success" id="demo-success" role="status" hidden>
+        <span class="success-ico"><svg width="24" height="24"><use href="#i-check"/></svg></span>
+        <div style="font-size:22px;font-weight:600" data-i18n="demo.successTitle">Talebiniz hazır</div>
+        <p style="font-size:15px;line-height:1.6;color:var(--ink-3)" data-i18n="demo.success">Mesajınız e-posta uygulamanızda açıldı.</p>
+        <button type="button" class="btn btn-ghost btn-sm" id="demo-again" data-i18n="demo.again">Formu yeniden aç</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div class="foot-top">
+      <div style="flex:1 1 280px;min-width:0;max-width:360px">
+        <div class="l3d-host" style="display:flex;align-items:center;gap:10px"><span class="l3d" style="--s:30px"></span><b style="font-size:18px;font-weight:600">MeetSense</b></div>
+        <p style="margin-top:14px;font-size:14px;line-height:1.6;color:var(--ink-3)" data-i18n="footer.tag">Microsoft Teams toplantılarınız için yapay zekâ toplantı asistanı. Bir BGTS ürünü.</p>
+      </div>
+      <div class="foot-cols">
+        <div><b data-i18n="footer.product">Ürün</b><a href="#video" data-i18n="nav.video">Videolar</a><a href="#nasil" data-i18n="nav.how">Nasıl çalışır</a><a href="#sablonlar" data-i18n="nav.templates">Şablonlar</a><a href="#asistan" data-i18n="nav.assistant">AI Asistan</a><a href="#haftalik" data-i18n="footer.weekly">Haftalık içgörü</a></div>
+        <div><b data-i18n="footer.company">BGTS</b><a href="https://product.bgtsai.com/tr/showcase" target="_blank" rel="noopener" data-i18n="footer.allProducts">Tüm BGTS AI ürünleri</a><a href="#kurumsal" data-i18n="nav.enterprise">Kurumsal</a><a href="mailto:hello@bgts.ai" data-i18n="footer.contact">İletişim</a></div>
+      </div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 BGTS</span><span data-i18n="footer.disclaimer">Bu sayfadaki toplantılar, kişiler ve rakamlar örnek veridir.</span></div>
+  </div>
+</footer>
+
+<div class="float" id="float" data-visible="false" role="complementary" data-i18n-attr="aria-label:float.title" aria-label="Canlı demo">
+  <span class="l3d" style="--s:28px"></span>
+  <span class="float-text"><b data-i18n="float.title">Canlı demo · 30 dk</b><span data-i18n="float.sub">Kendi Teams toplantınızda</span></span>
+  <a href="#demo" class="btn btn-sm" data-i18n="float.cta">Demo talep et</a>
+  <button type="button" class="x" id="float-close" data-i18n-attr="aria-label:float.close" aria-label="Kapat"><svg width="14" height="14"><use href="#i-x"/></svg></button>
+</div>
+
+<script src="assets/vendor/three.min.js" defer></script>
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/orb.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

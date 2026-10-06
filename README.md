@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MeetSense — Landing page
 
-## Getting Started
+Microsoft Teams için yapay zekâ toplantı asistanı MeetSense'in satış / demo mikro sitesi.
+Derleme adımı yoktur: düz HTML, CSS ve JavaScript. Herhangi bir statik sunucuda (Vercel, Netlify, Azure Static Web Apps, IIS, nginx) olduğu gibi yayınlanabilir.
 
-First, run the development server:
+## Yerelde açmak
+
+Videoların ve 3D sahnenin çalışması için dosyayı doğrudan çift tıklamak yerine küçük bir sunucuyla açın:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd MeetSense-Landingpage
+python -m http.server 8080
+# ya da: npx serve .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Sonra tarayıcıda `http://localhost:8080` adresini açın.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Klasör yapısı
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+index.html                 Sayfa iskeleti (Türkçe metinler varsayılan olarak içinde)
+assets/css/styles.css      Tüm stiller (renk ve font değişkenleri :root içinde)
+assets/js/i18n.js          TR / EN metinleri
+assets/js/config.js        Video ve iletişim ayarları
+assets/js/main.js          Etkileşimler: dil, canlı kayıt alanı, sekmeler, şablonlar, asistan, form, videolar
+assets/js/orb.js           Three.js sahneleri: hero ses küresi ve 3D logo
+assets/vendor/three.min.js Three.js r159
+assets/img/                Logo ve video kapak görselleri
+assets/video/              MP4 videolar
+```
 
-## Learn More
+## Dil
 
-To learn more about Next.js, take a look at the following resources:
+- Varsayılan dil Türkçe. Sağ üstteki TR / EN düğmesiyle değişir; seçim tarayıcıda hatırlanır.
+- Bağlantıyla dil seçmek için: `?lang=en`
+- Yeni dil eklemek için `assets/js/i18n.js` içine aynı yapıda yeni bir nesne (ör. `de`) ekleyin ve `index.html` içindeki dil düğmelerine bir düğme ekleyin.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Videolar
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Videolar sayfanın içinde oynatılır. `assets/js/config.js` içinde her video için:
 
-## Deploy on Vercel
+- `youtubeId` doluysa video **YouTube oynatıcısıyla** (youtube-nocookie.com) sayfanın içinde açılır.
+- `youtubeId` boşsa `assets/video/` içindeki **MP4** dosyası oynatılır.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+YouTube kimliği, video linkindeki `v=` değeridir: `https://www.youtube.com/watch?v=XXXXXXXXXXX` → `"XXXXXXXXXXX"`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Kimlik | Video | Sayfadaki yeri |
+|---|---|---|
+| a1 | A1 · MeetSense nedir (1:15) | Hero düğmesi + Videolar bölümü |
+| a2 | A2 · Teaser 9:16 (0:13) | Videolar bölümü, telefon çerçevesi |
+| b1 | B1 · Üç adımda nasıl çalışır (0:58) | Nasıl çalışır |
+| d1 | D1 · Müşteri Yönetimi şablonu (0:53) | Şablonlar → Müşteri Yönetimi |
+| d2 | D2 · Mülakat şablonu (0:53) | Şablonlar → Mülakat |
+| e1 | E1 · Microsoft altyapısı (0:52) | Kurumsal |
+
+## Demo formu
+
+Form, bilgileri `config.js` içindeki `demoEmail` adresine (varsayılan `hello@bgts.ai`) gönderilmeye hazır bir e-posta olarak açar. Bir form servisi ya da CRM bağlanacaksa `main.js` içindeki `demo-form` `submit` olayını değiştirmek yeterlidir.
+
+## Notlar
+
+- Sayfadaki toplantılar, kişiler ve rakamlar örnek veridir; sayfanın altında da bu belirtilir.
+- `prefers-reduced-motion` açık olan kullanıcılarda tüm animasyonlar durur, 3D sahneler sabit bir açıyla gösterilir.
+- Fontlar (Schibsted Grotesk, Martian Mono) Google Fonts'tan yüklenir.
