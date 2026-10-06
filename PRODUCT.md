@@ -31,18 +31,18 @@ MeetSense joins Microsoft Teams meetings as a participant, transcribes the conve
 - **Customer Management template:** BANT analysis, an objection map with suggested answers, a 0–100 deal score (BANT clarity, objection pressure, engagement signals, momentum), and company info. Each section copies to CRM in one click.
 - **Daily Standup template:** yesterday, today, and blockers per person.
 - **Platform:** Microsoft Teams only. Do not claim Zoom, Google Meet, Jira, Trello, or Azure DevOps. An older site claimed these; they are not confirmed.
-- **Site stack:** Next.js 16 static export, Tailwind v4. TR (default) and EN at /tr/ and /en/.
+- **Site stack:** static HTML, CSS and JavaScript with no build step (Three.js for the 3D scenes), hosted on Vercel. TR (default) and EN on one page, switched in-page or with `?lang=en`.
 - **Demo form:** a contact form for now; the submission target is undecided (mailto fallback: hello@bgts.ai).
 - **"Sign in" link:** not in scope for now.
 
 ## Brand Commitments
-- Name: MeetSense. The mark is binding: a waveform/flame glyph with an ember gradient (sand #DABBA3 → orange #EF6406 → red #C60F01 → deep #620301 → near-black #060505) and two yellow sparks (#FFC700), used with the "MeetSense" wordmark. File: `public/brand/meetsense-mark.svg`.
+- Name: MeetSense. The mark is binding: a waveform/flame glyph with an ember gradient (sand #DABBA3 → orange #EF6406 → red #C60F01 → deep #620301 → near-black #060505) and two yellow sparks (#FFC700), used with the "MeetSense" wordmark. File: `assets/img/meetsense-mark.svg`.
 - Voice (from the current product copy): plain, concrete, calm. Short declarative sentences about what happens, e.g. "Toplantı bitti. Kararlar, aksiyonlar ve özet hazır." No hype.
 - A single visual theme; no dark/light toggle.
 
 ## Evidence on Hand
 - Product copy and demonstration content (the "Kasım sürümü planlama" meeting, the Can Öztürk interview, the fleet-tracking sales call, the assistant Q&A, the weekly report for 21–27 Sept 2026) are in `.impeccable/reference/text.txt`, with screenshots in `.impeccable/reference/`. All of this is synthetic demo data and must read as an example.
-- Videos from the old site (`meetsense-app/public/videos`, GitHub LFS) are available but not required.
+- Product videos (v2, subtitles burned in) are in `assets/video/`, with posters in `assets/img/posters/`. Cropped product UI screenshots are in `assets/img/app/`.
 - **Absent, never fabricate:** customers, logos, testimonials, usage metrics, benchmarks, pricing, certifications. The product is new and has no customers yet. GDPR compliance is unconfirmed, so don't state it.
 
 ## Product Principles

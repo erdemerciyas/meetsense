@@ -60,11 +60,16 @@ Kapak görselleri `assets/img/posters/` altındadır ve videolardan alınmış k
 
 Form, bilgileri `config.js` içindeki `demoEmail` adresine (varsayılan `hello@bgts.ai`) gönderilmeye hazır bir e-posta olarak açar. Bir form servisi ya da CRM bağlanacaksa `main.js` içindeki `demo-form` `submit` olayını değiştirmek yeterlidir.
 
+## Yayın (Vercel)
+
+- Repo tek branch'lıdır: `main`. `main`'e yapılan her push Vercel'de otomatik olarak Production'a yayınlanır (https://meetsense-snowy.vercel.app).
+- `vercel.json` içindeki `"framework": null` ayarı Vercel'e derleme yapmadan dosyaları olduğu gibi sunmasını söyler. Bu dosyayı silmeyin.
+- Eski Next.js sürümü bu sitenin yerine geçmiştir ve repoda artık bulunmaz; gerekirse git geçmişinden ulaşılabilir.
+
 ## Notlar
 
 - Rapor örnekleri ve uygulama ekranlarındaki kişi, toplantı ve rakamlar örnek veridir. Gerçek raporlardaki çalışan ve aday isimleri bilerek kullanılmamıştır.
 - `assets/img/app/` içindeki görseller MeetSense 2.0 (Enterprise Edition) arayüzünden kişisel bilgi içermeyen bölümler kırpılarak alınmıştır.
-
 - Sayfadaki toplantılar, kişiler ve rakamlar örnek veridir; sayfanın altında da bu belirtilir.
 - `prefers-reduced-motion` açık olan kullanıcılarda tüm animasyonlar durur, 3D sahneler sabit bir açıyla gösterilir.
 - Fontlar (Schibsted Grotesk, Martian Mono) Google Fonts'tan yüklenir.
